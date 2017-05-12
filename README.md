@@ -49,7 +49,7 @@ Michel Dujardin est le fondateur de l’association NAO (Nos Amis les Oiseaux), 
     - Ses Actions
     - Son Projet de recherche
 - Rechercher une espèce d'oiseau dans la base de données
-- Afficher une ou des espèces d'oiseaux sur une carte après filtrage
+- Afficher une espèce d'oiseau sur une carte après filtrage
 - Ajouter des observations ornithologique sur le terrain
     - Les obsvervations seront validées:
         - Automatiquement pour les naturalistes (professionels)
