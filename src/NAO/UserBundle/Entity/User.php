@@ -21,12 +21,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
+    private $firstname;
 
     public function __construct()
     {
@@ -34,51 +34,52 @@ class User extends BaseUser
         // your own logic
     }
 
+
     /**
-     * Set nom
+     * Set lastname
      *
-     * @param string $nom
+     * @param string $lastname
      *
      * @return User
      */
-    public function setNom($nom)
+    public function setLastname($lastname)
     {
-        $this->nom = $nom;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get lastname
      *
      * @return string
      */
-    public function getNom()
+    public function getLastname()
     {
-        return $this->nom;
+        return $this->lastname;
     }
 
     /**
-     * Set prenom
+     * Set firstname
      *
-     * @param string $prenom
+     * @param string $firstname
      *
      * @return User
      */
-    public function setPrenom($prenom)
+    public function setFirstname($firstname)
     {
-        $this->prenom = $prenom;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get firstname
      *
      * @return string
      */
-    public function getPrenom()
+    public function getFirstname()
     {
-        return $this->prenom;
+        return $this->firstname;
     }
 }
