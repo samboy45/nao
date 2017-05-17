@@ -22,13 +22,23 @@ class RegistrationType extends AbstractType
         ;
     }
 
-    public function getName()
+    public function getParent()
+    {
+        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+    }
+
+    public function getBlockPrefix()
+
     {
         return 'nao_user_registration';
     }
 
-    public function getParent()
+    public function getName()
     {
-        return 'fos_user_registration';
+        return $this->getBlockPrefix();
     }
+
+
+
+
 }
