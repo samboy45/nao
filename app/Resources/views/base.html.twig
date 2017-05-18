@@ -3,11 +3,25 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets  %}
+            <link rel="stylesheet" href="{{ '/nao/web/css/bootstrap.css' }}">
+            <link rel="stylesheet" href="{{ '/nao/web/css/bootstrap-theme.css' }}">
+            <link rel="stylesheet" href="{{ '/nao/web/css/jquery-ui.theme.min.css' }}">
+            <link rel="stylesheet" href="{{ '/nao/web/css/jquery-ui.min.css' }}">
+
+        {% endblock %}
+
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ '/nao/web/js/jquery.js' }}"></script>
+            <script src="{{ '/nao/web/js/jquery-ui.js' }}"></script>
+        {% endblock %}
+        {% block script %}
+        {% endblock %}
     </body>
 </html>

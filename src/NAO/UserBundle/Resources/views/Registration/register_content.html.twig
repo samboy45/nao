@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="col-xs-3">
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+        <div>
+            {{ form_widget(form) }}
+        </div>
+
+        <div>
+            <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+        </div>
+    {{ form_end(form) }}
+</div>
+
+{% block script %}
+    <script>
+        $( function() {
+            $( "#tabs" ).tabs();
+        } );
+    </script>
+{% endblock %}
