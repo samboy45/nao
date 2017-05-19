@@ -18,4 +18,22 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/mentions_legales", name="mentionsLegales")
+     */
+    public function mentionsLegalesAction()
+    {
+        return $this->render("mentions/mentions_legales.html.twig");
+    }
+
+    /**
+     * @Route("/cgu", name="conditionsGeneralesUtlisation")
+     */
+    public function conditionsGeneralesUtlisationAction()
+    {
+        return $this->render("mentions/cgu.html.twig");
+    }
+
+
 }
