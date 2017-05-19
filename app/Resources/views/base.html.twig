@@ -3,11 +3,34 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" />
+        {% endblock %}
+        {% block styles %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        {% block nav %}
+            {% include "default/nav.html.twig" %}
+        {% endblock %}
+    </nav>
+
+    </header>
+    <body class="col-xs-12">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
     </body>
+
+    <div class="footer navbar-fixed-bottom">
+        {% block footer %}
+            {% include "default/footer.html.twig" %}
+        {% endblock %}
+    </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% endblock %}
+    {% block script %}{% endblock %}
 </html>
