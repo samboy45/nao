@@ -1,3 +1,7 @@
+nao_contact:
+    resource: "@NAOContactBundle/Resources/config/routing.yml"
+    prefix: /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
