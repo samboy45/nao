@@ -4,6 +4,7 @@ namespace NAO\ContactBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use ReCaptcha\ReCaptcha;
 
 class DefaultController extends Controller
 {
@@ -15,20 +16,30 @@ class DefaultController extends Controller
             'method' => 'POST'
         ));
 
-        if ($request->isMethod('POST')) {
+        $recaptcha = new ReCaptcha('6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ');
+        $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
-            $form->handleRequest($request);
+        if (!$resp->isSuccess()) {
 
-            if($form->isValid()){
-                // Send mail
-                if($this->envoiEmail($form->getData())){
+            $message = "Le reCAPTCHA n'a pas été entré correctement. Merci de réessayez." . "(reCAPTCHA said: " . $resp->error . ")";
+        } else {
+            if ($request->isMethod('POST')) {
 
-                    return $this->redirectToRoute('nao_contact_homepage');
-                }else{
-                    var_dump("oupsss :(");
+                $form->handleRequest($request);
+
+                if($form->isValid()){
+                    // Send mail
+                    if($this->envoiEmail($form->getData())){
+
+                        return $this->redirectToRoute('nao_contact_homepage');
+                    }else{
+                        var_dump("oupsss :(");
+                    }
                 }
             }
         }
+
+
 
         return $this->render('NAOContactBundle::contact.html.twig', array(
             'form' => $form->createView()
@@ -54,5 +65,18 @@ class DefaultController extends Controller
             ->setBody($data["message"]."<br>Email du contact :".$data["email"]);
 
         return $mailer->send($message);
+    }
+
+    public function mysubmitedAction(Request $request)
+    {
+        $recaptcha = new ReCaptcha('6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ');
+        $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+
+        if (!$resp->isSuccess()) {
+
+            $message = "Le reCAPTCHA n'a pas été entré correctement. Merci de réessayez." . "(reCAPTCHA said: " . $resp->error . ")";
+        } else {
+            // Everything works good ;) your contact has been saved.
+        }
     }
 }
