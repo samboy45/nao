@@ -16,25 +16,17 @@ class DefaultController extends Controller
             'method' => 'POST'
         ));
 
-        $recaptcha = new ReCaptcha('6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ');
-        $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+        if ($request->isMethod('POST')) {
 
-        if (!$resp->isSuccess()) {
+            $form->handleRequest($request);
 
-            $message = "Le reCAPTCHA n'a pas été entré correctement. Merci de réessayez." . "(reCAPTCHA said: " . $resp->error . ")";
-        } else {
-            if ($request->isMethod('POST')) {
+            if($form->isValid()){
+                // Send mail
+                if($this->envoiEmail($form->getData())){
 
-                $form->handleRequest($request);
-
-                if($form->isValid()){
-                    // Send mail
-                    if($this->envoiEmail($form->getData())){
-
-                        return $this->redirectToRoute('nao_contact_homepage');
-                    }else{
-                        var_dump("oupsss :(");
-                    }
+                    return $this->redirectToRoute('nao_contact_homepage');
+                }else{
+                    var_dump("oupsss :(");
                 }
             }
         }
