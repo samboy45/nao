@@ -27,6 +27,11 @@ class ContactType extends AbstractType
                     new NotBlank(array("message" => "Merci de renseigner votre Nom")),
                 )
             ))
+            ->add('prenom', TextType::class, array('attr' => array('placeholder' => 'Votre prénom'),
+                'constraints' => array(
+                    new NotBlank(array("message" => "Merci de renseigner votre Prénom")),
+                )
+            ))
             ->add('sujet', TextType::class, array('attr' => array('placeholder' => 'Votre demande'),
                 'constraints' => array(
                     new NotBlank(array("message" => "Merci d'indiquer la nature de votre demande")),
@@ -38,7 +43,7 @@ class ContactType extends AbstractType
                     new Email(array("message" => "Your email doesn't seems to be valid")),
                 )
             ))
-            ->add('message', TextareaType::class, array('attr' => array('placeholder' => 'quelle est votre demande'),
+            ->add('message', TextareaType::class, array('attr' => array('placeholder' => 'Qu\'elle est votre demande'),
                 'constraints' => array(
                     new NotBlank(array("message" => "Merci de renseigner votre demande")),
                 )

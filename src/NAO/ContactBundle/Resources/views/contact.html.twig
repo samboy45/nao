@@ -1,26 +1,31 @@
 {%  extends "::base.html.twig" %}
 
 {% block body %}
-<div class="col-xs-4 col-xs-offset-4">
+<div class="col-xs-8 col-xs-offset-2">
 
     {{ form_start(form) }}
 
-    <div class="form-group">
-        {{ form_widget(form.sujet) }}
-        {{ form_errors(form.sujet) }}
+    <div class="col-xs-6 form-group">
+        {{ form_widget(form.prenom) }}
+        {{ form_errors(form.prenom) }}
     </div>
 
-    <div class="form-group">
+    <div class="col-xs-6 form-group">
         {{ form_widget(form.nom) }}
         {{ form_errors(form.nom) }}
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-xs-12">
         {{ form_widget(form.email) }}
         {{ form_errors(form.email) }}
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-xs-12">
+        {{ form_widget(form.sujet) }}
+        {{ form_errors(form.sujet) }}
+    </div>
+
+    <div class="form-group col-xs-12">
         {{ form_widget(form.message) }}
         {{ form_errors(form.message) }}
     </div>
@@ -30,7 +35,7 @@
         {{ form_rest(form) }}
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-xs-12">
         <input type="submit" class="btn btn-primary" value="Envoyer">
     </div>
     {{ form_end(form) }}

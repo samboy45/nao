@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+
     public function contactAction(Request $request)
     {
         $form = $this->createForm('NAO\ContactBundle\Form\ContactType',null,array(
@@ -15,18 +16,15 @@ class DefaultController extends Controller
         ));
 
         if ($request->isMethod('POST')) {
-            // Refill the fields in case the form is not valid.
+
             $form->handleRequest($request);
 
             if($form->isValid()){
                 // Send mail
                 if($this->envoiEmail($form->getData())){
 
-                    // Everything OK, redirect to wherever you want ! :
-
                     return $this->redirectToRoute('nao_contact_homepage');
                 }else{
-                    // An error ocurred, handle
                     var_dump("oupsss :(");
                 }
             }
