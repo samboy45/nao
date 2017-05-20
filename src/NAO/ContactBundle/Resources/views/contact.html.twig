@@ -1,35 +1,36 @@
 {%  extends "::base.html.twig" %}
 
+
 {% block script %}
     <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 
 {% block body %}
-<div class="col-xs-8 col-xs-offset-2">
+<div class="col-xs-12 col-md-6 col-md-offset-3">
 
     {{ form_start(form) }}
 
-    <div class="col-xs-6 form-group">
+    <div class="col-xs-12 col-md-6 form-group">
         {{ form_widget(form.prenom) }}
         {{ form_errors(form.prenom) }}
     </div>
 
-    <div class="col-xs-6 form-group">
+    <div class="col-xs-12 col-md-6 form-group">
         {{ form_widget(form.nom) }}
         {{ form_errors(form.nom) }}
     </div>
 
-    <div class="form-group col-xs-12">
+    <div class="form-group col-xs-12 col-md-12">
         {{ form_widget(form.email) }}
         {{ form_errors(form.email) }}
     </div>
 
-    <div class="form-group col-xs-12">
+    <div class="form-group col-xs-12 col-md-12">
         {{ form_widget(form.sujet) }}
         {{ form_errors(form.sujet) }}
     </div>
 
-    <div class="form-group col-xs-12">
+    <div class="form-group col-xs-12 col-md-12">
         {{ form_widget(form.message) }}
         {{ form_errors(form.message) }}
     </div>
@@ -39,10 +40,12 @@
         {{ form_rest(form) }}
     </div>
 
-    <div class="g-recaptcha form-group col-xs-3 col-xs-offset-4" data-sitekey="6LdOQiIUAAAAAOvCV19AXUYhV4TfE-JoR8A_2MNM"></div>
+    <div class="form-group col-xs-12 col-md-12">
+        <div class="g-recaptcha " data-sitekey="6LdOQiIUAAAAAOvCV19AXUYhV4TfE-JoR8A_2MNM"></div>
+    </div>
 
 
-    <div class="form-group col-xs-12 text-center">
+    <div class="form-group col-xs-12 col-md-12 text-center">
         <input type="submit" class="btn btn-primary" value="Envoyer">
     </div>
     {{ form_end(form) }}

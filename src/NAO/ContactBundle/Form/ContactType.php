@@ -39,8 +39,8 @@ class ContactType extends AbstractType
             ))
             ->add('email', EmailType::class, array('attr' => array('placeholder' => 'Votre adresse e-mail'),
                 'constraints' => array(
-                    new NotBlank(array("message" => "Please provide a valid email")),
-                    new Email(array("message" => "Your email doesn't seems to be valid")),
+                    new NotBlank(array("message" => "Merci de renseigner un email valide")),
+                    new Email(array("message" => "Votre email ne semble pas valide")),
                 )
             ))
             ->add('message', TextareaType::class, array('attr' => array('placeholder' => 'Qu\'elle est votre demande'),

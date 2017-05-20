@@ -21,13 +21,27 @@ class DefaultController extends Controller
             $form->handleRequest($request);
 
             if($form->isValid()){
-                // Send mail
-                if($this->envoiEmail($form->getData())){
 
+                $recaptcha = new ReCaptcha('6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ');
+                $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+
+                if (!$resp->isSuccess()) {
+
+                    $message = "Le reCAPTCHA n'a pas été entré correctement. Merci de réessayez.";
+
+                    $this->get('session')->getFlashBag()->add('danger', $message);
                     return $this->redirectToRoute('nao_contact_homepage');
-                }else{
-                    var_dump("oupsss :(");
+                } else {
+                    // Send mail
+                    if($this->envoiEmail($form->getData())){
+
+                        return $this->redirectToRoute('nao_contact_homepage');
+                    }else{
+                        var_dump("oupsss :(");
+                    }
                 }
+
+
             }
         }
 
@@ -39,11 +53,11 @@ class DefaultController extends Controller
     }
 
     private function envoiEmail($data){
-        $ContactEmail = 'monMailDeContact@mail.com';
-        $ContactMotDePasse = 'votreMotDePasseMail';
+        $ContactEmail = ''; //mettre email de contact
+        $ContactMotDePasse = ''; // mettre mot de passe de l'adresse mail de contact
 
 
-        $transport = \Swift_SmtpTransport::newInstance('', '','')
+        $transport = \Swift_SmtpTransport::newInstance('ssl0.ovh.net', '587','tls' )
             ->setUsername($ContactEmail)
             ->setPassword($ContactMotDePasse);
 
@@ -59,16 +73,4 @@ class DefaultController extends Controller
         return $mailer->send($message);
     }
 
-    public function mysubmitedAction(Request $request)
-    {
-        $recaptcha = new ReCaptcha('6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ');
-        $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
-
-        if (!$resp->isSuccess()) {
-
-            $message = "Le reCAPTCHA n'a pas été entré correctement. Merci de réessayez." . "(reCAPTCHA said: " . $resp->error . ")";
-        } else {
-            // Everything works good ;) your contact has been saved.
-        }
-    }
 }

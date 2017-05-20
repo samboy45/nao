@@ -2,3 +2,9 @@ body
 {
     padding-top: 75px;
 }
+
+.g-recaptcha
+{
+    display: block;
+    width: 50%;
+}
