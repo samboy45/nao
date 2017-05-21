@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+/* web/css/nao.css - 21/05/2017 */
+
+
+/* ========================= CLASSES NAO ========================= */
+
+
+/* backgrounds */
+
+.bg-pin-glacial{
+    background-color: rgba(25, 107, 105, 1);
+}
+
+.bg-herbe-tropicale{
+    background-color: rgba(40, 204, 158, 1);
+}
+
+.bg-aloe-vera{
+    background-color: rgba(203, 247, 211, 1);
+}
+
+
+/* color */
+
+.pin-glacial{
+    color: rgba(25, 107, 105, 1);
+}
+
+.herbe-tropicale{
+    color: rgba(40, 204, 158, 1);
+}
+
+.aloe-vera{
+    color: rgba(203, 247, 211, 1);
+}
