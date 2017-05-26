@@ -23,15 +23,24 @@
                             <li><a href="{{ url('conditionsGeneralesUtlisation') }}">CGU</a></li>
                             <li><a href="{{ url('mentionsLegales') }}">Menions légales</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li><a href="#">Lien de séparation</a></li>
                         </ul>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login">Connexion</a></li> <!-- mettre en place vérification de connexion avec Fosuser -->
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue {{ app.user.username }}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('fos_user_profile_show') }}">Mon compte</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url('fos_user_security_logout') }}">Déconnexion</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="{{ url('fos_user_security_login') }}">Connexion</a></li>
+                    {% endif %}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
