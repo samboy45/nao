@@ -1,3 +1,3 @@
 user_homepage:
-    path:     /login
+    path:     /
     defaults: { _controller: UserBundle:Default:index }
