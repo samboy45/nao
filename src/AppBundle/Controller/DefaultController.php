@@ -26,4 +26,9 @@ class DefaultController extends Controller
     {
         return $this->render("mentions/cgu.html.twig");
     }
+
+    public function dashboardAction()
+    {
+        return $this->render("admin/utilisateurs/dashboard.html.twig");
+    }
 }

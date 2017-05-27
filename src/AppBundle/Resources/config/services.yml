@@ -1,5 +1,0 @@
-services:
-    naouser.form.regristration:
-        class: NAO\SecuriteBundle\Form\EnregistrementType
-        tags:
-            - {name: form.type}

@@ -9,6 +9,7 @@
 namespace NAO\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class RegistrationType extends AbstractType
@@ -17,8 +18,16 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
+            ->add('lastname', TextType::class, array(
+                'label' => 'Nom'
+            ))
+            ->add('firstname', TextType::class, array(
+                'label' => 'Prénom'
+            ))
+            ->add('email', TextType::class, array(
+                'label' => 'email'
+            ))
+
         ;
     }
 

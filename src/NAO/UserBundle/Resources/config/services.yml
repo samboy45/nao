@@ -1,5 +1,5 @@
 services:
-    naouser.form.regristration:
-        class: NAO\SecuriteBundle\Form\EnregistrementType
+    naouser.form.registration:
+        class: NAO\UserBundle\Form\RegistrationType
         tags:
-            - {name: form.type}
+            - {name: form.type, alias: nao_user_registration }
