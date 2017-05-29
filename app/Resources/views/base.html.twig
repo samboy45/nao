@@ -2,37 +2,42 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Nos Amis les Oiseaux{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
         {% block stylesheets %}
-            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
-            <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" />
-        {% endblock %}
-        {% block styles %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
             <link href="{{ asset('css/nao.css') }}" rel="stylesheet" />
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-        {% block nav %}
-            {% include "default/nav.html.twig" %}
+    <body>
+        <div class="container-fluid">
+            <header>
+                <div class="row bg-blanc">
+                    {% block nav %}
+                        {% include "default/nav.html.twig" %}
+                    {% endblock %}
+                </div>
+            </header>
+            <main>
+                <div class="row bg-blanc">
+                    {% block body %}{% endblock %}
+                </div>
+            </main>
+            <footer>
+                <div class="row bg-blanc">
+                    {% block footer %}
+                        {% include "default/footer.html.twig" %}
+                    {% endblock %}
+                </div>
+            </footer>
+        </div><!-- <div class="container-fluid"> -->
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         {% endblock %}
-    </nav>
-
-    </header>
-    <body class="col-xs-12">
-        {% block body %}{% endblock %}
     </body>
-
-    <div class="footer navbar-fixed-bottom">
-        {% block footer %}
-            {% include "default/footer.html.twig" %}
-        {% endblock %}
-    </div>
-
-    {% block javascripts %}
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-    {% endblock %}
-    {% block script %}{% endblock %}
 </html>
