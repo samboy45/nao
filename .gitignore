@@ -8,7 +8,7 @@
 /app/spool/*
 
 # Cache, session files and logs (Symfony3)
-var/*
+/var/*
 
 # Parameters
 /app/config/parameters.yml
