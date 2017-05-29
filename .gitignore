@@ -45,3 +45,4 @@ var/*
 # Ide folder
 .idea/
 '.idea' 
+/var/

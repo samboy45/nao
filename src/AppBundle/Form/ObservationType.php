@@ -25,9 +25,17 @@ class ObservationType extends AbstractType
     {
         $builder
             ->add('date', DateType::class)
-            ->add('latitude',TextType::class)
-            ->add('longitude',TextType::class)
-            ->add('image', FileType::class)
+            ->add('latitude',TextType::class,array(
+                'label' => 'Latitude ',
+                //'attr' =>['class' => 'hidden']
+            ))
+            ->add('longitude',TextType::class,array(
+                'label' => 'Longitude',
+                //'attr' => ['class' => 'hidden']
+            ))
+            ->add('image', FileType::class, array(
+                'required' => false
+            ))
             ->add('ordre', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Ordre',
                 'placeholder' => 'Selectionnez l\'ordre',

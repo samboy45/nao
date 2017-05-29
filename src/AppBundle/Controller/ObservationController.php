@@ -45,6 +45,9 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $fichier = $observation->getImage();
+            $nomFichier = $this->get('nao_observations.fileUploader')->upload($fichier);
+            $observation->setImage($nomFichier);
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
             $em->flush();

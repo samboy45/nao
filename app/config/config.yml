@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    image_directory: '%kernel.root_dir%/../web/uploads/observations'
 
 framework:
     #esi: ~
@@ -70,3 +71,34 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+liip_imagine:
+    filter_sets:
+        xs_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [50, 75], mode: inset }
+        sm_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [95, 150], mode: inset }
+        md_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [190, 330], mode: inset }
+        lg_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [380, 660], mode: inset }
+        sm_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [150, 150], mode: inset }
+        md_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [330, 330], mode: inset }
+        lg_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [660, 660], mode: inset }

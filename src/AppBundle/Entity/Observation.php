@@ -26,6 +26,8 @@ class Observation
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
+     * @Assert\Date(message="Date invalide")
+     * @Assert\NotBlank(message="Veuillez renseigner la date")
      */
     private $date;
 
@@ -46,7 +48,7 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      *@Assert\File(
      *      mimeTypes={"image/png", "image/jpeg", "image/jpg"},
      *      mimeTypesMessage = "La photo doit être au format PNG, JPEG ou JPG",
@@ -165,10 +167,9 @@ class Observation
         return $this;
     }
 
+
     /**
-     * Get image
-     *
-     * @return string
+     * @return mixed
      */
     public function getImage()
     {
@@ -221,5 +222,9 @@ class Observation
     public function getEspece()
     {
         return $this->espece;
+    }
+    function __construct()
+    {
+        $this->date = new \DateTime();
     }
 }
