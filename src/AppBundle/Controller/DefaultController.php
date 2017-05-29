@@ -8,9 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
+
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
@@ -19,21 +17,18 @@ class DefaultController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/mentions_legales", name="mentionsLegales")
-     */
     public function mentionsLegalesAction()
     {
         return $this->render("mentions/mentions_legales.html.twig");
     }
 
-    /**
-     * @Route("/cgu", name="conditionsGeneralesUtlisation")
-     */
     public function conditionsGeneralesUtlisationAction()
     {
         return $this->render("mentions/cgu.html.twig");
     }
 
-
+    public function dashboardAction()
+    {
+        return $this->render("admin/utilisateurs/dashboard.html.twig");
+    }
 }

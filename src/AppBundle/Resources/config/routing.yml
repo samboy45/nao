@@ -1,0 +1,15 @@
+homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+mentionsLegales:
+    path:     /mentions_legales
+    defaults: { _controller: AppBundle:Default:mentionsLegales }
+
+conditionsGeneralesUtlisation:
+    path:     /cgu
+    defaults: { _controller: AppBundle:Default:conditionsGeneralesUtlisation }
+
+nao_dashboard:
+    path:     /dashboard
+    defaults: { _controller: AppBundle:Default:dashboard }
