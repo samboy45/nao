@@ -143,6 +143,5 @@ class Famille
     public function __toString()
     {
         return $this->nomFamille;
-
     }
 }

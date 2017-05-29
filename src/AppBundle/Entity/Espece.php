@@ -157,6 +157,5 @@ class Espece
     public function __toString()
     {
         return $this->lbNom;
-
     }
 }

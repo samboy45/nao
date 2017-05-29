@@ -32,14 +32,14 @@ class Observation
     /**
      * @var int
      *
-     * @ORM\Column(name="latitude", type="integer")
+     * @ORM\Column(name="latitude", type="decimal")
      */
     private $latitude;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="longitude", type="integer")
+     * @ORM\Column(name="longitude", type="decimal")
      */
     private $longitude;
 
@@ -47,6 +47,11 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
+     *@Assert\File(
+     *      mimeTypes={"image/png", "image/jpeg", "image/jpg"},
+     *      mimeTypesMessage = "La photo doit être au format PNG, JPEG ou JPG",
+     *      uploadErrorMessage = "Une erreur est survenue durant le chargement de l'image"
+     * )
      */
     private $image;
 

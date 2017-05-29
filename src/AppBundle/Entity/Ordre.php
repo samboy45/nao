@@ -111,6 +111,5 @@ class Ordre
     public function __toString()
     {
         return $this->nomOrdre;
-
     }
 }

@@ -7,6 +7,9 @@ use AppBundle\Entity\Famille;
 use AppBundle\Entity\Ordre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -21,10 +24,10 @@ class ObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('latitude')
-            ->add('longitude')
-            ->add('image')
+            ->add('date', DateType::class)
+            ->add('latitude',TextType::class)
+            ->add('longitude',TextType::class)
+            ->add('image', FileType::class)
             ->add('ordre', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Ordre',
                 'placeholder' => 'Selectionnez l\'ordre',
