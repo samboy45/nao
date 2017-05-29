@@ -6,10 +6,15 @@ user:
     prefix:   /
 
 app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+
+app2:
     resource: '@AppBundle/Resources/config/routing.yml'
     prefix:   /
 
 
 
-
-
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
