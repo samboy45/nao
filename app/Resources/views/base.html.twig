@@ -13,18 +13,16 @@
         {% endblock %}
     </head>
     <body>
-
-    {% dump %}
-    {% if app.request.hasPreviousSession %}
-        {% for type, messages in app.session.flashbag.all() %}
-            {% for message in messages %}
-                <div class="alert alert-{{ type }}">
-                    {{ message }}
-                </div>
+        {% dump %}
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    {% endif %}
-    <div>
+        {% endif %}
         <div class="container-fluid">
             <header>
                 <div class="row bg-blanc">
