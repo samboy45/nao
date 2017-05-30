@@ -16,7 +16,7 @@ parameters:
     mailer_name: Nos Amis les Oiseaux
     secret: ThisTokenIsNotSoSecretChangeIt
     recaptcha_key: 6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ
-    image_directory: web/img_uppload
+    image_directory: web/img_upload
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
