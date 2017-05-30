@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse" id="bouton-nav">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="#" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">observation</a>
+                        <a href="{{ url('observation_index') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">observation</a>
                     </li>
                     <li>
                         <a href="#" class="text-uppercase herbe-tropicale gras espace-nav">qui sommes-nous ?</a>
@@ -47,7 +47,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/login" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">mon compte</a>
+                        <a href="{{ url('fos_user_security_login') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">mon compte</a>
                     </li>
                 </ul>
             </div>
