@@ -8,19 +8,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Observation controller.
- *
- * @Route("observation")
- */
+
 class ObservationController extends Controller
 {
-    /**
-     * Lists all observation entities.
-     *
-     * @Route("/", name="observation_index")
-     * @Method("GET")
-     */
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -32,12 +23,7 @@ class ObservationController extends Controller
         ));
     }
 
-    /**
-     * Creates a new observation entity.
-     *
-     * @Route("/new", name="observation_new")
-     * @Method({"GET", "POST"})
-     */
+
     public function newAction(Request $request)
     {
         $observation = new Observation();
@@ -61,12 +47,7 @@ class ObservationController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a observation entity.
-     *
-     * @Route("/{id}", name="observation_show")
-     * @Method("GET")
-     */
+
     public function showAction(Observation $observation)
     {
         $deleteForm = $this->createDeleteForm($observation);
@@ -77,12 +58,7 @@ class ObservationController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing observation entity.
-     *
-     * @Route("/{id}/edit", name="observation_edit")
-     * @Method({"GET", "POST"})
-     */
+
     public function editAction(Request $request, Observation $observation)
     {
         $deleteForm = $this->createDeleteForm($observation);
@@ -102,12 +78,7 @@ class ObservationController extends Controller
         ));
     }
 
-    /**
-     * Deletes a observation entity.
-     *
-     * @Route("/{id}", name="observation_delete")
-     * @Method("DELETE")
-     */
+
     public function deleteAction(Request $request, Observation $observation)
     {
         $form = $this->createDeleteForm($observation);
@@ -122,13 +93,7 @@ class ObservationController extends Controller
         return $this->redirectToRoute('observation_index');
     }
 
-    /**
-     * Creates a form to delete a observation entity.
-     *
-     * @param Observation $observation The observation entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
+
     private function createDeleteForm(Observation $observation)
     {
         return $this->createFormBuilder()

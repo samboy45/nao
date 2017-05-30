@@ -1,0 +1,24 @@
+observation_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Observation:index" }
+    methods:  GET
+
+observation_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Observation:show" }
+    methods:  GET
+
+observation_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Observation:new" }
+    methods:  [GET, POST]
+
+observation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Observation:edit" }
+    methods:  [GET, POST]
+
+observation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Observation:delete" }
+    methods:  DELETE
