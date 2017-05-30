@@ -18,3 +18,8 @@ app2:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+
+app_observation:
+    resource: "@AppBundle/Resources/config/observation.yml"
+    prefix:   /observation
