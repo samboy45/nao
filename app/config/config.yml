@@ -101,3 +101,34 @@ fos_user:
     registration:
         confirmation:
             template: FOSUserBundle:Registration:email.txt.twig
+
+liip_imagine:
+    filter_sets:
+        xs_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [50, 75], mode: inset }
+        sm_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [95, 150], mode: inset }
+        md_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [190, 330], mode: inset }
+        lg_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [380, 660], mode: inset }
+        sm_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [150, 150], mode: inset }
+        md_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [330, 330], mode: inset }
+        lg_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [660, 660], mode: inset }
