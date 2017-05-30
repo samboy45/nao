@@ -13,7 +13,3 @@ conditionsGeneralesUtlisation:
 nao_dashboard:
     path:     /dashboard
     defaults: { _controller: AppBundle:Default:dashboard }
-
-observation:
-    path:     /observation
-    defaults: { _controller: AppBundle:Observation:index }
