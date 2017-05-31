@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
+use NAO\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -31,9 +32,17 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $fichier = $observation->getImage();
-            $nomFichier = $this->get('nao_observations.fileUploader')->upload($fichier);
-            $observation->setImage($nomFichier);
+            $user = $this->getUser();
+            if ($fichier = $observation->getImage() != null){
+                $nomFichier = $this->get('nao_observations.fileUploader')->upload($observation->getImage());
+                $observation->setImage($nomFichier);
+            }
+            $observation->setUser($user);
+            if ($user->getRoles()== 'particulier'){
+                $observation->setActive(false);
+            }else{
+                $observation->setActive(true);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
             $em->flush();
