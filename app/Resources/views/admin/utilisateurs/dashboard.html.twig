@@ -1,17 +1,18 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            {% include "UserBundle:Profile:show.html.twig" %}
+
+    <div>
+        <div>
+            {{ render(controller('FOSUserBundle:Profile:show')) }}
         </div>
-        <div class="col-md-4">
+        <div>
+
+            {{ render(controller('UserBundle:Default:listeDesUtilisateurs')) }}
 
         </div>
-        <div class="col-md-4">
+        <div>
 
         </div>
     </div>
-</div>
 {% endblock %}

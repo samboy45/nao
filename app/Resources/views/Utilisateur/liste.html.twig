@@ -1,0 +1,31 @@
+<h1>Liste des utilisateurs</h1>
+
+<div id="recherche">
+    <form method="post" action="recherche_utilisateur">
+        <input type="text" class="" placeholder="Rechercher...">
+        <button type="submit">Rechercher</button>
+    </form>
+</div>
+
+<div id="filtre">
+    <label for="role">Filtrer</label>
+    <select name="role" id="role">
+        <option value="*">tout afficher</option>
+        <option value="ROLE_USER">Particulier</option>
+        <option value="ROLE_NATURALISTE">Naturaliste</option>
+        <option value="ROLE_ADMIN">Adinistrateur</option>
+    </select>
+</div>
+
+<div>
+    {% for user in users %}
+        <ul>
+            <li>
+                {{ user.lastname|e }} {{ user.firstname|e }} ( {{ user.username|e }} )
+                <ul>
+                    <li>{{ user.email }}</li>
+                </ul>
+            </li>
+        </ul>
+    {% endfor %}
+</div>

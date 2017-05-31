@@ -1,1 +1,3 @@
-
+liste_utilisateurs:
+    path:     /users
+    defaults: { _controller: UserBundle:Default:listeDesUtilisateurs }
