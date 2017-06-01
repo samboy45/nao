@@ -8,13 +8,16 @@
 </div>
 
 <div id="filtre">
-    <label for="role">Filtrer</label>
-    <select name="role" id="role">
-        <option value="*">tout afficher</option>
-        <option value="ROLE_USER">Particulier</option>
-        <option value="ROLE_NATURALISTE">Naturaliste</option>
-        <option value="ROLE_ADMIN">Adinistrateur</option>
-    </select>
+    <form method="post" action="users/">
+        <label for="role">Filtrer</label>
+        <select name="role" id="role">
+            <option value="*">tout afficher</option>
+            <option value="ROLE_USER">Particulier</option>
+            <option value="ROLE_NATURALISTE">Naturaliste</option>
+            <option value="ROLE_ADMIN">Adinistrateur</option>
+        </select>
+        <button type="submit">valider</button>
+    </form>
 </div>
 
 <div>
@@ -23,7 +26,7 @@
             <li>
                 {{ user.lastname|e }} {{ user.firstname|e }} ( {{ user.username|e }} )
                 <ul>
-                    <li>{{ user.email }}</li>
+                    <li>{{ user.email }} <a href="">modifier</a></li>
                 </ul>
             </li>
         </ul>

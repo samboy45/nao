@@ -1,3 +1,8 @@
 liste_utilisateurs:
     path:     /users
     defaults: { _controller: UserBundle:Default:listeDesUtilisateurs }
+
+liste_utilisateurs_role:
+    path:     /users/{role}
+    defaults: { _controller: UserBundle:Default:listeDesUtilisateurParRole }
+    methods:  [GET, POST]

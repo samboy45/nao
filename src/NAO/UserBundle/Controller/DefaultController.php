@@ -25,8 +25,19 @@ class DefaultController extends Controller
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
 
-        return $this->render("Utilisateur/liste.html.twig", array('users' =>   $users));
+        return $this->render("Utilisateur/liste_utilisateurs.html.twig", array('users' =>   $users));
 
+    }
+
+    public function listeDesUtilisateurParRoleAction($role)
+    {
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery(
+                'SELECT u FROM UserBundle:User u WHERE u.roles LIKE :role'
+            )->setParameter('role', '%"' . $role . '"%');
+
+        $users = $query->getResult();
+        return $this->render("Utilisateur/liste_utilisateurs.html.twig", array('users' =>   $users));
     }
 
     public function trouverUnUtilisateursAction($id) {
