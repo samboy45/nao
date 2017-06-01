@@ -1,56 +1,58 @@
 {% block nav %}
-    <div class="col-xs-12">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bouton-nav" aria-expanded="false">
-                    <span class="sr-only">Bouton de navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="{{ asset('imgs/NAO-logo-couleur.png') }}" alt="Nos Amis les Oiseaux">
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="bouton-nav">
-                <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        <a href="{{ url('observation_index') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">observation</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-uppercase herbe-tropicale gras espace-nav">qui sommes-nous ?</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#" class="bulle-nav">
-                            <span class="fa-stack fa-2x">
-                                <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
-                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="bulle-nav">
-                            <span class="fa-stack fa-2x">
-                                <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="bulle-nav">
-                            <span class="fa-stack fa-2x">
-                                <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
-                                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('fos_user_security_login') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">mon compte</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <div class="row bg-blanc">
+        <div class="col-xs-12">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bouton-nav" aria-expanded="false">
+                        <span class="sr-only">Bouton de navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url('homepage') }}">
+                        <img src="{{ asset('imgs/NAO-logo-couleur.png') }}" class="img-responsive" alt="Nos Amis les Oiseaux">
+                    </a>
+                </div><!-- <div class="navbar-header"> -->
+                <div class="collapse navbar-collapse" id="bouton-nav">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="{{ url('observation_index') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">observation</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-uppercase herbe-tropicale espace-nav">qui sommes-nous ?</a>
+                        </li>
+                    </ul><!-- <ul class="nav navbar-nav navbar-left"> -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
+                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('fos_user_security_login') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">mon compte</a>
+                        </li>
+                    </ul><!-- <ul class="nav navbar-nav navbar-right"> -->
+                </div><!-- <div class="collapse navbar-collapse" id="bouton-nav"> -->
+            </nav>
+        </div><!-- <div class="col-xs-12"> -->
+    </div><!-- <div class="row bg-blanc"> -->
 {% endblock %}
