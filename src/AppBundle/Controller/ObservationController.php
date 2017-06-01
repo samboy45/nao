@@ -69,10 +69,9 @@ class ObservationController extends Controller
     {
         $deleteForm = $this->createDeleteForm($observation);
         $validateForm = $this->createForm('AppBundle\Form\ValidateType', $observation);
-        $protection = $this->createForm('AppBundle\Form\ProtectionType');
         $validateForm->handleRequest($request);
 
-        if ($validateForm->isSubmitted() && $validateForm->isValid() && $protection->handleRequest($request)->isValid()) {
+        if ($validateForm->isSubmitted() && $validateForm->isValid()){
 
             if ($fichier = $observation->getImage() != null) {
                 $nomFichier = $this->get('nao_observations.fileUploader')->upload($observation->getImage());
@@ -88,7 +87,6 @@ class ObservationController extends Controller
             'observation' => $observation,
             'validate_form' => $validateForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'protection' => $protection->createView()
         ));
     }
 

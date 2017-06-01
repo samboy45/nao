@@ -77,20 +77,12 @@ class Observation
      */
     private $user;
 
-
     /**
-     * @var
-     * @ORM\Column(name="espece_protegeer", type="boolean", )
+     * @var string
+     *
+     * @ORM\Column(name="type_espece", type="string", length=255, nullable=true)
      */
-    private $especeProtegeer;
-
-
-    /**
-     * @var
-     * @ORM\Column(name="espece_non_protegeer", type="boolean")
-     */
-    private $especeNonProtegeer;
-
+    private $typeEspece;
     /**
      * Get id
      *
@@ -272,51 +264,28 @@ class Observation
         return $this->user;
     }
 
+
     /**
-     * Set especeProtegeer
+     * Set typeEspece
      *
-     * @param boolean $especeProtegeer
+     * @param string $typeEspece
      *
      * @return Observation
      */
-    public function setEspeceProtegeer($especeProtegeer)
+    public function setTypeEspece($typeEspece)
     {
-        $this->especeProtegeer = $especeProtegeer;
+        $this->typeEspece = $typeEspece;
 
         return $this;
     }
 
     /**
-     * Get especeProtegeer
+     * Get typeEspece
      *
-     * @return boolean
+     * @return string
      */
-    public function getEspeceProtegeer()
+    public function getTypeEspece()
     {
-        return $this->especeProtegeer;
-    }
-
-    /**
-     * Set especeNonProtegeer
-     *
-     * @param boolean $especeNonProtegeer
-     *
-     * @return Observation
-     */
-    public function setEspeceNonProtegeer($especeNonProtegeer)
-    {
-        $this->especeNonProtegeer = $especeNonProtegeer;
-
-        return $this;
-    }
-
-    /**
-     * Get especeNonProtegeer
-     *
-     * @return boolean
-     */
-    public function getEspeceNonProtegeer()
-    {
-        return $this->especeNonProtegeer;
+        return $this->typeEspece;
     }
 }
