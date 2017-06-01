@@ -7,6 +7,7 @@ use AppBundle\Entity\Famille;
 use AppBundle\Entity\Ordre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -34,7 +35,8 @@ class ObservationType extends AbstractType
                 //'attr' => ['class' => 'hidden']
             ))
             ->add('image', FileType::class, array(
-                'required' => false
+                'required' => false,
+                'data_class' => null
             ))
             ->add('ordre', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Ordre',

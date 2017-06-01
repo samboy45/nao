@@ -3,10 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
-use NAO\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -68,22 +65,30 @@ class ObservationController extends Controller
     }
 
 
-    public function editAction(Request $request, Observation $observation)
+    public function validateAction(Request $request, Observation $observation)
     {
         $deleteForm = $this->createDeleteForm($observation);
-        $editForm = $this->createForm('AppBundle\Form\ObservationType', $observation);
-        $editForm->handleRequest($request);
+        $validateForm = $this->createForm('AppBundle\Form\ValidateType', $observation);
+        $protection = $this->createForm('AppBundle\Form\ProtectionType');
+        $validateForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($validateForm->isSubmitted() && $validateForm->isValid() && $protection->handleRequest($request)->isValid()) {
+
+            if ($fichier = $observation->getImage() != null) {
+                $nomFichier = $this->get('nao_observations.fileUploader')->upload($observation->getImage());
+                $observation->setImage($nomFichier);
+            }
+            $observation->setActive(true);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('observation_edit', array('id' => $observation->getId()));
+            return $this->redirectToRoute('observation_validate', array('id' => $observation->getId()));
         }
 
-        return $this->render('observation/edit.html.twig', array(
+        return $this->render('observation/validate.html.twig', array(
             'observation' => $observation,
-            'edit_form' => $editForm->createView(),
+            'validate_form' => $validateForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'protection' => $protection->createView()
         ));
     }
 

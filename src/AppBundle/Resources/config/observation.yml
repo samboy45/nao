@@ -13,9 +13,9 @@ observation_new:
     defaults: { _controller: "AppBundle:Observation:new" }
     methods:  [GET, POST]
 
-observation_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "AppBundle:Observation:edit" }
+observation_validate:
+    path:     /{id}/validate
+    defaults: { _controller: "AppBundle:Observation:validate" }
     methods:  [GET, POST]
 
 observation_delete:

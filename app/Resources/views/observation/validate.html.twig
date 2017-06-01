@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Observation edit</h1>
+
+    {{ form_start(validate_form) }}
+        {{ form_widget(validate_form) }}
+    {{ form_start(protection) }}
+    {{ form_widget(protection) }}
+    <input type="submit" value="Validate" />
+    {{ form_end(protection) }}
+    {{ form_end(validate_form) }}
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('observation_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

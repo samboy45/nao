@@ -76,6 +76,21 @@ class Observation
      * @Assert\Valid()
      */
     private $user;
+
+
+    /**
+     * @var
+     * @ORM\Column(name="espece_protegeer", type="boolean", )
+     */
+    private $especeProtegeer;
+
+
+    /**
+     * @var
+     * @ORM\Column(name="espece_non_protegeer", type="boolean")
+     */
+    private $especeNonProtegeer;
+
     /**
      * Get id
      *
@@ -255,5 +270,53 @@ class Observation
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set especeProtegeer
+     *
+     * @param boolean $especeProtegeer
+     *
+     * @return Observation
+     */
+    public function setEspeceProtegeer($especeProtegeer)
+    {
+        $this->especeProtegeer = $especeProtegeer;
+
+        return $this;
+    }
+
+    /**
+     * Get especeProtegeer
+     *
+     * @return boolean
+     */
+    public function getEspeceProtegeer()
+    {
+        return $this->especeProtegeer;
+    }
+
+    /**
+     * Set especeNonProtegeer
+     *
+     * @param boolean $especeNonProtegeer
+     *
+     * @return Observation
+     */
+    public function setEspeceNonProtegeer($especeNonProtegeer)
+    {
+        $this->especeNonProtegeer = $especeNonProtegeer;
+
+        return $this;
+    }
+
+    /**
+     * Get especeNonProtegeer
+     *
+     * @return boolean
+     */
+    public function getEspeceNonProtegeer()
+    {
+        return $this->especeNonProtegeer;
     }
 }
