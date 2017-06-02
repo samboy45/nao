@@ -53,11 +53,11 @@ class DefaultController extends Controller
     }
 
     private function envoiEmail($data){
-        $ContactEmail = ''; //mettre email de contact
-        $ContactMotDePasse = ''; // mettre mot de passe de l'adresse mail de contact
+        $ContactEmail = $this->getParameter('mailer_user'); //mettre email de contact
+        $ContactMotDePasse = $this->getParameter('mailer_password'); // mettre mot de passe de l'adresse mail de contact
 
 
-        $transport = \Swift_SmtpTransport::newInstance('ssl0.ovh.net', '587','tls' )
+        $transport = \Swift_SmtpTransport::newInstance( $this->getParameter('mailer_host'),$this->getParameter('mailer_port'),$this->getParameter('mailer_security'))
             ->setUsername($ContactEmail)
             ->setPassword($ContactMotDePasse);
 
