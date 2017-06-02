@@ -28,15 +28,7 @@ class EditProfileType extends AbstractType
             ->add('email', TextType::class, array(
                 'label' => 'email'
             ))
-            ->add('roles', ChoiceType::class, array(
-            'choices' => array(
-                'ROLE_USER' => 'Utilisateur',
-                'ROLE_NATURALISTE' => 'Naturaliste',
-                'ROLE_ADMIN' => 'Administrateur'
-            ),
-            'multiple' => true,
-            'expanded'=>false
-        ));
+            ;
 
     }
 

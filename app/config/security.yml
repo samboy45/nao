@@ -3,9 +3,9 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_USER:        Utlisateur
-        ROLE_NATURALISTE: Naturaliste
-        ROLE_ADMIN:       Admin
+        ROLE_USER:        ROLE_USER
+        ROLE_NATURALISTE: ROLE_NATURALISTE
+        ROLE_ADMIN:       ROLE_ADMIN
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
@@ -25,6 +25,6 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/moncompte, role: ROLE_USER }
         - { path: ^/admin, role: ROLE_ADMIN }

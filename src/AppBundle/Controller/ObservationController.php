@@ -41,7 +41,7 @@ class ObservationController extends Controller
             return $this->redirectToRoute('observation_show', array('id' => $observation->getId()));
         }
 
-        return $this->render('observation/new.html.twig', array(
+        return $this->render('observation/ajouter.html.twig', array(
             'observation' => $observation,
             'form' => $form->createView(),
         ));
@@ -52,7 +52,7 @@ class ObservationController extends Controller
     {
         $deleteForm = $this->createDeleteForm($observation);
 
-        return $this->render('observation/show.html.twig', array(
+        return $this->render('observation/afficher.html.twig', array(
             'observation' => $observation,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -71,7 +71,7 @@ class ObservationController extends Controller
             return $this->redirectToRoute('observation_edit', array('id' => $observation->getId()));
         }
 
-        return $this->render('observation/edit.html.twig', array(
+        return $this->render('observation/editer.html.twig', array(
             'observation' => $observation,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

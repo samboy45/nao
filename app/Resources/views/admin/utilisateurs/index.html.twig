@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    <div class="col-xs-12">
+    <form method="post" action="recherche_utilisateur">
+        <input type="text" class="" placeholder="Rechercher...">
+        <button type="submit">Rechercher</button>
+    </form>
+    </div>
+
+    <div class="col-xs-12">
+        <form method="post" action="utilisateurs/">
+            <label for="role">Filtrer</label>
+            <select name="role" id="role">
+                <option value="*">tout afficher</option>
+                <option value="ROLE_USER">Particulier</option>
+                <option value="ROLE_NATURALISTE">Naturaliste</option>
+                <option value="ROLE_ADMIN">Adinistrateur</option>
+            </select>
+            <button type="submit">valider</button>
+        </form>
+    </div>
+
+   <div class="col-xs-12">
+       <table class="table table-striped">
+           <thead>
+           <tr>
+               <th>Nom</th>
+               <th>Prénom</th>
+               <th>Email</th>
+               <th>Actions</th>
+           </tr>
+           </thead>
+           <tbody>
+           {% for user in users %}
+               <tr>
+                   <td>{{ user.lastname }}</td>
+                   <td>{{ user.firstname }}</td>
+                   <td>{{ user.email }}</td>
+                   <td>
+                        <a class="btn btn-success" href="{{ path('admin_utilisateurs_show', { 'id': user.id }) }}">Voir</a>
+                        <a class="btn btn-warning" href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}">Modifier</a>
+                   </td>
+               </tr>
+           {% endfor %}
+           </tbody>
+       </table>
+   </div>
+    <div>
+        <a class="btn btn-primary" href="{{ path('admin_utilisateurs_new') }}">Ajouter un utilisateur</a>
+    </div>
+
+{% endblock %}

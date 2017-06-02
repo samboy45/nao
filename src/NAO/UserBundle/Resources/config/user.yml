@@ -1,0 +1,24 @@
+admin_utilisateurs_index:
+    path:     /
+    defaults: { _controller: "UserBundle:User:index" }
+    methods:  GET
+
+admin_utilisateurs_show:
+    path:     /{id}/show
+    defaults: { _controller: "UserBundle:User:show" }
+    methods:  GET
+
+admin_utilisateurs_new:
+    path:     /new
+    defaults: { _controller: "UserBundle:User:new" }
+    methods:  [GET, POST]
+
+admin_utilisateurs_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UserBundle:User:edit" }
+    methods:  [GET, POST]
+
+admin_utilisateurs_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UserBundle:User:delete" }
+    methods:  DELETE
