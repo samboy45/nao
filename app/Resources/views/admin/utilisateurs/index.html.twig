@@ -30,6 +30,8 @@
                <th>Nom</th>
                <th>Prénom</th>
                <th>Email</th>
+               <th>Utilisateur</th>
+               <th>Role</th>
                <th>Actions</th>
            </tr>
            </thead>
@@ -39,6 +41,14 @@
                    <td>{{ user.lastname }}</td>
                    <td>{{ user.firstname }}</td>
                    <td>{{ user.email }}</td>
+                   <td>{{ user.username }}</td>
+                   <td>
+                       {% for role in user.roles %}
+                            <ul>
+                                <li>{{ role }}</li>
+                            </ul>
+                       {% endfor %}
+                   </td>
                    <td>
                         <a class="btn btn-success" href="{{ path('admin_utilisateurs_show', { 'id': user.id }) }}">Voir</a>
                         <a class="btn btn-warning" href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}">Modifier</a>

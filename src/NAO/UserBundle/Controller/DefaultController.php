@@ -26,7 +26,6 @@ class DefaultController extends Controller
         $users = $userManager->findUsers();
 
         return $this->render("utilisateur/moncompte.html.twig", array('users' =>   $users));
-
     }
 
 

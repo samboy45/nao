@@ -19,6 +19,8 @@ class EditProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
+            ->remove('current_password')
             ->add('lastname', TextType::class, array(
                 'label' => 'Nom'
             ))
@@ -27,8 +29,7 @@ class EditProfileType extends AbstractType
             ))
             ->add('email', TextType::class, array(
                 'label' => 'email'
-            ))
-            ;
+            ));
 
     }
 

@@ -7,4 +7,4 @@ services:
     naouser.form.edit.profil:
             class: NAO\UserBundle\Form\EditProfileType
             tags:
-                - {name: form.type, alias: nao_user_edit_profil}
+                - {name: form.type, alias: nao_user_show_profil}
