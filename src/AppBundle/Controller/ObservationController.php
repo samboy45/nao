@@ -44,13 +44,19 @@ class ObservationController extends Controller
             $em->persist($observation);
             $em->flush();
 
-            return $this->redirectToRoute('observation_show', array('id' => $observation->getId()));
+            return $this->redirectToRoute('observation_confirmation');
         }
 
         return $this->render('observation/new.html.twig', array(
             'observation' => $observation,
             'form' => $form->createView(),
         ));
+    }
+
+    public function confirmationAction()
+    {
+        return $this->render(':observation:confirmation.html.twig');
+
     }
 
 

@@ -22,3 +22,8 @@ observation_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Observation:delete" }
     methods:  DELETE
+
+observation_confirmation:
+    path:    /confirmation
+    defaults: {_controller: "AppBundle:Observation:confirmation"}
+    methods:  GET
