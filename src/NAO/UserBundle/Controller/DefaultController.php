@@ -25,7 +25,7 @@ class DefaultController extends Controller
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
 
-        return $this->render("Utilisateur/liste_utilisateurs.html.twig", array('users' =>   $users));
+        return $this->render("admin/utilisateurs/liste_utilisateurs.html.twig", array('users' =>   $users));
 
     }
 
@@ -37,7 +37,7 @@ class DefaultController extends Controller
             )->setParameter('role', '%"' . $role . '"%');
 
         $users = $query->getResult();
-        return $this->render("Utilisateur/liste_utilisateurs.html.twig", array('users' =>   $users));
+        return $this->render("admin/utilisateurs/liste_utilisateurs.html.twig", array('users' =>   $users));
     }
 
     public function trouverUnUtilisateursAction($id) {
