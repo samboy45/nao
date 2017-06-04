@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Observations list</h1>
-
-    <table>
+    <div class="container">
+        <h1>Observations list</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Image</th>
-                <th>Active</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Image</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for observation in observations %}
@@ -22,7 +23,15 @@
                 <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ observation.latitude }}</td>
                 <td>{{ observation.longitude }}</td>
-                <td>{{ observation.image }}</td>
+
+                <td>
+                    {%   if observation.image is defined and observation.image is not null%}
+                    <img src="{{ asset('img_uppload/'~ observation.image) | imagine_filter('sm_thumb')}}" alt=""
+                    />
+                    {% else %}
+                        <em>Aucune photo proposée</em>
+                    {% endif %}
+                </td>
                 <td>{% if observation.active %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
@@ -38,10 +47,14 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
-    <ul>
-        <li>
-            <a href="{{ path('observation_new') }}">Create a new observation</a>
-        </li>
-    </ul>
+
+        <ul>
+            <li>
+                <a href="{{ path('observation_new') }}">Create a new observation</a>
+            </li>
+        </ul>
+    </div>
+
 {% endblock %}
