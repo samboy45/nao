@@ -21,6 +21,7 @@ class UserController extends Controller
         ));
     }
 
+
     public function newAction(Request $request)
     {
         $user = new User();

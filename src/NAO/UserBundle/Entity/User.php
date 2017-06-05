@@ -21,12 +21,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstname;
+    protected $firstname;
 
     public function __construct()
     {
@@ -82,4 +82,5 @@ class User extends BaseUser
     {
         return $this->firstname;
     }
+
 }

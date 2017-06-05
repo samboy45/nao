@@ -1,0 +1,7 @@
+{{ form_start(form, {'attr': {'class': 'form-inline', 'action': path('admin_utilisateurs_find') }}) }}
+
+    {{ form_widget(form.recherche) }}
+
+    <button type="submit" class="btn btn-primary">rechercher</button>
+
+{{ form_end(form) }}

@@ -22,3 +22,13 @@ admin_utilisateurs_delete:
     path:     /{id}/delete
     defaults: { _controller: "UserBundle:User:delete" }
     methods:  DELETE
+
+admin_utilisateurs_find:
+    path:     /utilisateurs
+    defaults: { _controller: "UserBundle:Default:recherche" }
+    methods:  [GET, POST]
+
+admin_utilisateurs_find_role:
+    path:     /role
+    defaults: { _controller: "UserBundle:Default:rechercheRole" }
+    methods:  [GET, POST]
