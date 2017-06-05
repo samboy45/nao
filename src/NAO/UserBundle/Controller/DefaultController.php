@@ -39,8 +39,16 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $users = $em->getRepository('UserBundle:User')->findBy(array('firstname' => $form->getData()));
+            $recherche = $form->getData() ;
+            $query = $this->getDoctrine()->getManager()
+                ->createQuery('SELECT u FROM UserBundle:User u 
+                                  WHERE u.firstname LIKE :recherche
+                                    OR u.lastname LIKE :recherche
+                                    OR u.username LIKE :recherche
+                                    OR u.email LIKE :recherche'
+                )->setParameter('recherche', '%' . $recherche['recherche'] . '%' );
+
+            $users = $query->getResult();
             return $this->render('admin/utilisateurs/index.html.twig', array(
                 'users' => $users,
             ));
@@ -55,9 +63,9 @@ class DefaultController extends Controller
             ->add('roles', ChoiceType::class, array(
                 'choices' => array(
                     'Tous' => null,
-                    'ROLE_USER' => 'i:0',
-                    'ROLE_NATURALISTE' => 'ROLE_NATURALISTE',
-                    'ROLE_ADMIN' => 'ROLE_ADMIN'
+                    'utilisateur' => 'i:0',
+                    'Naturaliste' => 'ROLE_NATURALISTE',
+                    'Administrateur' => 'ROLE_ADMIN'
                 )
             ))
             ->getForm();
