@@ -126,13 +126,18 @@ class ObservationController extends Controller
         $userObservations = $em->getRepository('AppBundle:Observation')->findMyObservations($user);
         $userObservationsValidate = $em->getRepository('AppBundle:Observation')->findMyObservationsValidate($user);
         $userObservationsWaiting = $em->getRepository('AppBundle:Observation')->findMyObservationsWaiting($user);
+        $countUserObservations = $em->getRepository('AppBundle:Observation')->countMyObservations($user);
+        $countUserObservationsValidate = $em->getRepository('AppBundle:Observation')->countMyObservationsValidate($user);
+        $countUserObservationsWaiting = $em->getRepository('AppBundle:Observation')->countMyObservationsWaiting($user);
 
         return $this->render('observation/mesObservations.html.twig', array(
             'userObservations' => $userObservations,
             'userObservationsValidate' => $userObservationsValidate,
-            'userObservationsWaiting' => $userObservationsWaiting
+            'userObservationsWaiting' => $userObservationsWaiting,
+            'countUserObservations' => $countUserObservations,
+            'countUserObservationsValidate' => $countUserObservationsValidate,
+            '$countUserObservationsWaiting' => $countUserObservationsWaiting
         ));
-
     }
 
 }
