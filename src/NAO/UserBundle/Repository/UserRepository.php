@@ -12,6 +12,17 @@ namespace NAO\UserBundle\Repository;
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    public function filtrerUtilisateurs($recherche)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.firstname LIKE :recherche')
+            ->orWhere('u.lastname LIKE :recherche')
+            ->orWhere('u.username LIKE :recherche')
+            ->orWhere('u.email LIKE :recherche')
+            ->setParameter('recherche', $recherche)
+            ->getQuery();
 
+        return $query->getArrayResult();
 
+    }
 }
