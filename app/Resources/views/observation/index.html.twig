@@ -12,7 +12,7 @@
             <th>Latitude</th>
             <th>Longitude</th>
             <th>Image</th>
-            <th>Active</th>
+            <th>Statut</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -26,13 +26,13 @@
 
                 <td>
                     {%   if observation.image is defined and observation.image is not null%}
-                    <img src="{{ asset('img_uppload/'~ observation.image) | imagine_filter('sm_thumb')}}" alt=""
+                    <img src="{{ asset('/img_uppload/'~ observation.image) | imagine_filter('sm_thumb')}}" alt=""
                     />
                     {% else %}
                         <em>Aucune photo proposée</em>
                     {% endif %}
                 </td>
-                <td>{% if observation.active %}Yes{% else %}No{% endif %}</td>
+                <td>{% if observation.active %}Validée{% else %}En attente{% endif %}</td>
                 <td>
                     <ul>
                         <li>

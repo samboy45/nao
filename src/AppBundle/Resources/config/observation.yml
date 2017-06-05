@@ -27,3 +27,8 @@ observation_confirmation:
     path:    /confirmation
     defaults: {_controller: "AppBundle:Observation:confirmation"}
     methods:  GET
+
+observarion_mes_observations:
+    path:    /mes_observations
+    defaults: {_controller: "AppBundle:Observation:myObservations"}
+    methods:  GET

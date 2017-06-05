@@ -13,11 +13,10 @@ class ObservationController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $observations = $em->getRepository('AppBundle:Observation')->findAll();
+        $waitingObservations = $em->getRepository('AppBundle:Observation')->findByActive(0);
 
         return $this->render('observation/index.html.twig', array(
-            'observations' => $observations,
+            'observations' => $waitingObservations,
         ));
     }
 
@@ -120,4 +119,20 @@ class ObservationController extends Controller
             ->getForm()
         ;
     }
+
+    public function myObservationsAction(){
+        $user= $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $userObservations = $em->getRepository('AppBundle:Observation')->findMyObservations($user);
+        $userObservationsValidate = $em->getRepository('AppBundle:Observation')->findMyObservationsValidate($user);
+        $userObservationsWaiting = $em->getRepository('AppBundle:Observation')->findMyObservationsWaiting($user);
+
+        return $this->render('observation/mesObservations.html.twig', array(
+            'userObservations' => $userObservations,
+            'userObservationsValidate' => $userObservationsValidate,
+            'userObservationsWaiting' => $userObservationsWaiting
+        ));
+
+    }
+
 }
