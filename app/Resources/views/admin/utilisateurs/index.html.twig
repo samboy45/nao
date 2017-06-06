@@ -38,8 +38,8 @@
                        {% endfor %}
                    </td>
                    <td>
-                        <a class="btn btn-success" href="{{ path('admin_utilisateurs_show', { 'id': user.id }) }}">Voir</a>
-                        <a class="btn btn-warning" href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}">Modifier</a>
+                        <a class="btn btn-success blanc" href="{{ path('admin_utilisateurs_show', { 'id': user.id }) }}">Voir</a>
+                        <a class="btn btn-warning blanc" href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}">Modifier</a>
                    </td>
                </tr>
            {% endfor %}
@@ -47,7 +47,7 @@
        </table>
    </div>
     <div>
-        <a class="btn btn-primary" href="{{ path('admin_utilisateurs_new') }}">Ajouter un utilisateur</a>
+        <a class="btn btn-herbe-tropicale blanc" href="{{ path('admin_utilisateurs_new') }}">Ajouter un utilisateur</a>
     </div>
 
 {% endblock %}

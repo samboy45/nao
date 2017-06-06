@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new NAO\UserBundle\UserBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle()
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new NAO\ContactBundle\NAOContactBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

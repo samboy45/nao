@@ -1,11 +1,11 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div>
 {% if is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-primary" href="{{ path('admin_utilisateurs_index') }}">Administration</a>
+        <a class="btn btn-herbe-tropicale blanc" href="{{ path('admin_utilisateurs_index') }}">Administration</a>
 {% endif %}
 
 {% if is_granted('ROLE_NATURALISTE') or is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-success" href="{{ path('observation_index') }}">Observations</a>
+        <a class="btn btn-success blanc" href="{{ path('observation_index') }}">Observations</a>
 {% endif %}
     </div>
 
