@@ -3,42 +3,42 @@
 {% block body %}
     <div class="container">
         <h1>Observation</h1>
-<div class="table-responsive">
-    <table class="table table-hover">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ observation.id }}</td>
-        </tr>
-        <tr>
-            <th>Date</th>
-            <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
-        </tr>
-        <tr>
-            <th>Latitude</th>
-            <td>{{ observation.latitude }}</td>
-        </tr>
-        <tr>
-            <th>Longitude</th>
-            <td>{{ observation.longitude }}</td>
-        </tr>
-        <tr>
-            <th>Image</th>
-            <td>
-                {%   if observation.image is defined and observation.image is not null%}
-                    <img src="{{asset('/img_uppload/' ~ observation.image) | imagine_filter('sm_thumb')}}" alt=""/>
-                {% else %}
-                    <em>Aucune photo proposée</em>
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th>Statut</th>
-            <td>{% if observation.active %}Validée{% else %}En attente{% endif %}</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ observation.id }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ observation.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{{ observation.longitude }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>
+                        {%   if observation.image is defined and observation.image is not null%}
+                            <img src="{{asset('/img_uppload/' ~ observation.image) | imagine_filter('sm_thumb')}}" alt=""/>
+                        {% else %}
+                            <em>Aucune photo proposée</em>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>{% if observation.active %}Validée{% else %}En attente{% endif %}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
 
         <ul>
