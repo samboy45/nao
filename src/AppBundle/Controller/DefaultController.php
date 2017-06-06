@@ -17,6 +17,11 @@ class DefaultController extends Controller
         ]);
     }
 
+    public function rechercheAction(Request $request)
+    {
+        return $this->render('default/recherche.html.twig');
+    }
+
     public function mentionsLegalesAction()
     {
         return $this->render("mentions/mentions_legales.html.twig");
