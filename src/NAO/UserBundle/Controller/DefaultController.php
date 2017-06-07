@@ -40,14 +40,10 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $recherche = $form->getData() ;
-            $query = $this->getDoctrine()->getManager()
-                ->createQuery('SELECT u FROM UserBundle:User u 
-                                  WHERE u.firstname LIKE :recherche
-                                    OR u.lastname LIKE :recherche
-                                    OR u.username LIKE :recherche'
-                )->setParameter('recherche', '%' . $recherche['recherche'] . '%' );
+            $users = $this->getDoctrine()
+                        ->getRepository('UserBundle:User')
+                        ->filtrerUtilisateurs($recherche['recherche']);
 
-            $users = $query->getResult();
             return $this->render('admin/utilisateurs/index.html.twig', array(
                 'users' => $users,
             ));
@@ -73,11 +69,9 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $role = $form->getData() ;
-            $query = $this->getDoctrine()->getManager()
-                ->createQuery('SELECT u FROM UserBundle:User u WHERE u.roles LIKE :role'
-                )->setParameter('role', '%' . $role['roles'] . '%' );
-
-            $users = $query->getResult();
+            $users = $this->getDoctrine()
+                ->getRepository('UserBundle:User')
+                ->filtrerParRole($role['roles']);
 
             return $this->render('admin/utilisateurs/index.html.twig', array(
                 'users' => $users,

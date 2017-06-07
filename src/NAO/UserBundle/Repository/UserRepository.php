@@ -19,11 +19,20 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->orWhere('u.lastname LIKE :recherche')
             ->orWhere('u.username LIKE :recherche')
             ->orWhere('u.email LIKE :recherche')
-            ->setParameter('recherche', $recherche)
+            ->setParameter('recherche', '%' . $recherche . '%')
             ->getQuery();
 
         return $query->getArrayResult();
+    }
 
+    public function filtrerParRole($role)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.roles LIKE :role')
+            ->setParameter('role', '%' . $role . '%')
+            ->getQuery();
+
+        return $query->getArrayResult();
     }
 
     public function findAll()
