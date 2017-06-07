@@ -29,10 +29,10 @@
         </div>
     </div>
     <div>
-        <a href="{{ path('admin_utilisateurs_index') }}" class="btn btn-success">Retour à la liste</a>
-        <a href="{{ path('admin_utilisateurs_index', { 'id': user.id }) }}" class="btn btn-warning">Modifier</a>
+        <a href="{{ path('admin_utilisateurs_index') }}" class="btn btn-herbe-tropicale blanc">Retour à la liste</a>
+        <a href="{{ path('admin_utilisateurs_index', { 'id': user.id }) }}" class="btn btn-pin-glacial blanc">Modifier</a>
         {{ form_start(delete_form) }}
-        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <button type="submit" class="btn btn-danger blanc">Supprimer</button>
         {{ form_end(delete_form) }}
     </div>
 
