@@ -37,7 +37,6 @@ class ObservationType extends AbstractType
             ))
             ->add('image', FileType::class, array(
                 'required' => false,
-                'data_class' => null
             ))
             ->add('typeEspece', ChoiceType::class, array(
                 'label' => 'Type d\'espèce',
