@@ -25,4 +25,9 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $query->getArrayResult();
 
     }
+
+    public function findAll()
+    {
+        return $this->findBy(array(), array('lastname' => 'ASC', 'firstname' => 'ASC', 'username' => 'ASC'));
+    }
 }

@@ -5,10 +5,14 @@ namespace NAO\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateurs")
+ * @ORM\Entity(repositoryClass="NAO\UserBundle\Repository\UserRepository")
  */
+
+
 class User extends BaseUser
 {
     /**
