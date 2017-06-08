@@ -1,0 +1,10 @@
+
+{{ form_start(form, {'attr': {'class': 'form-inline', 'action': path('admin_utilisateurs_find') }}) }}
+
+    <div class="form-group">
+        {{ form_errors(form.recherche) }}
+        {{ form_widget(form.recherche) }}
+
+    <button type="submit" class="btn btn-herbe-tropicale blanc"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    </div>
+{{ form_end(form) }}

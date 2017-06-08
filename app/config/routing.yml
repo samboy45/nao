@@ -1,9 +1,9 @@
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 nao_contact:
     resource: "@NAOContactBundle/Resources/config/routing.yml"
