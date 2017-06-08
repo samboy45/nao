@@ -326,7 +326,8 @@ footer {
     background-size: cover;
 }
 
-#login-1 {
+#login-1,
+#contact {
     background: url("../imgs/16911.jpg") no-repeat bottom ;
     -webkit-background-size: cover;
     background-size: cover;

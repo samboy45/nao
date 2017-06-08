@@ -34,14 +34,14 @@ class Observation
     /**
      * @var int
      *
-     * @ORM\Column(name="latitude", type="float", precision=25)
+     * @ORM\Column(name="latitude", type="float", min=42.3, max=51.1)
      */
     private $latitude;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="longitude", type="float", precision=25)
+     * @ORM\Column(name="longitude", type="float", min=-5.1, max=8.3)
      */
     private $longitude;
 

@@ -24,15 +24,6 @@ class ObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateType::class)
-            ->add('latitude',TextType::class,array(
-                'label' => 'Latitude ',
-                //'attr' =>['class' => 'hidden']
-            ))
-            ->add('longitude',TextType::class,array(
-                'label' => 'Longitude',
-                //'attr' => ['class' => 'hidden']
-            ))
             ->add('image', FileType::class, array(
                 'required' => false
             ))
@@ -41,6 +32,13 @@ class ObservationType extends AbstractType
                 'placeholder' => 'Selectionnez l\'ordre',
                 'mapped' => false,
                 'required' => false
+            ))
+            ->add('date', DateType::class)
+            ->add('latitude',TextType::class,array(
+                'attr' =>['class' => 'hidden']
+            ))
+            ->add('longitude',TextType::class,array(
+                'attr' => ['class' => 'hidden']
             ));
         $builder->get('ordre')->addEventListener(
             FormEvents::POST_SUBMIT,
