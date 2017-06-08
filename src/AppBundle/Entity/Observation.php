@@ -52,7 +52,7 @@ class Observation
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="observation_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="observation_image", fileNameProperty="image", size="imageSize")
      *
      * @var File
      */
@@ -63,7 +63,7 @@ class Observation
      *
      * @var string
      */
-    private $imageName;
+    private $image;
 
 
     /**
@@ -309,13 +309,13 @@ class Observation
     }
 
     /**
-     * @param string $imageName
+     * @param string $image
      *
      * @return Observation
      */
-    public function setImageName($imageName)
+    public function setimage($image)
     {
-        $this->imageName = $imageName;
+        $this->image = $image;
 
         return $this;
     }
@@ -323,9 +323,9 @@ class Observation
     /**
      * @return string|null
      */
-    public function getImageName()
+    public function getimage()
     {
-        return $this->imageName;
+        return $this->image;
     }
 
 

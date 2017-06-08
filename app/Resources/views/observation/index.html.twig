@@ -3,51 +3,51 @@
 {% block body %}
     <div class="container">
         <h1>Observations list</h1>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Date</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                    <th>Image</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for observation in observations %}
-                    <tr>
-                        <td><a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a></td>
-                        <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
-                        <td>{{ observation.latitude }}</td>
-                        <td>{{ observation.longitude }}</td>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Image</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for observation in observations %}
+            <tr>
+                <td><a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a></td>
+                <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ observation.latitude }}</td>
+                <td>{{ observation.longitude }}</td>
 
-                        <td>
-                            {%   if observation.imageName is defined and observation.imageName is not null%}
-                                <img src="{{ asset('/img_uppload/'~ observation.imageName) | imagine_filter('sm_thumb')}}" alt=""
-                                />
-                            {% else %}
-                                <em>Aucune photo proposée</em>
-                            {% endif %}
-                        </td>
-                        <td>{% if observation.active %}Validée{% else %}En attente{% endif %}</td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('observation_show', { 'id': observation.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('observation_validate', { 'id': observation.id }) }}">edit</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                <td>
+                    {%   if observation.image is defined and observation.image is not null%}
+                    <img src="{{ asset('/img_uppload/'~ observation.image) | imagine_filter('sm_thumb')}}" alt=""
+                    />
+                    {% else %}
+                        <em>Aucune photo proposée</em>
+                    {% endif %}
+                </td>
+                <td>{% if observation.active %}Validée{% else %}En attente{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('observation_show', { 'id': observation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('observation_validate', { 'id': observation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 
         <ul>
@@ -55,27 +55,6 @@
                 <a href="{{ path('observation_new') }}">Create a new observation</a>
             </li>
         </ul>
-        <a href="">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="block">
-                        <div class="row">
-                            <div class="col-xs-4 col-md-6 col-lg-5">
-                                <img src="" alt="">
-                            </div>
-                            <div class="description col-xs-8 col-md-6 col-lg-7">
-                                <h3>Haliaeetus leucogaster</h3>
-                                <p></p>
-                                <p></p>
-                                <p>Longitude : 2.154006958008</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-
     </div>
 
 {% endblock %}
