@@ -34,3 +34,7 @@ swiftmailer:
     transport: gmail
     username:  '%mailer_user%'
     password:  '%mailer_password%'
+
+core_sphere_console:
+    resource: .
+    type: extra

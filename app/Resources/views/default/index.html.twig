@@ -16,11 +16,11 @@
         </div>
         <div class="row visible-xs visible-sm">
             <div class="col-xs-offset-1 col-xs-10">
-                <a href="#">
+                <a href="{{ path('recherche') }}">
                     <img src="{{ asset('imgs/bouton-xs-1.png') }}">
                 </a>
             </div>
-            <div class="col-xs-offset-1 col-xs-10">
+            <div class="col-xs-12">
                 <a href="#">
                     <img src="{{ asset('imgs/bouton-xs-2.png') }}">
                 </a>
@@ -28,7 +28,7 @@
         </div>
         <div class="row hidden-xs hidden-sm" id="img-elmt-home-1">
             <div class="col-md-12 text-center">
-                <a href="#">
+                <a href="{{ path('recherche') }}">
                     <img src="{{ asset('imgs/bouton-md-1.png') }}">
                 </a>
                 <a href="{{ url('observation_new') }}">

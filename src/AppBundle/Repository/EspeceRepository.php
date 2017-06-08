@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class EspeceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function importerOiseaux($espece){
+        $requete = $this->_em
+            ->createQuery(
+                'SELECT o
+                FROM AppBundle:Espece o
+                JOIN o.famille e
+                WHERE e.dateVisite = :dateVisite
+                AND r.paiement = true'
+            )
+            ->setParameter('dateVisite', $dateVisite)
+        ;
+    }
 }
