@@ -10,4 +10,42 @@ namespace AppBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findMyObservationsWaiting($user){
+        return $this
+            ->createQueryBuilder('o')
+            ->where('o.user = :user' )
+            ->andWhere('o.active = false')
+            ->orderBy('o.id', 'DESC')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+
+            ;
+    }
+
+    public function findMyObservationsValidate($user){
+        return $this
+            ->createQueryBuilder('o')
+            ->where('o.user = :user' )
+            ->andwhere('o.active = true')
+            ->orderBy('o.id', 'DESC')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+
+            ;
+    }
+
+    public function findMyObservations($user){
+        return $this
+            ->createQueryBuilder('o')
+            ->where('o.user = :user' )
+            ->orderBy('o.id', 'DESC')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+
+            ;
+    }
 }

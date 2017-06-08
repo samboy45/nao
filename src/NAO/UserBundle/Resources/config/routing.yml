@@ -1,1 +1,11 @@
+user_admin_utilisateurs:
+    resource: "@UserBundle/Resources/config/user.yml"
+    prefix:   /admin/utilisateurs
+
+
+
+user_mon_compte_show:
+    path:     /profile
+    defaults: { _controller: UserBundle:Default:utilisateur }
+
 

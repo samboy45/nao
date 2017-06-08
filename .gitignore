@@ -45,3 +45,6 @@
 # Ide folder
 /.idea/
 /.settings/
+.buildpath
+.project
+*.php~

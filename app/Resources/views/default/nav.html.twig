@@ -16,7 +16,7 @@
                 <div class="collapse navbar-collapse" id="bouton-nav">
                     <ul class="nav navbar-nav navbar-left">
                         <li>
-                            <a href="{{ url('observation_index') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">observation</a>
+                            <a href="{{ url('observation_new') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">observation</a>
                         </li>
                         <li>
                             <a href="#" class="text-uppercase herbe-tropicale espace-nav">qui sommes-nous ?</a>
@@ -47,9 +47,33 @@
                                 </span>
                             </a>
                         </li>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle btn btn-herbe-tropicale blanc gras text-uppercase espace-nav" data-toggle="dropdown">
+                                    Mon compte <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-primary">
+                                    <li><a href="{{ url('user_mon_compte_show') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">Mon compte</a></li>
+
+                                {% if is_granted('ROLE_NATURALISTE') %}
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url('observation_index') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">Observations</a></li>
+                                {% endif %}
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url('admin_utilisateurs_index') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">Administration</a></li>
+                                {% endif %}
+                                    <li class="divider"></li>
+                                    <li><a href="{{ url('fos_user_security_logout') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav"><span class="glyphicon glyphicon-off" aria-hidden="true"> Déconnexion</span></a></li>
+                                </ul>
+                            </li>
+
+                            {% else %}
                         <li>
-                            <a href="{{ url('fos_user_security_login') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">mon compte</a>
+                                <a href="{{ url('fos_user_security_login') }}" class="btn btn-herbe-tropicale blanc gras text-uppercase espace-nav">connexion</a>
                         </li>
+                            {% endif %}
+
                     </ul><!-- <ul class="nav navbar-nav navbar-right"> -->
                 </div><!-- <div class="collapse navbar-collapse" id="bouton-nav"> -->
             </nav>

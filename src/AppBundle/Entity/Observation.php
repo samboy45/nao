@@ -34,14 +34,14 @@ class Observation
     /**
      * @var int
      *
-     * @ORM\Column(name="latitude", type="decimal")
+     * @ORM\Column(name="latitude", type="float", precision=25)
      */
     private $latitude;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="longitude", type="decimal")
+     * @ORM\Column(name="longitude", type="float", precision=25)
      */
     private $longitude;
 
@@ -70,7 +70,19 @@ class Observation
      */
     private $espece;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="NAO\UserBundle\Entity\User", inversedBy="observations", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $user;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_espece", type="string", length=255, nullable=true)
+     */
+    private $typeEspece;
     /**
      * Get id
      *
@@ -226,5 +238,54 @@ class Observation
     function __construct()
     {
         $this->date = new \DateTime();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \NAO\UserBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\NAO\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \NAO\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
+    /**
+     * Set typeEspece
+     *
+     * @param string $typeEspece
+     *
+     * @return Observation
+     */
+    public function setTypeEspece($typeEspece)
+    {
+        $this->typeEspece = $typeEspece;
+
+        return $this;
+    }
+
+    /**
+     * Get typeEspece
+     *
+     * @return string
+     */
+    public function getTypeEspece()
+    {
+        return $this->typeEspece;
     }
 }

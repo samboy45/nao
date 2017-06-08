@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    <div class="col-xs-12 form-group">
+        {{ render(controller('UserBundle:Default:recherche')) }}
+    </div>
+
+    <div class="col-xs-12 form-group">
+        {{ render(controller('UserBundle:Default:rechercheRole')) }}
+    </div>
+
+   <div class="col-xs-12">
+       <table class="table table-striped">
+           <thead>
+           <tr>
+               <th>Nom</th>
+               <th>Prénom</th>
+               <th>Email</th>
+               <th>Utilisateur</th>
+               <th>Role</th>
+               <th>Actions</th>
+           </tr>
+           </thead>
+           <tbody>
+           {% for user in users %}
+               <tr>
+                   <td>{{ user.lastname }}</td>
+                   <td>{{ user.firstname }}</td>
+                   <td>{{ user.email }}</td>
+                   <td>{{ user.username }}</td>
+                   <td>
+                       {% for role in user.roles %}
+                            <ul>
+                                <li>{{ role }}</li>
+                            </ul>
+                       {% endfor %}
+                   </td>
+                   <td>
+                        <a class="btn btn-herbe-tropicale blanc" href="{{ path('admin_utilisateurs_show', { 'id': user.id }) }}">Voir</a>
+                        <a class="btn btn-pin-glacial blanc" href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}">Modifier</a>
+                   </td>
+               </tr>
+           {% endfor %}
+           </tbody>
+       </table>
+   </div>
+    <div>
+        <a class="btn btn-herbe-tropicale blanc" href="{{ path('admin_utilisateurs_new') }}">Ajouter un utilisateur</a>
+    </div>
+
+{% endblock %}

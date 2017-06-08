@@ -2,6 +2,17 @@ homepage:
     path:     /
     defaults: { _controller: AppBundle:Default:index }
 
+recherche:
+    path:     /Recherche
+    defaults: { _controller: AppBundle:Default:recherche }
+
+cartoRechercheEspece:
+    path:     /Recherche
+    defaults:
+        _controller: AppBundle:Carto:afficherOiseaux
+        requirements:
+            methods: [POST]
+
 mentionsLegales:
     path:     /mentions_legales
     defaults: { _controller: AppBundle:Default:mentionsLegales }
