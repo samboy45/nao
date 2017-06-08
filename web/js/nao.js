@@ -7,7 +7,6 @@ $(function(){
     var bodyElmt = $('body');
     redimensionnerContenuNavigation();
     redimensionnerDiv($('#home-1'));
-    redimensionnerDiv($('#login-1'));
 
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
@@ -18,7 +17,6 @@ $(function(){
         {
             redimensionnerContenuNavigation();
             redimensionnerDiv($('#home-1'));
-            redimensionnerDiv($('#login-1'));
         }
     );
 

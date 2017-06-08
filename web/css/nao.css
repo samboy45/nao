@@ -63,6 +63,10 @@ footer {
     align-items: center;
 }
 
+.rad {
+    border-radius: 30px !important;
+}
+
 /* arrière-plans nao */
 .bg-blanc {
     background-color: rgba(255, 255, 255, 1) !important;
@@ -171,6 +175,7 @@ footer {
 /* formulaires */
 .form-control {
     box-shadow: 2px 2px 4px rgba(25, 107, 105, .8);
+    border-radius: 30px;
 }
 
 .form-control:hover {
@@ -316,9 +321,11 @@ footer {
 }
 
 #login-1 {
-    background: url("../imgs/16911.jpg") no-repeat center ;
+    background: url("../imgs/16911.jpg") no-repeat bottom ;
     -webkit-background-size: cover;
     background-size: cover;
+    min-height: 800px;
+    width: auto;
 }
 
 #carte-rechercher {
