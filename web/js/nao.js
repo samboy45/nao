@@ -6,7 +6,8 @@
 $(function(){
     var bodyElmt = $('body');
     redimensionnerContenuNavigation();
-    redimensionnerHome1();
+    redimensionnerDiv($('#home-1'));
+    redimensionnerDiv($('#login-1'));
 
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
@@ -16,7 +17,8 @@ $(function(){
         function()
         {
             redimensionnerContenuNavigation();
-            redimensionnerHome1();
+            redimensionnerDiv($('#home-1'));
+            redimensionnerDiv($('#login-1'));
         }
     );
 
@@ -43,18 +45,17 @@ $(function(){
         }
     }
 
-    function redimensionnerHome1()
+    function redimensionnerDiv(elmt)
     {
-        var home1Elmt = $('#home-1');
-        var largeur = home1Elmt.width();
+        var largeur = elmt.width();
         if (largeur < 400) {
-            home1Elmt.height(1200);
+            elmt.height(1200);
         } else if (largeur >= 400 && largeur < 945) {
-            home1Elmt.height(1000);
+            elmt.height(1000);
         } else if (largeur >= 945 && largeur < 1170) {
-            home1Elmt.height(800);
+            elmt.height(800);
         } else {
-            home1Elmt.height(largeur*0.5625);
+            elmt.height(largeur*0.5625);
         }
     }
 });

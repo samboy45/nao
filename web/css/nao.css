@@ -80,6 +80,10 @@ footer {
     background-color: rgba(203, 247, 211, 1) !important;
 }
 
+.bg-transparent {
+    background-color: transparent !important;
+}
+
 /* couleurs nao */
 .blanc {
     color: rgba(255, 255, 255, 1) !important;
@@ -95,6 +99,10 @@ footer {
 
 .aloe-vera {
     color: rgba(203, 247, 211, 1) !important;
+}
+
+.bdc-transparent {
+    border-color: transparent !important;
 }
 
 /* police */
@@ -173,6 +181,7 @@ footer {
     border-color: rgba(40, 204, 158, 1);
     box-shadow: none;
 }
+
 
 /* cartographie */
 .leaflet-container .leaflet-control-attribution {
@@ -306,6 +315,12 @@ footer {
     background-size: cover;
 }
 
+#login-1 {
+    background: url("../imgs/16911.jpg") no-repeat center ;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 #carte-rechercher {
     width: 100%;
 }
@@ -316,6 +331,14 @@ footer {
     background-color: rgba(40, 204, 158, 1);
     padding-left: 60px;
     padding-right: 60px;
+}
+
+#div-login-form {
+    padding-top: 100px;
+}
+
+#panel-login {
+    border-radius: 30px;
 }
 
 
