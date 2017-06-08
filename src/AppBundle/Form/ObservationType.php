@@ -35,8 +35,9 @@ class ObservationType extends AbstractType
                 'label' => 'Longitude',
                 //'attr' => ['class' => 'hidden']
             ))
-            ->add('image', FileType::class, array(
+            ->add('imageFile', FileType::class, array(
                 'required' => false,
+                'label' => 'photo'
             ))
             ->add('typeEspece', ChoiceType::class, array(
                 'label' => 'Type d\'espèce',

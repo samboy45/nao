@@ -6,4 +6,6 @@ parameters:
 services:
     nao_observations.fileUploader:
             class: AppBundle\Service\FileUploader
-            arguments: ['%image_directory%']
+            arguments:
+                $targetDir: '%image_directory%'
+

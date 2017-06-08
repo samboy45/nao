@@ -132,3 +132,14 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [660, 660], mode: inset }
+
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+         observation_image:
+             uri_prefix:         /img_uppload
+             upload_destination: '%kernel.root_dir%/../web/img_uppload'
+             inject_on_load:     false
+             delete_on_update:   true
+             delete_on_remove:   true
