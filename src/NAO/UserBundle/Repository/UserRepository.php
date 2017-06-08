@@ -2,6 +2,7 @@
 
 namespace NAO\UserBundle\Repository;
 
+
 /**
  * UserRepository
  *
@@ -10,4 +11,38 @@ namespace NAO\UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function filtrerUtilisateurs($recherche)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.firstname LIKE :recherche')
+            ->orWhere('u.lastname LIKE :recherche')
+            ->orWhere('u.username LIKE :recherche')
+            ->orWhere('u.email LIKE :recherche')
+            ->orderBy('u.lastname')
+            ->addOrderBy('u.firstname')
+            ->addOrderBy('u.username')
+            ->setParameter('recherche', '%' . $recherche . '%')
+            ->getQuery();
+
+        return $query->getArrayResult();
+    }
+
+    public function filtrerParRole($role)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.roles LIKE :role')
+            ->orderBy('u.lastname')
+            ->addOrderBy('u.firstname')
+            ->addOrderBy('u.username')
+            ->setParameter('role', '%' . $role . '%')
+            ->getQuery();
+
+        return $query->getArrayResult();
+    }
+
+    public function findAll()
+    {
+        return $this->findBy(array(), array('lastname' => 'ASC', 'firstname' => 'ASC', 'username' => 'ASC'));
+    }
 }

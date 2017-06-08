@@ -84,10 +84,13 @@ fos_user:
         form:
             type: NAO\UserBundle\Form\RegistrationType
         confirmation:
-            enabled: true
+            enabled: false
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_name%"
+    profile:
+            form:
+                type: NAO\UserBundle\Form\EditProfileType
     resetting:
         email:
             from_email:
