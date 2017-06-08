@@ -1,7 +1,10 @@
 {{ form_start(form, {'attr': {'class': 'form-inline', 'action': path('admin_utilisateurs_find_role') }}) }}
 
-    {{ form_widget(form.roles) }}
+    <div class="form-group">
+        {{ form_errors(form.roles) }}
+        {{ form_widget(form.roles) }}
+    </div>
 
-    <button type="submit" class="btn btn-herbe-tropicale blanc"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+<button type="submit" class="btn btn-herbe-tropicale blanc"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
 
 {{ form_end(form) }}

@@ -24,8 +24,6 @@ class DefaultController extends Controller
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
 
-
-
         return $this->render("utilisateur/moncompte.html.twig", array('users' =>   $users));
     }
 
@@ -33,7 +31,11 @@ class DefaultController extends Controller
     public function rechercheAction(Request $request)
     {
         $form = $this->createFormBuilder(null)
-            ->add('recherche', TextType::class)
+            ->add('recherche', TextType::class, array(
+                'attr' => array(
+                    'placeholder' => 'Recherche'
+                )
+            ))
             ->getForm();
 
         $form->handleRequest($request);
@@ -58,9 +60,9 @@ class DefaultController extends Controller
             ->add('roles', ChoiceType::class, array(
                 'choices' => array(
                     'Tous' => null,
-                    'ROLE_USER' => 'i:0',
-                    'ROLE_NATURALISTE' => 'ROLE_NATURALISTE',
-                    'ROLE_ADMIN' => 'ROLE_ADMIN'
+                    'Particulier' => 'i:0',
+                    'Naturaliste' => 'ROLE_NATURALISTE',
+                    'Administrateur' => 'ROLE_ADMIN'
                 )
             ))
             ->getForm();

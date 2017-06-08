@@ -19,6 +19,9 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->orWhere('u.lastname LIKE :recherche')
             ->orWhere('u.username LIKE :recherche')
             ->orWhere('u.email LIKE :recherche')
+            ->orderBy('u.lastname')
+            ->addOrderBy('u.firstname')
+            ->addOrderBy('u.username')
             ->setParameter('recherche', '%' . $recherche . '%')
             ->getQuery();
 
@@ -29,6 +32,9 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('u')
             ->where('u.roles LIKE :role')
+            ->orderBy('u.lastname')
+            ->addOrderBy('u.firstname')
+            ->addOrderBy('u.username')
             ->setParameter('role', '%' . $role . '%')
             ->getQuery();
 
