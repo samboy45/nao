@@ -1,0 +1,14 @@
+[
+    {% for observation in observations %}
+    {% if observation.espece.lbNom == espece %}
+    {
+        "latitude" : "{{ oiseau.latitude }}",
+        "longitude" : "{{ observation.longitude }}",
+        "image" : "{{ observation.image }}",
+        "date" : "{{ observation.date|date('d/m/Y') }}",
+        "nomOiseau" : "{{ observation.espece.nomVerne }}",
+        "nomLatin" : "{{ observation.espece.lbNom }}"
+    }
+    {% endif %}
+    {% endfor %}
+]

@@ -907,12 +907,7 @@
             "homepage": "http://friendsofsymfony.github.com",
             "keywords": [
                 "User management"
-            ],
-<<<<<<< HEAD
-            "time": "2017-05-31T11:50:14+00:00"
-=======
-            "time": "2017-05-31 11:50:14"
->>>>>>> b7f09644883f6aa874feae5c2d2ebb809f0d7c56
+            ]
         },
         {
             "name": "google/recaptcha",
