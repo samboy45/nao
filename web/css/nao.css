@@ -187,6 +187,12 @@ footer {
     box-shadow: none;
 }
 
+.g-recaptcha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* cartographie */
 .leaflet-container .leaflet-control-attribution {
@@ -340,8 +346,13 @@ footer {
     padding-right: 60px;
 }
 
-#div-login-form {
-    padding-top: 100px;
+#div-login-form,
+#contact-form {
+    padding-top: 50px;
+}
+
+#contact-form form {
+    padding-top:30px;
 }
 
 #panel-login {

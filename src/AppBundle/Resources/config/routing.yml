@@ -7,7 +7,7 @@ recherche:
     defaults: { _controller: AppBundle:Default:recherche }
 
 cartoRechercheEspece:
-    path:     /Recherche
+    path: /Recherche
     defaults:
         _controller: AppBundle:Carto:afficherOiseaux
         requirements:
