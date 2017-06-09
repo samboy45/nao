@@ -19,7 +19,6 @@
                             {% endif %}
                             {% for observation in userObservations %}
                             <div class="observation">
-                                <div class="row" id="row_id">
                                     <div class="col-md-4">
                                         <a href="{{ path('observation_validate', { 'id': observation.id }) }}">
                                             <div class="block">
@@ -38,16 +37,15 @@
                                             </div>
                                         </a>
                                     </div>
-                                </div>
                             </div>
+                            {% endfor %}
                         </div>
                         <div class="tab-pane" id="b">
                             {% if userObservationsValidate is empty %}
                                 <div class="alert alert-danger center">Aucune observation validée</div>
                             {% endif %}
                             {% for observation in userObservationsValidate %}
-                            <div class="observation">
-                                <div class="row" id="row_id">
+                                <div class="observation">
                                     <div class="col-md-4">
                                         <a href="{{ path('observation_validate', { 'id': observation.id }) }}">
                                             <div class="block">
@@ -67,15 +65,14 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
                         <div class="tab-pane" id="c">
                             {% if userObservationsWaiting is empty %}
                                 <div class="alert alert-danger center">Aucune observation</div>
                             {% endif %}
                             {% for observation in userObservationsWaiting %}
-                            <div class="observation">
-                                <div class="row" id="row_id">
+                                <div class="observation">
                                     <div class="col-md-4">
                                         <a href="{{ path('observation_validate', { 'id': observation.id }) }}">
                                             <div class="block">
@@ -95,12 +92,11 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
                 <!-- /tabs -->
             </div>
         </div>
-
     {% endblock %}
