@@ -254,22 +254,25 @@ navbar-nav > li > a .btn {
     background-color: #fff;
 }
 
-.block img { margin:10px; }
+.block img { margin:7px; }
 .block h3 {
     height:2.5em;
-    color:#0b7655;
-    font-family:'Open Sans', sans-serif;
+    color:rgba(25, 107, 105, 1);
     font-size:16px;
-    font-weight:700;
-    margin-bottom:5px;
-    overflow:hidden
+    margin-bottom:0px;
+    margin-top: 0px;
+    font-weight: bold;
 }
 
-.block .description { padding:10px; }
+.block .description {
+    color:rgba(25, 107, 105, 1);
+    padding: 5px;
+}
 
+.block{background-color: rgba(203, 247, 211, 1)}
+.observation{margin-top: 10px}
 
-
-
+#row_id{display : flex; justify-content:space-around; align-items: center}
 .tabs-left > .nav-tabs {
     border-bottom: 0;
 }

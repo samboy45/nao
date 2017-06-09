@@ -133,6 +133,11 @@ liip_imagine:
             filters:
                 thumbnail: { size: [660, 660], mode: inset }
 
+        default_thumb:
+            quality : 75
+            filters :
+                thumbnail  : { size : [150, 150] }
+
 
 vich_uploader:
     db_driver: orm
