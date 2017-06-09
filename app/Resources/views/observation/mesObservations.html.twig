@@ -40,6 +40,7 @@
                             </div>
                             {% endfor %}
                         </div>
+                        {% if is_granted('ROLE_USER') %}
                         <div class="tab-pane" id="b">
                             {% if userObservationsValidate is empty %}
                                 <div class="alert alert-danger center">Aucune observation validée</div>
@@ -67,6 +68,8 @@
                                 </div>
                             {% endfor %}
                         </div>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') %}
                         <div class="tab-pane" id="c">
                             {% if userObservationsWaiting is empty %}
                                 <div class="alert alert-danger center">Aucune observation</div>
@@ -94,6 +97,7 @@
                                 </div>
                             {% endfor %}
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <!-- /tabs -->
