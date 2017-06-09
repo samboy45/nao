@@ -48,3 +48,4 @@
 .buildpath
 .project
 *.php~
+/web/img_upload/*
