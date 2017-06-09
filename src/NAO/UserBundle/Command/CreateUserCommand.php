@@ -31,10 +31,7 @@ class CreateUserCommand extends BaseCommand
                 new InputArgument('lastname', InputArgument::REQUIRED, 'The lastname')
             ))
         ;
-        $this->setHelp(<<<EOT
-// L'aide qui va bien
-EOT
-        );
+        $this->setHelp("help");
     }
 
     /**
