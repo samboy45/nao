@@ -27,13 +27,13 @@ class ObservationType extends AbstractType
             ->add('image', FileType::class, array(
                 'required' => false
             ))
+            ->add('date', DateType::class)
             ->add('ordre', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Ordre',
                 'placeholder' => 'Selectionnez l\'ordre',
                 'mapped' => false,
                 'required' => false
             ))
-            ->add('date', DateType::class)
             ->add('latitude',TextType::class,array(
                 'attr' =>['class' => 'hidden']
             ))
