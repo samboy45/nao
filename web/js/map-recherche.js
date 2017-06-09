@@ -5,7 +5,7 @@
 
 $(function(){
     var carte = L.map('carte-rechercher').setView([46.785575, 2.355276], 6);
-    L.tileLayer('https://api.mapbox.com/styles/v1/firekey-829/cj2vyzk0q004r2sob9ac581b2/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmlyZWtleS04MjkiLCJhIjoiY2oydnk1cGxqMDA2eTJ3bXVuZzFjYzg0biJ9.fkx1oR2TTVyqU2EMc6XDgg',
+    L.tileLayer('https://api.mapbox.com/styles/v1/julobrsd/cj2x40f2z001p2rod8xkal2c9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsb2Jyc2QiLCJhIjoiY2oyeDNwMW5nMDB4ODM4cHV4ZWkwMjk0YSJ9.TworUnb_y8Jf5blBUVuRxQ',
         {
             attribution: '<a href="#">Nos Amis les Oiseaux</a> | <a href="#">Ex-Nihilo.com</a>',
             maxZoom: 10

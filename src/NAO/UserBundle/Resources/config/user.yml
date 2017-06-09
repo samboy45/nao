@@ -1,5 +1,5 @@
 admin_utilisateurs_index:
-    path:     /
+    path:     /admin
     defaults: { _controller: "UserBundle:User:index" }
     methods:  GET
 

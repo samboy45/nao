@@ -29,10 +29,10 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
-            if ($fichier = $observation->getImage() != null){
+            /*if ($fichier = $observation->getImage() != null){
                 $nomFichier = $this->get('nao_observations.fileUploader')->upload($observation->getImage());
                 $observation->setImage($nomFichier);
-            }
+            }*/
             $observation->setUser($user);
             if ($user->getRoles()== 'particulier'){
                 $observation->setActive(false);
@@ -78,14 +78,14 @@ class ObservationController extends Controller
 
         if ($validateForm->isSubmitted() && $validateForm->isValid()){
 
-            if ($fichier = $observation->getImage() != null) {
+            /*if ($fichier = $observation->getImage() != null) {
                 $nomFichier = $this->get('nao_observations.fileUploader')->upload($observation->getImage());
                 $observation->setImage($nomFichier);
-            }
+            }*/
             $observation->setActive(true);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('observation_validate', array('id' => $observation->getId()));
+            return $this->redirectToRoute('observation_index');
         }
 
         return $this->render('observation/validate.html.twig', array(
@@ -126,13 +126,18 @@ class ObservationController extends Controller
         $userObservations = $em->getRepository('AppBundle:Observation')->findMyObservations($user);
         $userObservationsValidate = $em->getRepository('AppBundle:Observation')->findMyObservationsValidate($user);
         $userObservationsWaiting = $em->getRepository('AppBundle:Observation')->findMyObservationsWaiting($user);
+        $countUserObservations = $em->getRepository('AppBundle:Observation')->countMyObservations($user);
+        $countUserObservationsValidate = $em->getRepository('AppBundle:Observation')->countMyObservationsValidate($user);
+        $countUserObservationsWaiting = $em->getRepository('AppBundle:Observation')->countMyObservationsWaiting($user);
 
         return $this->render('observation/mesObservations.html.twig', array(
             'userObservations' => $userObservations,
             'userObservationsValidate' => $userObservationsValidate,
-            'userObservationsWaiting' => $userObservationsWaiting
+            'userObservationsWaiting' => $userObservationsWaiting,
+            'countUserObservations' => $countUserObservations,
+            'countUserObservationsValidate' => $countUserObservationsValidate,
+            '$countUserObservationsWaiting' => $countUserObservationsWaiting
         ));
-
     }
 
 }
