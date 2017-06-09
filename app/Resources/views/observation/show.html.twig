@@ -25,7 +25,7 @@
         <tr>
             <th>Image</th>
             <td>
-                {%   if observation.image is defined and observation.image is not null%}
+                {%   if observation. is defined and observation.image is not null%}
                     <img src="{{asset('/img_uppload/' ~ observation.image) | imagine_filter('sm_thumb')}}" alt=""/>
                 {% else %}
                     <em>Aucune photo proposée</em>

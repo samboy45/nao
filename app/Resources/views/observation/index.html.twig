@@ -2,59 +2,36 @@
 
 {% block body %}
     <div class="container">
-        <h1>Observations list</h1>
-<div class="table-responsive">
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Date</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Image</th>
-            <th>Statut</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
+        <h1>Observations en attentes</h1>
+
         {% for observation in observations %}
-            <tr>
-                <td><a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a></td>
-                <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ observation.latitude }}</td>
-                <td>{{ observation.longitude }}</td>
+            <div class="observation">
+                    <div class="row" id="row_id">
+                        <div class="col-md-4">
+                            <a href="{{ path('observation_validate', { 'id': observation.id }) }}">
+                            <div class="block">
+                                <div class="row" id="row_id">
+                                    <div class="col-xs-4 col-md-4 col-lg-5">
+                                        <img src="{{ asset('/img_uppload/'~ observation.image) | imagine_filter('default_thumb')}}" alt="">
+                                    </div>
+                                    <div class="description col-xs-8 col-md-4 col-lg-6">
+                                        <h3>{{ observation.espece }}</h3>
+                                        <h3>{{ observation.espece.famille }}</h3>
+                                        <p>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</p>
+                                        <p>{{ observation.latitude }}</p>
+                                        <p>{{ observation.longitude }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+            </div>
 
-                <td>
-                    {%   if observation.image is defined and observation.image is not null%}
-                    <img src="{{ asset('/img_uppload/'~ observation.image) | imagine_filter('sm_thumb')}}" alt=""
-                    />
-                    {% else %}
-                        <em>Aucune photo proposée</em>
-                    {% endif %}
-                </td>
-                <td>{% if observation.active %}Validée{% else %}En attente{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('observation_show', { 'id': observation.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('observation_validate', { 'id': observation.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
         {% endfor %}
-        </tbody>
-    </table>
-</div>
 
 
-        <ul>
-            <li>
-                <a href="{{ path('observation_new') }}">Create a new observation</a>
-            </li>
-        </ul>
+        <a href="{{ path('observarion_mes_observations') }}">Observation</a>
     </div>
 
 {% endblock %}
