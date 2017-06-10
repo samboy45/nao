@@ -8,6 +8,10 @@ $(function(){
 
     /* ========================= VARIABLES ========================= */
 
+    var marqueurs = [0];
+
+    var traceur;
+
     var iconPosition = L.icon({
         iconUrl: '../../../web/imgs/icon-position@4x.png',
         iconSize: [64, 64],
@@ -46,12 +50,10 @@ $(function(){
 
     var carte = L.map('carte-new-observation').setView([46.785575, 2.355276], 5);
 
-    var calque = $(carte);
-
     L.tileLayer('https://api.mapbox.com/styles/v1/julobrsd/cj2x40f2z001p2rod8xkal2c9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsb2Jyc2QiLCJhIjoiY2oyeDNwMW5nMDB4ODM4cHV4ZWkwMjk0YSJ9.TworUnb_y8Jf5blBUVuRxQ',
         {
             attribution: '<a href="#">Nos Amis les Oiseaux</a> | <a href="#">Ex-Nihilo.com</a> _',
-            maxZoom: 10
+            maxZoom: 18
         }
     ).addTo(carte);
 
@@ -68,39 +70,49 @@ $(function(){
         $("#appbundle_observation_image").click();
     });
 
-    $('#indiquer, #geolocaliser').click(function(e){
-        e.preventDefault();
-        var hash = this.hash;
-        $('html, body').animate({
-                scrollTop: $(this.hash).offset().top
-            },
-            1000,
-            function(){
-                window.location.hash = hash;
-            }
-        );
+    $('#indiquer').click(function(){
+        navigator.geolocation.clearWatch(traceur);
+        for (i = 0; i < marqueurs.length; i++){
+            carte.removeLayer(marqueurs[i]);
+        }
+        var marqueur = L.marker([46.785575, 2.355276], {icon: iconPin});
+        marqueurs.push(marqueur);
+        marqueur.addTo(carte);
     });
-/*
-    carte.click(function(e){
-        console.log(e);
+
+    carte.on('click', function(e){
+        navigator.geolocation.clearWatch(traceur);
+        for (i = 0; i < marqueurs.length; i++){
+            carte.removeLayer(marqueurs[i]);
+        }
+        var marqueur = L.marker([e.latlng.lat, e.latlng.lng], {icon: iconPin});
+        marqueurs.push(marqueur);
+        marqueur.addTo(carte);
+        $('#appbundle_observation_latitude').attr('value', e.latlng.lat);
+        $('#appbundle_observation_longitude').attr('value', e.latlng.lng);
     });
-*/
+
     $('#geolocaliser').click(function(){
         if (navigator.geolocation){
-            navigator.geolocation.watchPosition(
+            traceur = navigator.geolocation.watchPosition(
                 function(position){
-                    $('#appbundle_observation_latitude').val(position.coords.latitude);
-                    $('#appbundle_observation_longitude').val(position.coords.longitude);
-                    L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition}).addTo(carte);
+                    for (i = 0; i < marqueurs.length; i++){
+                        carte.removeLayer(marqueurs[i]);
+                    }
+                    $('#appbundle_observation_latitude').attr('value', position.coords.latitude);
+                    $('#appbundle_observation_longitude').attr('value', position.coords.longitude);
+                    var marqueur = L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition});
+                    marqueurs.push(marqueur);
+                    marqueur.addTo(carte);
                 },
                 function(erreur){
                     switch(erreur.code){
                         case erreur.PERMISSION_DENIED: alert('Suite à votre refus la géolocalisation n\'a pas été effectuée'); break;
                         case erreur.POSITION_UNAVAILABLE: alert('Une erreur est survenue durant la géolocalisation. Votre position reste indéterminée'); break;
-                        case erreur.TIMEOUT: alert('Le délai de réponse de la géolocalisation est dépassé'); break;
+                        case erreur.TIMEOUT: alert('Le délai de réponse de la géolocalisation est dépassé, réitérez l\'opération'); break;
                     }
                 },
-                {enableHighAccuracy: true, maximumAge: 30000, timeout: 10000}
+                {enableHighAccuracy: false, maximumAge: 60000, timeout: 20000}
             );
         } else {
             alert('Votre navigateur ne prends pas en charge la géolocalisation.');
@@ -136,11 +148,9 @@ $(function(){
         if (largeur < 975){
             $('#indiquer, #geolocaliser')
                 .addClass('btn-block')
-                .attr('href', '#carte-new-observation');
         } else {
             $('#indiquer, #geolocaliser')
-                .removeClass('btn-block')
-                .removeAttr('href');
+                .removeClass('btn-block');
         }
     }
 });
