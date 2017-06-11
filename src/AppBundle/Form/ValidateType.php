@@ -20,7 +20,7 @@ class ValidateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->remove('date');
-        $builder->remove('image');
+        $builder->remove('imageFile');
 
     }
 

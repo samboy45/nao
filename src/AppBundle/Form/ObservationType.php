@@ -112,7 +112,7 @@ class ObservationType extends AbstractType
     {
         $form->add('espece', EntityType::class, [
             'class'       => 'AppBundle\Entity\Espece',
-            'placeholder' => $famille ? 'Sélectionnez l\'oiseau' : 'Sélectionnez votre département',
+            'placeholder' => $famille ? 'Sélectionnez l\'oiseau' : 'Sélectionnez la famille',
             'choices'     => $famille ? $famille->getEspeces() : []
         ]);
     }

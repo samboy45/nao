@@ -52,7 +52,7 @@ class Observation
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="observation_image", fileNameProperty="image", size="imageSize")
+     * @Vich\UploadableField(mapping="observation_image", fileNameProperty="image")
      *
      * @var File
      */
