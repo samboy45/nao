@@ -3,10 +3,10 @@
 {% block body %}
     <h1>Observation edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    {{ form_start(validate_form) }}
+    {{ form_widget(validate_form) }}
+    <input type="submit" value="Valider" />
+    {{ form_end(validate_form) }}
 
     <ul>
         <li>
@@ -14,8 +14,13 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}

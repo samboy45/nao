@@ -84,10 +84,13 @@ fos_user:
         form:
             type: NAO\UserBundle\Form\RegistrationType
         confirmation:
-            enabled: true
+            enabled: false
             from_email:
                 address: "%mailer_user%"
                 sender_name: "%mailer_name%"
+    profile:
+            form:
+                type: NAO\UserBundle\Form\EditProfileType
     resetting:
         email:
             from_email:
@@ -132,3 +135,19 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [660, 660], mode: inset }
+
+        default_thumb:
+            quality : 75
+            filters :
+                thumbnail  : { size : [150, 150] }
+
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+         observation_image:
+             uri_prefix:         /img_upload
+             upload_destination: '%kernel.root_dir%/../web/img_upload'
+             inject_on_load:     false
+             delete_on_update:   true
+             delete_on_remove:   true

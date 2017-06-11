@@ -3,3 +3,8 @@ services:
         class: NAO\UserBundle\Form\RegistrationType
         tags:
             - {name: form.type, alias: nao_user_registration }
+
+    naouser.form.edit.profil:
+            class: NAO\UserBundle\Form\EditProfileType
+            tags:
+                - {name: form.type, alias: nao_user_show_profil}

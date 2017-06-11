@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+
+    <h2>Merci pour votre observation</h2>
+    <p>votre observation sera publiée une fois validée</p>
+
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('homepage') }}">Accueil</a>
+        </li>
+        <li>
+            <a href="{{ path('observation_new') }}">Nouvelle observation</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

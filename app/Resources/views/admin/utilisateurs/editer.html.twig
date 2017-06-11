@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modifier un utilisateur</h1>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <button type="submit" class="btn btn-pin-glacial blanc">Mettre à jour</button>
+        {{ form_end(edit_form) }}
+    </div>
+
+    <div class="col-xs-12">
+        <a class="btn btn-herbe-tropicale blanc" href="{{ path('admin_utilisateurs_index') }}">Retour à la liste</a>
+    </div>
+
+    <div class="col-xs-12">
+        {{ form_start(delete_form) }}
+        <button type="submit" class="btn btn-danger blanc">Supprimer</button>
+        {{ form_end(delete_form) }}
+    </div>
+</div>
+{% endblock %}

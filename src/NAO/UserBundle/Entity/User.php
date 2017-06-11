@@ -5,10 +5,14 @@ namespace NAO\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateurs")
+ * @ORM\Entity(repositoryClass="NAO\UserBundle\Repository\UserRepository")
  */
+
+
 class User extends BaseUser
 {
     /**
@@ -21,12 +25,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstname;
+    protected $firstname;
 
     public function __construct()
     {
@@ -82,4 +86,5 @@ class User extends BaseUser
     {
         return $this->firstname;
     }
+
 }

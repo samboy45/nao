@@ -1,0 +1,106 @@
+    {% extends 'base.html.twig' %}
+
+    {% block body %}
+        <div class="container">
+            <div class="row">
+                <!-- tabs left -->
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#a" data-toggle="tab">Nombre D'observations</a></li>
+                        {% if is_granted('ROLE_USER') %}
+                        <li class="active"><a href="#b" data-toggle="tab">Observation validées</a></li>
+                        <li><a href="#c" data-toggle="tab">En attente de validation</a></li>
+                        {% endif %}
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="a">
+                            {% if userObservations is empty %}
+                            <div class="alert alert-danger center">Aucune observation</div>
+                            {% endif %}
+                            {% for observation in userObservations %}
+                            <div class="observation">
+                                    <div class="col-md-4">
+                                        <a href="{{ path('observation_validate', { 'id': observation.id }) }}">
+                                            <div class="block">
+                                                <div class="row" id="row_id">
+                                                    <div class="col-xs-4 col-md-4 col-lg-5">
+                                                        <img src="{{ asset('/img_upload/'~ observation.image) | imagine_filter('default_thumb')}}" alt="">
+                                                    </div>
+                                                    <div class="description col-xs-8 col-md-4 col-lg-6">
+                                                        <h3>{{ observation.espece }}</h3>
+                                                        <h3>{{ observation.espece.famille }}</h3>
+                                                        <p>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</p>
+                                                        <p>{{ observation.latitude }}</p>
+                                                        <p>{{ observation.longitude }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% if is_granted('ROLE_USER') %}
+                        <div class="tab-pane" id="b">
+                            {% if userObservationsValidate is empty %}
+                                <div class="alert alert-danger center">Aucune observation validée</div>
+                            {% endif %}
+                            {% for observation in userObservationsValidate %}
+                                <div class="observation">
+                                    <div class="col-md-4">
+                                        <a href="{{ path('observation_validate', { 'id': observation.id }) }}">
+                                            <div class="block">
+                                                <div class="row" id="row_id">
+                                                    <div class="col-xs-4 col-md-4 col-lg-5">
+                                                        <img src="{{ asset('/img_upload/'~ observation.image) | imagine_filter('default_thumb')}}" alt="">
+                                                    </div>
+                                                    <div class="description col-xs-8 col-md-4 col-lg-6">
+                                                        <h3>{{ observation.espece }}</h3>
+                                                        <h3>{{ observation.espece.famille }}</h3>
+                                                        <p>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</p>
+                                                        <p>{{ observation.latitude }}</p>
+                                                        <p>{{ observation.longitude }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') %}
+                        <div class="tab-pane" id="c">
+                            {% if userObservationsWaiting is empty %}
+                                <div class="alert alert-danger center">Aucune observation</div>
+                            {% endif %}
+                            {% for observation in userObservationsWaiting %}
+                                <div class="observation">
+                                    <div class="col-md-4">
+                                        <a href="{{ path('observation_validate', { 'id': observation.id }) }}">
+                                            <div class="block">
+                                                <div class="row" id="row_id">
+                                                    <div class="col-xs-4 col-md-4 col-lg-5">
+                                                        <img src="{{ asset('/img_upload/'~ observation.image) | imagine_filter('default_thumb')}}" alt="">
+                                                    </div>
+                                                    <div class="description col-xs-8 col-md-4 col-lg-6">
+                                                        <h3>{{ observation.espece }}</h3>
+                                                        <h3>{{ observation.espece.famille }}</h3>
+                                                        <p>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</p>
+                                                        <p>{{ observation.latitude }}</p>
+                                                        <p>{{ observation.longitude }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- /tabs -->
+            </div>
+        </div>
+    {% endblock %}

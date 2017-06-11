@@ -1,48 +1,59 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Observation</h1>
-
-    <table>
+    <div class="container">
+        <h1>Observation</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ observation.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ observation.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ observation.longitude }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ observation.image }}</td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td>{% if observation.active %}Yes{% else %}No{% endif %}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ observation.id }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{% if observation.date %}{{ observation.date|date('Y-m-d') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Latitude</th>
+            <td>{{ observation.latitude }}</td>
+        </tr>
+        <tr>
+            <th>Longitude</th>
+            <td>{{ observation.longitude }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td>
+                {%   if observation. is defined and observation.image is not null%}
+                    <img src="{{asset('/img_upload/' ~ observation.image) | imagine_filter('sm_thumb')}}" alt=""/>
+                {% else %}
+                    <em>Aucune photo proposée</em>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Statut</th>
+            <td>{% if observation.active %}Validée{% else %}En attente{% endif %}</td>
+        </tr>
         </tbody>
     </table>
+</div>
 
-    <ul>
-        <li>
-            <a href="{{ path('observation_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('observation_edit', { 'id': observation.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
+
+        <ul>
+            <li>
+                <a href="{{ path('observation_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('observation_validate', { 'id': observation.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+
 {% endblock %}
