@@ -14,6 +14,7 @@ $(function(){
     retirer($('#Inscription title'));
     retirer($('#Inscription link'));
     retirer($('#Inscription header'));
+    retirer($('#Inscription footer'));
 
 
     /* ========================= FONCTIONS ========================= */

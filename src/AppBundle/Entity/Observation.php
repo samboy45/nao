@@ -38,14 +38,26 @@ class Observation
     /**
      * @var int
      *
-     * @ORM\Column(name="latitude", type="float", precision=25)
+     * @ORM\Column(name="latitude", type="float")
+     * @Assert\Range(
+     *     min=42.3,
+     *     max=51.1,
+     *     minMessage="Vos coordonnées GPS se situent en dehors du territoire étudié",
+     *     maxMessage="Vos coordonnées GPS se situent en dehors du territoire étudié"
+     * )
      */
     private $latitude;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="longitude", type="float", precision=25)
+     * @ORM\Column(name="longitude", type="float")
+     * @Assert\Range(
+     *     min=-5.1,
+     *     max=8.3,
+     *     minMessage="Vos coordonnées GPS se situent en dehors du territoire étudié",
+     *     maxMessage="Vos coordonnées GPS se situent en dehors du territoire étudié"
+     * )
      */
     private $longitude;
 
@@ -330,7 +342,7 @@ class Observation
 
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */

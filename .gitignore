@@ -48,3 +48,5 @@
 .buildpath
 .project
 *.php~
+/web/img_upload/*
+/web/media/*

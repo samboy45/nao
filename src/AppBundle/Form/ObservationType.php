@@ -7,8 +7,6 @@ use AppBundle\Entity\Famille;
 use AppBundle\Entity\Ordre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,31 +24,21 @@ class ObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('image', FileType::class, array(
+                'required' => false
+            ))
             ->add('date', DateType::class)
-            ->add('latitude',TextType::class,array(
-                'label' => 'Latitude ',
-                //'attr' =>['class' => 'hidden']
-            ))
-            ->add('longitude',TextType::class,array(
-                'label' => 'Longitude',
-                //'attr' => ['class' => 'hidden']
-            ))
-            ->add('imageFile', FileType::class, array(
-                'required' => false,
-                'label' => 'photo'
-            ))
-            ->add('typeEspece', ChoiceType::class, array(
-                'label' => 'Type d\'espèce',
-                'required' =>false,
-                'choices' => array(
-                    'protéger' => 'protéger',
-                    'non-protéger' => 'non-protéger'
-                )))
             ->add('ordre', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Ordre',
                 'placeholder' => 'Selectionnez l\'ordre',
                 'mapped' => false,
                 'required' => false
+            ))
+            ->add('latitude',TextType::class,array(
+                'attr' =>['class' => 'hidden']
+            ))
+            ->add('longitude',TextType::class,array(
+                'attr' => ['class' => 'hidden']
             ));
         $builder->get('ordre')->addEventListener(
             FormEvents::POST_SUBMIT,
@@ -90,7 +78,7 @@ class ObservationType extends AbstractType
             null,
             [
                 'class' => 'AppBundle\Entity\Famille',
-                'placeholder'     => $ordre ? 'Sélectionnez la famille' : 'Sélectionnez l\'ordre',
+                'placeholder'     => $ordre ? 'Sélectionnez la famille' : 'Sélectionnez l\'oiseau',
                 'mapped'          => false,
                 'required'        => false,
                 'auto_initialize' => false,
