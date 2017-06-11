@@ -1,16 +1,15 @@
 /**
  * web/js/observation-2.js
- * Created by firekey on 09/06/2017.
+ * Créé par firekey le 09/06/2017.
  */
-
 
 $(function(){
 
     /* ========================= VARIABLES ========================= */
 
-    var marqueurs = [0];
+    var carte;
 
-    var traceur;
+    var marqueurs = [0];
 
     var iconPosition = L.icon({
         iconUrl: '../../../web/imgs/icon-position@4x.png',
@@ -45,10 +44,7 @@ $(function(){
 
     redimensionnerBoutonsGPS();
 
-
-    /* ========================= CARTOGRAPHIE ========================= */
-
-    var carte = L.map('carte-new-observation').setView([46.785575, 2.355276], 5);
+    carte = L.map('carte-new-observation').setView([46.785575, 2.355276], 5);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/julobrsd/cj2x40f2z001p2rod8xkal2c9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsb2Jyc2QiLCJhIjoiY2oyeDNwMW5nMDB4ODM4cHV4ZWkwMjk0YSJ9.TworUnb_y8Jf5blBUVuRxQ',
         {
@@ -71,7 +67,6 @@ $(function(){
     });
 
     $('#indiquer').click(function(){
-        navigator.geolocation.clearWatch(traceur);
         for (i = 0; i < marqueurs.length; i++){
             carte.removeLayer(marqueurs[i]);
         }
@@ -81,7 +76,6 @@ $(function(){
     });
 
     carte.on('click', function(e){
-        navigator.geolocation.clearWatch(traceur);
         for (i = 0; i < marqueurs.length; i++){
             carte.removeLayer(marqueurs[i]);
         }
@@ -94,7 +88,7 @@ $(function(){
 
     $('#geolocaliser').click(function(){
         if (navigator.geolocation){
-            traceur = navigator.geolocation.watchPosition(
+            navigator.geolocation.getCurrentPosition(
                 function(position){
                     for (i = 0; i < marqueurs.length; i++){
                         carte.removeLayer(marqueurs[i]);
@@ -111,8 +105,7 @@ $(function(){
                         case erreur.POSITION_UNAVAILABLE: alert('Une erreur est survenue durant la géolocalisation. Votre position reste indéterminée'); break;
                         case erreur.TIMEOUT: alert('Le délai de réponse de la géolocalisation est dépassé, réitérez l\'opération'); break;
                     }
-                },
-                {enableHighAccuracy: false, maximumAge: 60000, timeout: 20000}
+                }
             );
         } else {
             alert('Votre navigateur ne prends pas en charge la géolocalisation.');
@@ -153,4 +146,5 @@ $(function(){
                 .removeClass('btn-block');
         }
     }
+
 });

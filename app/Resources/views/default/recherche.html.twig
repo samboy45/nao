@@ -35,20 +35,22 @@
             crossorigin=""
     ></script>
     <script>
-        var selectElmt = $('#select-recherche-home-2');
-        selectElmt.change(function (){
-            var select = selectElmt.val();
-            $.ajax({
-                type: 'POST',
-                url : '{{ path('cartoRechercheEspece') }}',
-                data: {'espece': select},
-                timeout: 5000,
-                success: function(tableau){
-                    console.log(tableau);
-                },
-                error: function(){
-                    alert('La requête n\'a pas abouti');
-                }
+        $(function(){
+            var selectElmt = $('#select-recherche-home-2');
+            selectElmt.change(function(){
+                var select = selectElmt.val();
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('cartoRechercheEspece') }}',
+                    data: {'espece': select},
+                    timeout: 5000,
+                    success: function(tableau){
+                        console.log(tableau);
+                    },
+                    error: function(){
+                        alert('La requête n\'a pas abouti');
+                    }
+                });
             });
         });
     </script>

@@ -1,30 +1,33 @@
 /**
  * web/js/nao.js
- * Created by firekey on 31/05/2017.
+ * Créé par firekey le 31/05/2017.
  */
 
 $(function(){
+
+    /* ========================= VARIABLES ========================= */
+
     var bodyElmt = $('body');
+
+
+    /* ========================= ACTIONS ========================= */
+
     redimensionnerContenuNavigation();
+
     redimensionnerDiv($('#home-1'));
 
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
 
-    window.addEventListener(
-        'resize',
-        function()
-        {
-            redimensionnerContenuNavigation();
-            redimensionnerDiv($('#home-1'));
-        }
-    );
+    $(window).resize(function(){
+        redimensionnerContenuNavigation();
+        redimensionnerDiv($('#home-1'));
+    });
 
 
     /* ========================= FONCTIONS ========================= */
 
-    function redimensionnerContenuNavigation()
-    {
+    function redimensionnerContenuNavigation(){
         var boutonsContenuElmt = $('#bouton-nav>ul>li>a.btn');
         if (bodyElmt.width() < 1040) {
             boutonsContenuElmt.each(
@@ -43,8 +46,7 @@ $(function(){
         }
     }
 
-    function redimensionnerDiv(elmt)
-    {
+    function redimensionnerDiv(elmt){
         var largeur = elmt.width();
         if (largeur < 400) {
             elmt.height(1200);
@@ -56,4 +58,5 @@ $(function(){
             elmt.height(largeur*0.5625);
         }
     }
+
 });

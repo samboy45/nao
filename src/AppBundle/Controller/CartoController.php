@@ -9,36 +9,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CartoController extends Controller
 {
-    public function afficherOiseauxAction(Request $request)
+    public function afficherOiseauxAction(Request $requete)
     {
-        if ($request->isXmlHttpRequest()){
-            $espece = $request->request->get('espece');
-            $em = $this
+        if ($requete->isXmlHttpRequest()){
+            $oiseaux = $this
                 ->getDoctrine()
-                ->getManager();
-            $observationsValidees = $em
+                ->getManager()
                 ->getRepository('AppBundle:Observation')
-                ->findBy(
-                    array(
-                        'active' => true
-                    )
-                );
-            $famille = $em
-                ->getRepository('AppBundle:Famille')
-                ->findBy(
-                    array(
-                        'nomFamille' => $espece
-                    )
-                );
-            $reponse = new JsonResponse(
-                array(
-                    'tableau' => array(
-                        'observations' => $observationsValidees,
-                        'oiseaux' => $famille->getEspeces()
-                    )
-                )
-            );
-            return $reponse;
+                ->trouverOiseauxRecherches($requete->request->get('espece'));
+            ;
+            return new JsonResponse(array('oiseaux' => $oiseaux));
         } else {
             return new Response('Ce type de requête est inapproprié', 400);
         }

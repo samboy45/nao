@@ -1,8 +1,7 @@
 @charset "utf-8";
 /**
  * web/css/nao.css
- * Created by firekey on 21/05/2017.
- * Last modification on 31/05/2017.
+ * Créé par firekey le 21/05/2017.
  */
 
 
@@ -134,6 +133,13 @@ footer {
     color: transparent;
 }
 
+.btn-blanc,
+.btn-blanc:hover,
+.btn-blanc:focus {
+    background-color: rgba(255, 255, 255, 1) !important;
+    border-color: rgba(255, 255, 255, 1) !important;
+}
+
 .btn-pin-glacial,
 .btn-pin-glacial:hover,
 .btn-pin-glacial:focus {
@@ -199,6 +205,14 @@ footer {
 
 .g-recaptcha {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jumelles {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     justify-content: center;
     align-items: center;
 }
@@ -379,9 +393,8 @@ footer {
 
 #boutons-observation-2 {
     display: flex;
-    justify-content: space-between !important;
+    justify-content: space-between;
     align-items: center;
-
 }
 
 #indiquer,
@@ -389,10 +402,20 @@ footer {
     margin-bottom: 15px;
 }
 
+#qsn1-row-2,
+#qsn1-row-3,
+#qsn2-row-3,
+#qsn2-row-4,
+#qsn3-row-4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 /* ========================= MEDIA QUERIES ========================= */
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 749px) {
     body {
         padding-top: 50px;
     }
@@ -496,6 +519,12 @@ footer {
     }
 }
 
+@media all and (min-width: 992px) {
+    .jumelles {
+        flex-direction: row;
+    }
+}
+
 @media all and (min-width: 1040px) {
     body {
         padding-top: 130px;
@@ -519,8 +548,4 @@ footer {
     #carte-rechercher {
         height: 650px;
     }
-}
-
-@media all and (min-width: 1200px) {
-
 }

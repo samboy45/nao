@@ -13,6 +13,11 @@ cartoRechercheEspece:
         requirements:
             methods: [POST]
 
+qsn:
+    path: /qui_sommes_nous
+    defaults:
+            _controller: AppBundle:Default:qsn
+
 mentionsLegales:
     path:     /mentions_legales
     defaults: { _controller: AppBundle:Default:mentionsLegales }

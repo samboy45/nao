@@ -38,4 +38,9 @@ class DefaultController extends Controller
     {
         return $this->render("admin/utilisateurs/dashboard.html.twig");
     }
+
+    public function qsnAction()
+    {
+        return $this->render(':qsn:qui_sommes_nous.html.twig');
+    }
 }
