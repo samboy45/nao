@@ -29,7 +29,7 @@ $(function(){
 
     retirer($('.control-label'));
 
-    $('#appbundle_observation_image')
+    $('#appbundle_observation_imageFile')
         .before(
             '<label class="text-center pin-glacial">' +
                 '<i class="fa fa-camera fa-5x" style="cursor: pointer"></i>' +
