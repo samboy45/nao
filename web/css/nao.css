@@ -67,6 +67,16 @@ footer {
     border-radius: 30px !important;
 }
 
+.padding-null {
+    padding: 0 !important;
+}
+
+.centrer-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* arrière-plans nao */
 .bg-blanc {
     background-color: rgba(255, 255, 255, 1) !important;
@@ -185,6 +195,12 @@ footer {
 .form-control:focus {
     border-color: rgba(40, 204, 158, 1);
     box-shadow: none;
+}
+
+.g-recaptcha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -383,13 +399,20 @@ footer {
     align-items: center;
 }
 
-#home-1 {
+#home-1,
+#observation-2 {
     background: url("../imgs/Three-Swans.jpg") no-repeat center ;
     -webkit-background-size: cover;
     background-size: cover;
 }
 
-#login-1 {
+#observation-2 {
+    min-height: 800px;
+    width: auto;
+}
+
+#login-1,
+#contact {
     background: url("../imgs/16911.jpg") no-repeat bottom ;
     -webkit-background-size: cover;
     background-size: cover;
@@ -409,12 +432,30 @@ footer {
     padding-right: 60px;
 }
 
-#div-login-form {
-    padding-top: 100px;
+#div-login-form,
+#contact-form,
+#observation-2 .container {
+    padding-top: 50px;
+}
+
+#contact-form form {
+    padding-top:30px;
 }
 
 #panel-login {
     border-radius: 30px;
+}
+
+#boutons-observation-2 {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+
+}
+
+#indiquer,
+#geolocaliser {
+    margin-bottom: 15px;
 }
 
 
@@ -451,6 +492,10 @@ footer {
 
     #carte-rechercher {
         height: 730px;
+    }
+
+    #boutons-observation-2 {
+        flex-direction: column;
     }
 }
 
