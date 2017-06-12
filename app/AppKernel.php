@@ -20,7 +20,8 @@ class AppKernel extends Kernel
             new NAO\UserBundle\UserBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new NAO\ContactBundle\NAOContactBundle(),
-            new Vich\UploaderBundle\VichUploaderBundle()
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Oneup\FlysystemBundle\OneupFlysystemBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

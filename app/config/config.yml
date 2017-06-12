@@ -141,14 +141,26 @@ liip_imagine:
             filters :
                 thumbnail  : { size : [150, 150] }
 
+oneup_flysystem:
+    adapters:
+        profil_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/profil
+
+    filesystems:
+        product_image_fs:
+            adapter:    profil_adapter
+            mount:      profil_image_fs
 
 vich_uploader:
     db_driver: orm
+    storage:   flysystem
+
     mappings:
-         observation_image:
-             uri_prefix:         /img_upload
-             upload_destination: '%kernel.root_dir%/../web/img_upload'
-             namer: vich_uploader.namer_uniqid
-             inject_on_load:     false
-             delete_on_update:   true
-             delete_on_remove:   true
+        image_profil:
+            uri_prefix:         /profil
+            upload_destination: profil_image_fs
+            namer: vich_uploader.namer_uniqid
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true

@@ -5,6 +5,13 @@
 </div>
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+<div>
+    {{ form_label(form.imageName) }}
+    {{ form_errors(form.imageName) }}
+    {{ form_widget(form.imageName) }}
+</div>
+
 <div>
     {{ form_label(form.firstname) }}
     {{ form_errors(form.firstname) }}
