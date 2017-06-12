@@ -20,7 +20,7 @@ class EditProfileType extends AbstractType
         $builder
 
             ->remove('current_password')
-            ->add('imageName', FileType::class, array(
+            ->add('imageFile', FileType::class, array(
                 'required' => false
             ))
             ->add('lastname', TextType::class, array(
