@@ -32,3 +32,7 @@ observarion_mes_observations:
     path:    /mes_observations
     defaults: {_controller: "AppBundle:Observation:myObservations"}
     methods:  GET
+page_ajout:
+    path:    /page_ajout
+    defaults: {_controller: "AppBundle:Observation:ajoutObservation"}
+    methods:  GET
