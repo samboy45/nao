@@ -388,8 +388,60 @@ footer {
 .tabs-left > .nav-tabs .active > a:hover,
 .tabs-left > .nav-tabs .active > a:focus {
     border-color: #ddd transparent #ddd #ddd;
-    *border-right-color: #ffffff;
+    border-right-color: #ffffff;
 }
+
+.btn-ajout{
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.btn-ajout-1{
+    border-top-left-radius:30px;
+    border-bottom-left-radius:30px;
+}
+#ajout_validation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    padding-top:100px;
+}
+#ajout_validation > div{
+    padding: 100px;
+}
+@media all and (max-width: 750px) {
+    #ajout_validation {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .btn-ajout{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 30px;
+        border-top-left-radius:0px;
+        border-bottom-left-radius:30px;
+    }
+    .btn-ajout-1{
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius:30px;
+        border-bottom-left-radius:0px;
+    }
+
+}
+.count{
+    position: absolute;
+    top:42.5%;
+    left: 40%;
+
+}
+
+.main{
+    background: url("../imgs/Three-Swans.jpg");
+    background-size: cover;
+}
+
+
 
 /* ========================= IDENTIFIANTS ========================= */
 
@@ -457,6 +509,8 @@ footer {
 #geolocaliser {
     margin-bottom: 15px;
 }
+
+
 
 
 /* ========================= MEDIA QUERIES ========================= */
@@ -593,3 +647,5 @@ footer {
 @media all and (min-width: 1200px) {
 
 }
+
+

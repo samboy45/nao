@@ -29,10 +29,6 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
-            /*if ($fichier = $observation->getImage() != null){
-                $nomFichier = $this->get('nao_observations.fileUploader')->upload($observation->getImage());
-                $observation->setImage($nomFichier);
-            }*/
             $observation->setUser($user);
             if ($user->getRoles()== 'particulier'){
                 $observation->setActive(false);
@@ -78,10 +74,6 @@ class ObservationController extends Controller
 
         if ($validateForm->isSubmitted() && $validateForm->isValid()){
 
-            /*if ($fichier = $observation->getImage() != null) {
-                $nomFichier = $this->get('nao_observations.fileUploader')->upload($observation->getImage());
-                $observation->setImage($nomFichier);
-            }*/
             $observation->setActive(true);
             $this->getDoctrine()->getManager()->flush();
 
@@ -137,6 +129,14 @@ class ObservationController extends Controller
             'countUserObservations' => $countUserObservations,
             'countUserObservationsValidate' => $countUserObservationsValidate,
             '$countUserObservationsWaiting' => $countUserObservationsWaiting
+        ));
+    }
+
+    public function  ajoutObservationAction(){
+        $em = $this->getDoctrine()->getManager();
+        $countWaitingObservations = count($em->getRepository('AppBundle:Observation')->findByActive(0));
+        return $this->render('observation/pageAjoutObservation.html.twig', array(
+            'observations' => $countWaitingObservations
         ));
     }
 
