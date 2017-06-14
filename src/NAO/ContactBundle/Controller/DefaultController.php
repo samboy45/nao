@@ -32,12 +32,10 @@ class DefaultController extends Controller
                     $this->get('session')->getFlashBag()->add('danger', $message);
                     return $this->redirectToRoute('nao_contact_homepage');
                 } else {
-                    // Send mail
+                    // envoi mail
                     if($this->envoiEmail($form->getData())){
 
                         return $this->redirectToRoute('nao_contact_homepage');
-                    }else{
-                        var_dump("oupsss :(");
                     }
                 }
 
