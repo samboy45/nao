@@ -20,15 +20,17 @@ class MailerService
     }
 
 
-    public function sendMail($user)
+    public function sendMail($observation)
     {
         $message = new \Swift_Message();
-
         $message
             ->setSubject('Refus observation')
-            ->setFrom(array('' => 'Nos Amis les Oiseaux'))
-            ->setTo($user->getEmail())
+            ->setFrom(array('samboydu@gmail.com' => 'Nos Amis les Oiseaux'))
+            ->setTo($observation->getUser()->getEmail())
             ->setContentType('text/html')
-            ->setBody($this->twig->render('', array()));
+            ->setBody($this->twig->render('observation/mail.html.twig', array(
+                'observation' => $observation
+            )));
+        $this->mailer->send($message);
     }
 }
