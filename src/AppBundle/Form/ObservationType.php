@@ -78,7 +78,7 @@ class ObservationType extends AbstractType
             null,
             [
                 'class' => 'AppBundle\Entity\Famille',
-                'placeholder'     => $ordre ? 'Sélectionnez la famille' : 'Sélectionnez l\'oiseau',
+                'placeholder'     => $ordre ? 'Sélectionnez la famille' : 'Sélectionnez l\'ordre',
                 'mapped'          => false,
                 'required'        => false,
                 'auto_initialize' => false,
