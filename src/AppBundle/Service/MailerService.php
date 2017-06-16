@@ -25,7 +25,7 @@ class MailerService
         $message = new \Swift_Message();
         $message
             ->setSubject('Refus observation')
-            ->setFrom(array('samboydu@gmail.com' => 'Nos Amis les Oiseaux'))
+            ->setFrom(array('55fe7e8a69-dce91d@inbox.mailtrap.io' => 'Nos Amis les Oiseaux'))
             ->setTo($observation->getUser()->getEmail())
             ->setContentType('text/html')
             ->setBody($this->templating->render('mail.html.twig', array(

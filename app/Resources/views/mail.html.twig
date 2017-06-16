@@ -1,40 +1,66 @@
 
 <!doctype html>
 <html lang="fr">
-<body>
-<div id="mail" style="border: solid; border-color: rgba(25, 107, 105, 1);width: 70%; margin-left: 15%">
-    <header id="header" style="background-color:rgba(25, 107, 105, 1)">
-        <div id="logo_head" style="margin-left: 50%"><img src="{{ asset('imgs/NAO-logo-blanc.png') }}" alt=""></div>
-    </header>
-        <p id="politesse" style="margin-top: 10px;color: rgba(25, 107, 105, 1); font-weight: bold; margin-left: 15%">Bonjour {{ observation.user.firstname }},</p>
-        <br>
-        <p id="contenu" style="color: rgba(203, 247, 211, 1);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        #mail{ border: solid; border-color: rgba(25, 107, 105, 1);width: 70%; margin-left: 15%}
+        #header{background-color:rgba(25, 107, 105, 1);
+
+        }
+        #logo_head{
+            margin-left: 45%
+        }
+
+        #contenu{
+            color: rgba(203, 247, 211, 1);
             font-weight: bold;
-            margin-left: 15%">
+            margin-left: 15%
+
+        }
+        #logo{margin-left: 97%}
+
+        #politesse{color: rgba(25, 107, 105, 1); font-weight: bold; margin-left: 15%}
+
+    </style>
+</head>
+<body>
+<div id="mail" class="clearfix">
+    <header id="header">
+        <div id="logo_head"><img src="{{absolute_url( asset('imgs/NAO-logo-blanc.png')) }}" alt="" class="img-responsive" style="height: 50px;width: auto;"></div>
+    </header>
+    <div class="container">
+        <p id="politesse" style="margin-top: 10px">Bonjour {{ observation.user.firstname }},</p>
+        <br>
+        <p id="contenu">
             Nous vous remercions pour votre saisie <br> d'observation de l'espèce {{ observation.espece }} effectuée le <br> {{ observation.date|date('d/m/y') }}.<br>
             Néanmoins, nous sommes au regret de vous <br> informer que celle-ci n'a pu être validée par notre <br> équipe de naturalistes.
         </p>
         <br>
-        <p id="contenu" style="color: rgba(203, 247, 211, 1);
-            font-weight: bold;
-            margin-left: 15%">Pour plus d'informations, contactez-nous (lien de <br> redirection vers le formulaire de contact).</p>
+        <p id="contenu">Pour plus d'informations, contactez-nous (lien de <br> redirection vers le formulaire de contact).</p>
         <br>
-        <p id="contenu" style="color: rgba(203, 247, 211, 1);
-            font-weight: bold;
-            margin-left: 15%">Nous vous remercions pour votre compréhension.</p>
+        <p id="contenu">Nous vous remercions pour votre compréhension.</p>
 
-        <p id="politesse" style="margin-bottom: 5%;color: rgba(25, 107, 105, 1); font-weight: bold; margin-left: 15%">Nos Amis les Oiseaux</p>
+        <p id="politesse" style="margin-bottom: 5%">Nos Amis les Oiseaux</p>
 
 
-        <a href="{{ path('observation_new') }}" class="btn btn-primary btn-lg  btn-block text-uppercase" style="width: 50%; margin-left: 15%; border-radius: 20px; background-color: rgba(40, 204, 158, 1);border-color:rgba(40, 204, 158, 1);margin-bottom: 15px;">Saisir une nouvelle observation</a>
-        <a href="{{ path('recherche') }}" class="btn btn-primary btn-lg btn-block text-uppercase" style="width: 50%; margin-left: 15%; border-radius :20px; background-color: white; border-color:rgba(40, 204, 158, 1); color:rgba(40, 204, 158, 1)">Découvrir les especes</a>
+        <a href="" class="btn btn-primary btn-lg  btn-block text-uppercase" style="width: 50%; margin-left: 15%; border-radius: 20px; background-color: rgba(40, 204, 158, 1);border-color:rgba(40, 204, 158, 1);margin-bottom: 15px">Saisir une nouvelle observation</a>
+        <a href="" class="btn btn-primary btn-lg btn-block text-uppercase" style="width: 50%; margin-left: 15%; border-radius :20px; background-color: white; border-color:rgba(40, 204, 158, 1); color:rgba(40, 204, 158, 1)">Découvrir les espèces</a>
 
     </div>
     <footer>
-        <div id="logo" style="margin-left: 97%">
-            <img src="{{ asset('imgs/Oiseau1@4x.png') }}" alt="">
+        <div id="logo">
+            <img src="{{ absolute_url(asset('imgs/Oiseau1@4x.png'))  }}" alt=""  class="img-responsive" style="height: 30px;">
         </div>
     </footer>
+</div>
 
 </body>
 </html>
