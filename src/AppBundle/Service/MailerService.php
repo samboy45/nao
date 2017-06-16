@@ -12,11 +12,11 @@ namespace AppBundle\Service;
 class MailerService
 {
     private $mailer;
-    private $twig;
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig)
+    private $templating;
+    public function __construct(\Swift_Mailer $mailer, \Symfony\Bundle\TwigBundle\TwigEngine $templating)
     {
         $this->mailer = $mailer;
-        $this->twig = $twig;
+        $this->templating = $templating;
     }
 
 
@@ -28,7 +28,7 @@ class MailerService
             ->setFrom(array('samboydu@gmail.com' => 'Nos Amis les Oiseaux'))
             ->setTo($observation->getUser()->getEmail())
             ->setContentType('text/html')
-            ->setBody($this->twig->render('observation/mail.html.twig', array(
+            ->setBody($this->templating->render('mail.html.twig', array(
                 'observation' => $observation
             )));
         $this->mailer->send($message);

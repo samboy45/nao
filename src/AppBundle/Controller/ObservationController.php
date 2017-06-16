@@ -92,9 +92,11 @@ class ObservationController extends Controller
     {
         $form = $this->createDeleteForm($observation);
         $form->handleRequest($request);
+        $mailer = $this->get('observation.mailservice');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $mailer->sendMail($observation);
             $em->remove($observation);
             $em->flush();
         }
