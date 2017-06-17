@@ -6,8 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-
-
+use Symfony\Component\HttpFoundation\Response;
 
 
 class DefaultController extends Controller
@@ -24,13 +23,24 @@ class DefaultController extends Controller
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
         $user= $this->getUser();
-        $em = $this->getDoctrine()->getManager();
-        $userObservations = $em->getRepository('AppBundle:Observation')->findMyObservations($user);
-        $userObservationsValidate = $em->getRepository('AppBundle:Observation')->findMyObservationsValidate($user);
-        $userObservationsWaiting = $em->getRepository('AppBundle:Observation')->findMyObservationsWaiting($user);
-        $countUserObservations = $em->getRepository('AppBundle:Observation')->countMyObservations($user);
-        $countUserObservationsValidate = $em->getRepository('AppBundle:Observation')->countMyObservationsValidate($user);
-        $countUserObservationsWaiting = $em->getRepository('AppBundle:Observation')->countMyObservationsWaiting($user);
+        $userObservations = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Observation')
+            ->findBy(array('user' => $user), array('id' => 'desc'));
+        $userObservationsValidate = [];
+        $userObservationsWaiting = [];
+        foreach ($userObservations as $userObservation){
+            if ($userObservation->getActive()){
+                $userObservationsValidate[] = $userObservation;
+            }
+            if (!$userObservation->getActive()){
+                $userObservationsWaiting[] = $userObservation;
+            }
+        }
+        $countUserObservations = count($userObservations);
+        $countUserObservationsValidate = count($userObservationsValidate);
+        $countUserObservationsWaiting = count($userObservationsWaiting);
 
         return $this->render("utilisateur/moncompte.html.twig", array(
             'users' => $users,
