@@ -1,10 +1,2 @@
-{% for user in users %}
-    <p class="herbe-tropicale">
-        {{ user.lastname }} {{ user.firstname }} ( {{ user.username }} )
-    </p>
-    <em>
-        {{ user.email }}
-        <a href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
-    </em>
-{% endfor %}
+
 

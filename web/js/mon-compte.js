@@ -3,11 +3,9 @@
  * Créé par firekey le 10/06/2017.
  */
 
-$(function () {
+$(function(){
 
     /* ========================= VARIABLES ========================= */
-
-    var divTabActive = $('#div-nombre');
 
 
     /* ========================= ACTIONS POST-LOAD ========================= */
@@ -15,33 +13,23 @@ $(function () {
     retirer($('#show meta, #show link, #show title, #show header, #show footer, #show script'));
     retirer($('#my-observations meta, #my-observations link, #my-observations title, #my-observations header, #my-observations footer, #my-observations script'));
 
-    $('#admin').css({paddingLeft: '0'}).hide();
-    $('#admin > div:first-child').css({paddingLeft: '0', paddingRight: '0'});
-    $('#admin > div:last-child').css({paddingRight: '0', overflow: 'auto'});
-    $('#admin-index').css({overflow: 'auto'});
+    $(':input').addClass('pin-glacial');
+    $('#form_recherche').parent().css({marginTop: '20px'});
 
-    $('#show').css({padding: '0', borderBottom: '1px solid rgba(40, 204, 158, 1)'});
-    $('#nombre, #validees, #attente, #ajouter').height('50px');
-    $('#div-nombre, #div-validees').css({borderBottom: '1px solid rgba(203, 247, 211, 1)'});
-
-    $('.badge, #ajouter i').css({marginRight: '10px'});
+    $('#admin').hide();
 
     organiserContenu();
-
-    $('#div-ajouter').css({position: 'absolute', bottom: '0'});
 
     $('#nombre span').text($('#nb-obs').val());
     $('#validees span').text($('#nb-val').val());
     $('#attente span').text($('#nb-att').val());
 
-    $('#form_recherche').parent().css({marginTop: '20px'});
-
     setTimeout(function(){
-        montrerDiv($('#nombre'));
+        selectionnerTab($('#nombre'));
+        $('#nombre').removeClass('aloe-vera').addClass('pin-glacial');
+        montrerDiv($('#tabNombre'));
         $('#ajouter').removeClass('pin-glacial');
     }, 50);
-
-    $(':input').addClass('pin-glacial');
 
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
@@ -51,39 +39,51 @@ $(function () {
     });
 
     $('#nombre').on('click', function(){
-        montrerDiv($(this));
+        deselectionnerTabs();
+        selectionnerTab($(this));
+        cacherDiv($('#tabValidees, #tabAttente'));
+        setTimeout(function(){
+            montrerDiv($('#tabNombre'));
+        }, 300);
+
     });
 
     $('#validees').on('click', function(){
         deselectionnerTabs();
         selectionnerTab($(this));
-        $('#tabNombre, #tabAttente').hide('slide', {direction: 'left'}, function(){
-            $('#tabValidees').show('slide', {direction: 'left'});
-        });
+        cacherDiv($('#tabNombre, #tabAttente'));
+        setTimeout(function(){
+            montrerDiv($('#tabValidees'));
+        }, 300);
     });
 
     $('#attente').on('click', function(){
         deselectionnerTabs();
         selectionnerTab($(this));
-        $('#tabNombre, #tabValidees').hide('slide', {direction: 'left'}, function(){
-            $('#tabAttente').show('slide', {direction: 'left'});
-        });
+        cacherDiv($('#tabValidees, #tabNombre'));
+        setTimeout(function(){
+            montrerDiv($('#tabAttente'));
+        }, 300);
     });
 
     $('#btn-admin').on('click', function(){
         deselectionnerTabs();
         desactiverElmts($('#btn-admin, #nombre, #validees, #attente'));
-        $('#my-observations').hide('slide', {direction: 'left'}, function(){
-            $('#admin').show('slide', {direction: 'left'});
-        });
+        cacherDiv($('#my-observations'));
+        setTimeout(function(){
+            montrerDiv($('#admin'));
+        }, 300);
     });
 
     $('#croix-admin').on('click', function(){
         activerElmts($('#btn-admin, #nombre, #validees, #attente'));
-        $('#admin').hide('slide', {direction: 'left'}, function(){
-            $('#nombre').click();
-            $('#my-observations').show('slide', {direction: 'left'});
-        });
+        selectionnerTab($('#nombre'));
+        $('#tabValidees, #tabAttente').hide();
+        $('#tabNombre').show();
+        cacherDiv($('#admin'));
+        setTimeout(function(){
+            montrerDiv($('#my-observations'));
+        }, 300);
     });
 
     $('#relais-form-recherche').on('click', function(){
@@ -104,17 +104,12 @@ $(function () {
     }
 
     function organiserContenu(){
-        $('#fos-profil-show main > div').css({background: 'none', minHeight: '0'});
         if ($(window).width() >= 751){
-            $('#div-mon-compte').css({padding: '50px'});
             $('#image').removeClass('col-xs-6 col-xs-offset-3').addClass('col-xs-8 col-xs-offset-2');
-            $('#admin > div:first-child').css({borderRight: '1px solid rgba(25, 107, 105, 1)', borderBottom:'none'});
         } else {
-            $('#div-mon-compte').css({padding: '0'});
             $('#image').removeClass('col-xs-8 col-xs-offset-2').addClass('col-xs-6 col-xs-offset-3');
-            $('#admin > div:first-child').css({borderRight: 'none', borderBottom:'1px solid rgba(25, 107, 105, 1)'});
         }
-        $('#my-observations').height($('#show').height()).css({overflow: 'auto'});
+        $('#my-observations').height($('#show').height());
         $('#admin, #admin > div').height($('#show').height());
     }
 
@@ -144,13 +139,13 @@ $(function () {
         });
     }
 
-    function montrerDiv(elmt){
-        deselectionnerTabs();
-        selectionnerTab(elmt);
-        divTabActive.hide('slide', {direction: 'left'}, function(){
-            elmt.show('slide', {direction: 'left'});
+    function cacherDiv(elmts){
+        $(elmts).each(function(){
+            $(this).hide('slide', {direction: 'left'}, 200);
         });
-        divTabActive = elmt;
     }
 
+    function montrerDiv(elmt){
+        $(elmt).show('slide', {direction: 'left'}, 200);
+    }
 });

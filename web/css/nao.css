@@ -74,6 +74,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px;
 }
 
 /* arrière-plans nao */
@@ -415,6 +416,16 @@ footer {
     align-items: center;
 }
 
+#div-nombre,
+#div-validees {
+    borderB-bottom: 1px solid rgba(203, 247, 211, 1);
+}
+
+#div-ajouter {
+    position: absolute;
+    bottom: 0;
+}
+
 #tabNombre,
 #tabValidees,
 #tabAttente {
@@ -434,6 +445,47 @@ footer {
     margin: 10px;
     padding: 10px;
     overflow: auto;
+}
+
+#admin {
+    padding-left: 0;
+}
+
+#admin-div-1 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#admin-div-2 {
+    padding-left: 0;
+    overflow: auto;
+}
+
+#admin-index,
+#my-observations {
+    overflow: auto;
+}
+
+#show {
+    padding: 0;
+    border-bottom: 1px solid rgba(40, 204, 158, 1);
+}
+
+#nombre,
+#validees,
+#attente,
+#ajouter {
+    height: 50px;
+}
+
+#ajouter i,
+.badge {
+    margin-right: 10px;
+}
+
+#fos-profil-show main > div {
+    background: none;
+    min-height: 0;
 }
 
 
@@ -475,6 +527,15 @@ footer {
     #boutons-observation-2 {
         flex-direction: column;
     }
+
+    #div-mon-compte {
+        padding: 0;
+    }
+
+    #admin > div:first-child {
+        border-right: none;
+        border-bottom: 1px solid rgba(25, 107, 105, 1);
+    }
 }
 
 @media all and (min-width: 751px) {
@@ -508,6 +569,15 @@ footer {
 
     #carte-rechercher {
         height: 700px;
+    }
+
+    #div-mon-compte {
+        padding: 50px;
+    }
+
+    #admin > div:first-child {
+        border-right: 1px solid rgba(25, 107, 105, 1);
+        border-bottom: none;
     }
 }
 
