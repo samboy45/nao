@@ -10,6 +10,7 @@ $(function(){
     var carte;
     var icone;
     var marqueursTab = [];
+    var marqueurPosition = [0];
     var iconPosition = L.icon({
         iconUrl: '../../web/imgs/icon-position@4x.png',
         iconSize: [64, 64],
@@ -40,10 +41,16 @@ $(function(){
     if (navigator.geolocation){
         navigator.geolocation.watchPosition(
             function(position){
-                L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition})
+                if (marqueurPosition.length > 10){
+                    for (i = 0; i < 10; i++){
+                        carte.removeLayer(marqueurPosition[i]);
+                    }
+                }
+                var geoPosition = L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition})
                     .bindPopup('<div class="text-center pin-glacial">Vous êtes<br>localisé(e)<br>ici.</div>')
                     .openPopup()
                     .addTo(carte);
+                marqueurPosition.push(geoPosition);
             },
             function(erreur){
                 switch(erreur.code){
