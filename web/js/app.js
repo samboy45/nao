@@ -16,9 +16,7 @@ $(function () {
             $(target).replaceWith($input)
         })
     });
-});
 
-$(function () {
     $(document).on('change', '#appbundle_observation_ordre, #appbundle_observation_famille', function () {
         let $field = $(this);
         let $ordreField = $('#appbundle_observation_ordre');

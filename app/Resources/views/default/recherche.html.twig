@@ -2,26 +2,26 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
-          integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
-          crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-xs-12" id="div-carte">
-            <div id="carte-rechercher"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 text-center" id="div-select-recherche-home-2">
-            <div class="form-group">
-                <label for="select-recherche-home-2">Choisissez une espèce</label>
-                <select class="form-control rad" id="select-recherche-home-2">
-                    {% for espece in especes %}
-                        <option value="{{ espece }}">{{ espece }}</option>
-                    {% endfor %}
-                </select>
+    <div class="col-xs-12" id="div-carte">
+        <div id="carte-rechercher">
+            <div class="row" id="select-row">
+                <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 text-center" id="div-select-recherche-home-2">
+                    <div class="form-group">
+                        <label for="select-recherche-home-2" class="blanc gras">Sélectionnez une espèce</label>
+                        <select class="form-control rad" name="espece" id="select-recherche-home-2" required>
+                            {% for espece in donnees.liste %}
+                                <option value="{{ espece }}" {% if donnees.especeSelectionnee is defined and donnees.especeSelectionnee == espece %} selected {% endif %}>
+                                    {{ espece }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" id="adresseCarto" value="{{ url('cartoRechercheEspece') }}" disabled>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -29,31 +29,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script
-            src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
-            integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
-            crossorigin=""
-    ></script>
-    <script>
-        var selectElmt = $('#select-recherche-home-2');
-        selectElmt.change(function (){
-            var select = selectElmt.val();
-            $.ajax({
-                type: 'POST',
-                url : '{{ path('cartoRechercheEspece') }}',
-                data: {'espece': select},
-                timeout: 5000,
-                success: function(tableau){
-                    console.log(tableau);
-                },
-                error: function(){
-                    alert('La requête n\'a pas abouti');
-                }
-            });
-        });
-    </script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin="" ></script>
     <script src="{{ asset('js/map-recherche.js') }}"></script>
-
 {% endblock %}
 
 

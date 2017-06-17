@@ -128,7 +128,7 @@ class ObservationController extends Controller
             'userObservationsWaiting' => $userObservationsWaiting,
             'countUserObservations' => $countUserObservations,
             'countUserObservationsValidate' => $countUserObservationsValidate,
-            '$countUserObservationsWaiting' => $countUserObservationsWaiting
+            'countUserObservationsWaiting' => $countUserObservationsWaiting
         ));
     }
 
