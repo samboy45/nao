@@ -13,18 +13,18 @@ $(function(){
     var marqueurPosition = [0];
     var iconPosition = L.icon({
         iconUrl: '../../web/imgs/icon-position@4x.png',
-        iconSize: [64, 64],
-        iconAnchor: [32, 32]
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
     });
     var iconProtegee = L.icon({
         iconUrl: '../../web/imgs/icon-espece-protegee.png',
-        iconSize: [45, 64],
-        iconAnchor: [22.5, 32]
+        iconSize: [22.5, 32],
+        iconAnchor: [11.25, 16]
     });
     var iconNonProtegee = L.icon({
         iconUrl: '../../web/imgs/icon-espece-non-protegee.png',
-        iconSize: [45, 64],
-        iconAnchor: [22.5, 32]
+        iconSize: [22.5, 32],
+        iconAnchor: [11.25, 16]
     });
 
 
