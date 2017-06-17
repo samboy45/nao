@@ -13,14 +13,14 @@ $(function(){
 
     var iconPosition = L.icon({
         iconUrl: '../../../web/imgs/icon-position@4x.png',
-        iconSize: [64, 64],
-        iconAnchor: [32, 32]
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
     });
 
     var iconPin = L.icon({
         iconUrl: '../../../web/imgs/icon-pin@4x.png',
-        iconSize: [33, 64],
-        iconAnchor: [16.5, 64]
+        iconSize: [16.5, 32],
+        iconAnchor: [8.25, 32]
     });
 
 
