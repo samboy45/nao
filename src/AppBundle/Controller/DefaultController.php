@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,11 +16,15 @@ class DefaultController extends Controller
         ]);
     }
 
-    public function rechercheAction()
+    public function rechercheAction(Request $requete)
     {
+        $donnees = [];
         $em = $this->getDoctrine()->getManager();
-        $liste = $em->getRepository('AppBundle:Famille')->findAll();
-        return $this->render('default/recherche.html.twig', array('especes' => $liste));
+        $donnees['liste'] = $em->getRepository('AppBundle:Famille')->findAll();
+        if ($requete->isMethod('POST')){
+            $donnees['especeSelectionnee'] = $requete->request->get('espece');
+        }
+        return $this->render('default/recherche.html.twig', array('donnees' => $donnees));
     }
 
     public function mentionsLegalesAction()

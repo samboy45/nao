@@ -15,26 +15,26 @@ $(function () {
     /* ========================= GESTION EVENEMENTIELLE ========================= */
 
     $('#chevron-qsn-1').click(function(){
-        $('#qsn-1').slideUp('fast', function(){
-            $('#qsn-2').slideDown('fast');
+        $('#qsn-1').hide('slide', {direction: 'up'}, 'fast', function(){
+            $('#qsn-2').show('slide', {direction: 'down'}, 'fast');
         })
     });
 
     $('#chevron-qsn-2-haut').click(function(){
-        $('#qsn-2').slideUp('fast', function(){
-            $('#qsn-1').slideDown('fast');
+        $('#qsn-2').hide('slide', {direction: 'down'}, 'fast', function(){
+            $('#qsn-1').show('slide', {direction: 'up'}, 'fast');
         })
     });
 
     $('#chevron-qsn-2-bas').click(function(){
-        $('#qsn-2').slideUp('fast', function(){
-            $('#qsn-3').slideDown('fast');
+        $('#qsn-2').hide('slide', {direction: 'up'}, 'fast', function(){
+            $('#qsn-3').show('slide', {direction: 'down'}, 'fast');
         })
     });
 
     $('#chevron-qsn-3').click(function(){
-        $('#qsn-3').slideUp('fast', function(){
-            $('#qsn-2').slideDown('fast');
+        $('#qsn-3').hide('slide', {direction: 'down'}, 'fast', function(){
+            $('#qsn-2').show('slide', {direction: 'up'}, 'fast');
         })
     });
 

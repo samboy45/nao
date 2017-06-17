@@ -5,19 +5,17 @@
     <div class="col-xs-12 text-center" id="home-1">
         <div class="row">
             <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-                <div class="hidden-xs"><br><div class="hidden-sm"><br></div></div>
-                <h1 class="text-uppercase blanc">
-                    bienvenue sur le site de l'association nos amis les oiseaux
-                </h1>
-                <div class="hidden-xs"><br><div class="hidden-sm"><br></div></div>
+                <h1 class="text-uppercase blanc visible-lg">bienvenue sur le site de l'association nos amis les oiseaux</h1>
+                <h2 class="text-uppercase blanc visible-md">bienvenue sur le site de l'association nos amis les oiseaux</h2>
+                <h3 class="text-uppercase blanc visible-sm">bienvenue sur le site de l'association nos amis les oiseaux</h3>
+                <h4 class="text-uppercase blanc visible-xs">bienvenue sur le site de l'association nos amis les oiseaux</h4>
                 <p class="blanc">
                     Comme de nombreux passionés, participez à notre programme national de recherche grâce à notre outil collaboratif d'observation des oiseaux
                 </p>
-                <div class="hidden-xs"><br><div class="hidden-sm"><br></div></div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 jumelles">
+            <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-3 jumelles">
                 <a href="{{ path('recherche') }}">
                     <img src="{{ asset('imgs/bouton-xs-1.png') }}" class="img-responsive hidden-md hidden-lg">
                 </a>
@@ -37,4 +35,7 @@
 </div>
 {% endblock %}
 
-
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/index.js') }}"></script>
+{% endblock %}

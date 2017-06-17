@@ -7,11 +7,12 @@ recherche:
     defaults: { _controller: AppBundle:Default:recherche }
 
 cartoRechercheEspece:
-    path: /Recherche
+    path: /Recherche/Espece
     defaults:
-        _controller: AppBundle:Carto:afficherOiseaux
-        requirements:
-            methods: [POST]
+        _controller: AppBundle:Carto:importerOiseaux
+    requirements:
+        methods: 'POST'
+
 
 qsn:
     path: /qui_sommes_nous

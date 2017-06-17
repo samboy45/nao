@@ -161,6 +161,13 @@ footer {
     border-color: rgba(203, 247, 211, 1) !important;
 }
 
+.btn-transparent,
+.btn-transparent:hover,
+.btn-transparent:focus {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
 /* navigation */
 .navbar {
     padding-right: 15px;
@@ -189,16 +196,19 @@ footer {
 }
 
 /* formulaires */
-.form-control {
+.form-control,
+.input-group-addon {
     box-shadow: 2px 2px 4px rgba(25, 107, 105, .8);
     border-radius: 30px;
 }
 
-.form-control:hover {
+.form-control:hover,
+.input-group-addon:hover {
     box-shadow: none;
 }
 
-.form-control:focus {
+.form-control:focus,
+.input-group-addon:focus {
     border-color: rgba(40, 204, 158, 1);
     box-shadow: none;
 }
@@ -335,78 +345,6 @@ footer {
     background-color: rgba(255, 255, 255, 1);
 }
 
-/* ========================= VOIR AVEC SAMBA ======================================================================= */
-.block img { margin:7px; }
-.block h3 {
-    height:2.5em;
-    color:rgba(25, 107, 105, 1);
-    font-size:16px;
-    margin-bottom:0px;
-    margin-top: 0px;
-    font-weight: bold;
-}
-
-.block .description {
-    color:rgba(25, 107, 105, 1);
-    padding: 5px;
-}
-
-.block{background-color: rgba(203, 247, 211, 1)}
-.observation{margin-top: 10px}
-
-#row_id{display : flex; justify-content:space-around; align-items: center}
-.tabs-left > .nav-tabs {
-    border-bottom: 0;
-}
-
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-    display: none;
-}
-
-.tab-content > .active,
-.pill-content > .active {
-    display: block;
-}
-
-.tabs-left > .nav-tabs > li,
-.tabs-right > .nav-tabs > li {
-    float: none;
-}
-
-.tabs-left > .nav-tabs > li > a,
-.tabs-right > .nav-tabs > li > a {
-    min-width: 74px;
-    margin-right: 0;
-    margin-bottom: 3px;
-}
-
-.tabs-left > .nav-tabs {
-    float: left;
-    margin-right: 19px;
-    border-right: 1px solid #ddd;
-}
-
-.tabs-left > .nav-tabs > li > a {
-    margin-right: -1px;
-    -webkit-border-radius: 4px 0 0 4px;
-    -moz-border-radius: 4px 0 0 4px;
-    border-radius: 4px 0 0 4px;
-}
-
-.tabs-left > .nav-tabs > li > a:hover,
-.tabs-left > .nav-tabs > li > a:focus {
-    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
-}
-
-.tabs-left > .nav-tabs .active > a,
-.tabs-left > .nav-tabs .active > a:hover,
-.tabs-left > .nav-tabs .active > a:focus {
-    border-color: #ddd transparent #ddd #ddd;
-    *border-right-color: #ffffff;
-}
-/* ================================================================================================================= */
-
 
 /* ========================= IDENTIFIANTS ========================= */
 
@@ -420,8 +358,6 @@ footer {
 #observation-2,
 #confirmation {
     background: url("../imgs/Three-Swans.jpg") no-repeat center ;
-    -webkit-background-size: cover;
-    background-size: cover;
 }
 
 #observation-2 {
@@ -430,24 +366,14 @@ footer {
 }
 
 #login-1,
-#contact {
-    background: url("../imgs/16911.jpg") no-repeat bottom ;
-    -webkit-background-size: cover;
-    background-size: cover;
-    min-height: 800px;
-    width: auto;
+#contact,
+#div-mon-compte {
+    background: url("../imgs/16911.jpg") no-repeat bottom;
 }
 
 #carte-rechercher {
     width: 100%;
-}
-
-#div-select-recherche-home-2 {
-    border: 1px solid transparent;
-    border-radius: 0 0 80px 80px;
-    background-color: rgba(40, 204, 158, 1);
-    padding-left: 60px;
-    padding-right: 60px;
+    height: 100%;
 }
 
 #div-login-form,
@@ -464,17 +390,7 @@ footer {
     border-radius: 30px;
 }
 
-#boutons-observation-2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#indiquer,
-#geolocaliser {
-    margin-bottom: 15px;
-}
-
+#boutons-observation-2,
 #qsn1-row-2,
 #qsn1-row-3,
 #qsn2-row-3,
@@ -485,10 +401,45 @@ footer {
     align-items: center;
 }
 
+#indiquer,
+#geolocaliser {
+    margin-bottom: 15px;
+}
+
+#div-nombre,
+#div-validees,
+#div-attente,
+#div-ajouter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tabNombre,
+#tabValidees,
+#tabAttente {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+#tabNombre a,
+#tabValidees a,
+#tabAttente a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    overflow: auto;
+}
+
 
 /* ========================= MEDIA QUERIES ========================= */
 
-@media all and (max-width: 749px) {
+@media all and (max-width: 750px) {
     body {
         padding-top: 50px;
     }
@@ -526,7 +477,7 @@ footer {
     }
 }
 
-@media all and (min-width: 750px) {
+@media all and (min-width: 751px) {
     body {
         padding-top: 80px;
     }
@@ -558,11 +509,9 @@ footer {
     #carte-rechercher {
         height: 700px;
     }
-
-
 }
 
-@media all and (min-width: 970px) {
+@media all and (min-width: 992px) {
     body {
         padding-top: 105px;
     }
@@ -587,18 +536,20 @@ footer {
         margin-right: 15px;
     }
 
+    .jumelles {
+         flex-direction: row;
+     }
+
     #carte-rechercher {
         height: 675px;
     }
 }
 
 @media all and (min-width: 992px) {
-    .jumelles {
-        flex-direction: row;
-    }
+
 }
 
-@media all and (min-width: 1040px) {
+@media all and (min-width: 1200px) {
     body {
         padding-top: 130px;
     }

@@ -77,7 +77,6 @@ class Observation
      */
     private $image;
 
-
     /**
      * @var bool
      *
@@ -86,7 +85,7 @@ class Observation
     private $active;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Espece")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Espece", inversedBy="observations", cascade={"persist"})
      * @Assert\NotBlank()
      */
     private $espece;
@@ -104,6 +103,7 @@ class Observation
      * @ORM\Column(name="type_espece", type="string", length=255, nullable=true)
      */
     private $typeEspece;
+
     /**
      * Get id
      *

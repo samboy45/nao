@@ -1,10 +1,12 @@
-
-{{ form_start(form, {'attr': {'class': 'form-inline', 'action': path('admin_utilisateurs_find') }}) }}
-
-    <div class="form-group">
-        {{ form_errors(form.recherche) }}
-        {{ form_widget(form.recherche) }}
-
-    <button type="submit" class="btn btn-herbe-tropicale blanc"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+{{ form_start(form, {'attr': {'class': 'form-horizontal', 'action': path('admin_utilisateurs_find') }}) }}
+<div class="input-group pin-glacial">
+    {{ form_errors(form.recherche) }}
+    {{ form_widget(form.recherche) }}
+    <div class="input-group-addon">
+        <a href="#" id="relais-form-recherche" title="Rechercher">
+            <i class="fa fa-search pin-glacial" aria-hidden="true"></i>
+        </a>
     </div>
+</div>
+<button type="submit" class="hidden" id="valider-form-recherche"></button>
 {{ form_end(form) }}

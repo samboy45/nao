@@ -19,8 +19,8 @@ $(function(){
 
     var iconPin = L.icon({
         iconUrl: '../../../web/imgs/icon-pin@4x.png',
-        iconSize: [32.54, 64],
-        iconAnchor: [16.26, 64]
+        iconSize: [33, 64],
+        iconAnchor: [16.5, 64]
     });
 
 

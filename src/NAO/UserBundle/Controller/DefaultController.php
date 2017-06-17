@@ -23,35 +23,46 @@ class DefaultController extends Controller
     public function utilisateurAction() {
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
+        $user= $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $userObservations = $em->getRepository('AppBundle:Observation')->findMyObservations($user);
+        $userObservationsValidate = $em->getRepository('AppBundle:Observation')->findMyObservationsValidate($user);
+        $userObservationsWaiting = $em->getRepository('AppBundle:Observation')->findMyObservationsWaiting($user);
+        $countUserObservations = $em->getRepository('AppBundle:Observation')->countMyObservations($user);
+        $countUserObservationsValidate = $em->getRepository('AppBundle:Observation')->countMyObservationsValidate($user);
+        $countUserObservationsWaiting = $em->getRepository('AppBundle:Observation')->countMyObservationsWaiting($user);
 
-        return $this->render("utilisateur/moncompte.html.twig", array('users' =>   $users));
+        return $this->render("utilisateur/moncompte.html.twig", array(
+            'users' => $users,
+            'userObservations' => $userObservations,
+            'userObservationsValidate' => $userObservationsValidate,
+            'userObservationsWaiting' => $userObservationsWaiting,
+            'countUserObservations' => $countUserObservations,
+            'countUserObservationsValidate' => $countUserObservationsValidate,
+            'countUserObservationsWaiting' => $countUserObservationsWaiting));
     }
 
 
     public function rechercheAction(Request $request)
     {
-        $form = $this->createFormBuilder(null)
-            ->add('recherche', TextType::class, array(
-                'attr' => array(
-                    'placeholder' => 'Recherche'
-                )
-            ))
+        $form = $this
+            ->createFormBuilder(null)
+            ->add('recherche', TextType::class, array('attr' => array('placeholder' => 'Recherche')))
             ->getForm();
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() AND $form->isValid()) {
             $recherche = $form->getData() ;
-            $users = $this->getDoctrine()
-                        ->getRepository('UserBundle:User')
-                        ->filtrerUtilisateurs($recherche['recherche']);
+            $users = $this
+                ->getDoctrine()
+                ->getRepository('UserBundle:User')
+                ->filtrerUtilisateurs($recherche['recherche']);
 
-            return $this->render('admin/utilisateurs/index.html.twig', array(
-                'users' => $users,
-            ));
+            return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
         }
 
-        return $this->render(':admin/utilisateurs:filtrer.html.twig', array('form' => $form->createView() ));
+        return $this->render(':admin/utilisateurs:filtrer.html.twig', array('form' => $form->createView()));
     }
 
     public function rechercheRoleAction(Request $request)
@@ -69,24 +80,17 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $role = $form->getData() ;
-            $users = $this->getDoctrine()
+        if ($form->isSubmitted() AND $form->isValid()){
+            $role = $form->getData();
+            $users = $this
+                ->getDoctrine()
                 ->getRepository('UserBundle:User')
                 ->filtrerParRole($role['roles']);
 
-            return $this->render('admin/utilisateurs/index.html.twig', array(
-                'users' => $users,
-            ));
+            return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
         }
 
-        return $this->render(':admin/utilisateurs:role.html.twig', array('form' => $form->createView() ));
+        return $this->render(':admin/utilisateurs:role.html.twig', array('form' => $form->createView()));
     }
-
-
-
-
-
-
 
 }
