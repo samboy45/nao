@@ -5,6 +5,13 @@
 </div>
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+<div>
+    {{ form_label(form.imageFile) }}
+    {{ form_errors(form.imageFile) }}
+    {{ form_widget(form.imageFile) }}
+</div>
+
 <div>
     {{ form_label(form.firstname) }}
     {{ form_errors(form.firstname) }}
@@ -27,7 +34,7 @@
 </div>
 
 <div>
-   <button type="submit" class="btn btn-pin-glacial blanc">Valider</button>
+   <button type="submit" class="btn btn-pin-glacial text-uppercase blanc">Valider</button>
 </div>
 
 

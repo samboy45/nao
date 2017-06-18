@@ -47,6 +47,11 @@ class Espece
      */
     private $famille;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="espece")
+     **/
+    private $observations;
+
 
     /**
      * Get id
@@ -157,5 +162,46 @@ class Espece
     public function __toString()
     {
         return $this->lbNom;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->observations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     *
+     * @return Espece
+     */
+    public function addObservation(\AppBundle\Entity\Observation $observation)
+    {
+        $this->observations[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\AppBundle\Entity\Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
     }
 }

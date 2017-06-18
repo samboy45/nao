@@ -9,38 +9,22 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CartoController extends Controller
 {
-    public function afficherOiseauxAction(Request $request)
+    public function importerOiseauxAction(Request $requete)
     {
-        if ($request->isXmlHttpRequest()){
-            $espece = $request->request->get('espece');
-            $em = $this
-                ->getDoctrine()
-                ->getManager();
-            $observationsValidees = $em
-                ->getRepository('AppBundle:Observation')
-                ->findBy(
-                    array(
-                        'active' => true
+        if ($requete->isXmlHttpRequest()){
+            return new JsonResponse(
+                json_encode($this
+                    ->getDoctrine()
+                    ->getRepository('AppBundle:Observation')
+                    ->importerOiseaux($requete
+                        ->request
+                        ->get('espece')
                     )
-                );
-            $famille = $em
-                ->getRepository('AppBundle:Famille')
-                ->findBy(
-                    array(
-                        'nomFamille' => $espece
-                    )
-                );
-            $reponse = new JsonResponse(
-                array(
-                    'tableau' => array(
-                        'observations' => $observationsValidees,
-                        'oiseaux' => $famille->getEspeces()
-                    )
-                )
+                ),
+                200
             );
-            return $reponse;
         } else {
-            return new Response('Ce type de requête est inapproprié', 400);
+            return new Response('Requête invalide', 400);
         }
     }
 }

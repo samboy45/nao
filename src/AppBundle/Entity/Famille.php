@@ -27,6 +27,7 @@ class Famille
      * @ORM\Column(name="nom_famille", type="string", length=255)
      */
     private $nomFamille;
+
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordre" , inversedBy="familles")
      */

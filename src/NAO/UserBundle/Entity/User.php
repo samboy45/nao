@@ -4,12 +4,19 @@ namespace NAO\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateurs")
  * @ORM\Entity(repositoryClass="NAO\UserBundle\Repository\UserRepository")
+ *
+ * @Vich\Uploadable
+ *
  */
 
 
@@ -31,6 +38,37 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255)
      */
     protected $firstname;
+
+    /**
+     * @Assert\File(
+     *     maxSize="2M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     *
+     * @Vich\UploadableField(mapping="image_profil", fileNameProperty="imageName")
+     *
+     * @var File $imageFile
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    protected $imageName;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var \DateTime
+     */
+    protected $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="user")
+     */
+    private $observations;
 
     public function __construct()
     {
@@ -87,4 +125,108 @@ class User extends BaseUser
         return $this->firstname;
     }
 
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $user
+     *
+     * @return User
+     */
+    public function setImageFile(File $user = null)
+    {
+        $this->imageFile = $user;
+
+        if ($user)
+            $this->updatedAt = new \DateTimeImmutable();
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set imageName
+     *
+     * @param string $imageName
+     *
+     * @return User
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     *
+     * @return User
+     */
+    public function addObservation(\AppBundle\Entity\Observation $observation)
+    {
+        $this->observations[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\AppBundle\Entity\Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
+    }
 }

@@ -7,12 +7,12 @@ parameters:
     database_name: nao
     database_user: root
     database_password: root
-    mailer_transport: smtp
-    mailer_host: 
-    mailer_user:
-    mailer_password:
-    mailer_security: tls
-    mailer_port: 587
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: biduletruck@gmail.com
+    mailer_password: fmkargdsopvcdbth
+    mailer_security: ssl
+    mailer_port: 465
     mailer_name: Nos Amis les Oiseaux
     secret: ThisTokenIsNotSoSecretChangeIt
     recaptcha_key: 6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ

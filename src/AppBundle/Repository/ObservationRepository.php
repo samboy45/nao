@@ -10,84 +10,28 @@ namespace AppBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
-
-    public function findMyObservationsWaiting($user){
+    public function importerObservations(){
         return $this
-            ->createQueryBuilder('o')
-            ->where('o.user = :user' )
-            ->andWhere('o.active = false')
-            ->orderBy('o.id', 'DESC')
-            ->setParameter('user', $user)
+            ->createQueryBuilder('observation')
+            ->innerJoin('observation.espece')
+            ->where('observation.active = true')
             ->getQuery()
             ->getResult()
             ;
     }
 
-    public function findMyObservationsValidate($user){
+    public function importerOiseaux($famille){
         return $this
-            ->createQueryBuilder('o')
-            ->where('o.user = :user' )
-            ->andwhere('o.active = true')
-            ->orderBy('o.id', 'DESC')
-            ->setParameter('user', $user)
+            ->createQueryBuilder('observation')
+            ->addSelect('espece')
+            ->leftJoin('observation.espece', 'espece')
+            ->addSelect('famille')
+            ->leftJoin('espece.famille', 'famille')
+            ->where('observation.active = 1')
+            ->andWhere('famille.nomFamille = :nom_famille')
+            ->setParameter('nom_famille', $famille)
             ->getQuery()
-            ->getResult()
-            ;
-    }
-
-    public function findMyObservations($user){
-        return $this
-            ->createQueryBuilder('o')
-            ->where('o.user = :user' )
-            ->orderBy('o.id', 'DESC')
-            ->setParameter('user', $user)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
-
-    public function countMyObservationsWaiting($user){
-        return $this
-            ->createQueryBuilder('o')
-            ->select('COUNT(o)')
-            ->where('o.user = :user' )
-            ->andWhere('o.active = false')
-            ->setParameter('user', $user)
-            ->getQuery()
-            ->getSingleScalarResult()
-            ;
-    }
-
-    public function countMyObservationsValidate($user){
-        return $this
-            ->createQueryBuilder('o')
-            ->select('COUNT(o)')
-            ->where('o.user = :user' )
-            ->andwhere('o.active = true')
-            ->setParameter('user', $user)
-            ->getQuery()
-            ->getSingleScalarResult()
-            ;
-    }
-
-    public function countMyObservations($user){
-        return $this
-            ->createQueryBuilder('o')
-            ->select('COUNT(o)')
-            ->where('o.user = :user' )
-            ->setParameter('user', $user)
-            ->getQuery()
-            ->getSingleScalarResult()
-            ;
-    }
-
-    public function countObservationsWaiting(){
-        return $this
-            ->createQueryBuilder('o')
-            ->select('COUNT(o)')
-            ->where('o.active = false')
-            ->getQuery()
-            ->getSingleScalarResult()
+            ->getArrayResult()
             ;
     }
 }
