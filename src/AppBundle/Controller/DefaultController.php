@@ -19,8 +19,7 @@ class DefaultController extends Controller
     public function rechercheAction(Request $requete)
     {
         $donnees = [];
-        $em = $this->getDoctrine()->getManager();
-        $donnees['liste'] = $em->getRepository('AppBundle:Famille')->findAll();
+        $donnees['liste'] = $this->getDoctrine()->getManager()->getRepository('AppBundle:Famille')->findAll();
         if ($requete->isMethod('POST')){
             $donnees['especeSelectionnee'] = $requete->request->get('espece');
         }
@@ -39,7 +38,11 @@ class DefaultController extends Controller
 
     public function dashboardAction()
     {
-        return $this->render("admin/utilisateurs/dashboard.html.twig");
+        $users = $this->get('fos_user.user_manager')->findUsers();
+
+        return $this->render("admin/utilisateurs/dashboard.html.twig", array(
+            'users' => $users
+        ));
     }
 
     public function qsnAction()

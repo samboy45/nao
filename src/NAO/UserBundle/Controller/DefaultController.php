@@ -15,8 +15,7 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        $userManager = $this->get('fos_user.user_manager');
-        $users = $userManager->findUsers();
+        $users = $this->get('fos_user.user_manager')->findUsers();
 
         return $this->render(':admin/utilisateurs:index.html.twig', array('users' => $users));
     }
@@ -24,11 +23,7 @@ class DefaultController extends Controller
 
     public function utilisateurAction() {
         $user= $this->getUser();
-        $userObservations = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Observation')
-            ->findBy(array('user' => $user), array('id' => 'desc'));
+        $userObservations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $user), array('id' => 'desc'));
         $userObservationsValidate = [];
         $userObservationsWaiting = [];
         foreach ($userObservations as $userObservation){
@@ -49,25 +44,19 @@ class DefaultController extends Controller
             'userObservationsWaiting' => $userObservationsWaiting,
             'countUserObservations' => $countUserObservations,
             'countUserObservationsValidate' => $countUserObservationsValidate,
-            'countUserObservationsWaiting' => $countUserObservationsWaiting));
+            'countUserObservationsWaiting' => $countUserObservationsWaiting
+        ));
     }
 
 
     public function rechercheAction(Request $request)
     {
-        $form = $this
-            ->createFormBuilder(null)
-            ->add('recherche', TextType::class, array('attr' => array('placeholder' => 'Recherche')))
-            ->getForm();
-
+        $form = $this->createFormBuilder(null)->add('recherche', TextType::class, array('attr' => array('placeholder' => 'Recherche')))->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() AND $form->isValid()) {
             $recherche = $form->getData() ;
-            $users = $this
-                ->getDoctrine()
-                ->getRepository('UserBundle:User')
-                ->filtrerUtilisateurs($recherche['recherche']);
+            $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerUtilisateurs($recherche['recherche']);
 
             return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
         }
@@ -85,17 +74,12 @@ class DefaultController extends Controller
                     'Naturaliste' => 'ROLE_NATURALISTE',
                     'Administrateur' => 'ROLE_ADMIN'
                 )
-            ))
-            ->getForm();
-
+            ))->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() AND $form->isValid()){
             $role = $form->getData();
-            $users = $this
-                ->getDoctrine()
-                ->getRepository('UserBundle:User')
-                ->filtrerParRole($role['roles']);
+            $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerParRole($role['roles']);
 
             return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
         }
