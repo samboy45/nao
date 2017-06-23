@@ -4,7 +4,6 @@ namespace NAO\UserBundle\Controller;
 
 use NAO\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 

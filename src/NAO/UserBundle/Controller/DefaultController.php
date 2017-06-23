@@ -15,13 +15,14 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        return $this->render(':admin/utilisateurs:index.html.twig');
+        $userManager = $this->get('fos_user.user_manager');
+        $users = $userManager->findUsers();
+
+        return $this->render(':admin/utilisateurs:index.html.twig', array('users' => $users));
     }
 
 
     public function utilisateurAction() {
-        $userManager = $this->get('fos_user.user_manager');
-        $users = $userManager->findUsers();
         $user= $this->getUser();
         $userObservations = $this
             ->getDoctrine()
@@ -43,7 +44,6 @@ class DefaultController extends Controller
         $countUserObservationsWaiting = count($userObservationsWaiting);
 
         return $this->render("utilisateur/moncompte.html.twig", array(
-            'users' => $users,
             'userObservations' => $userObservations,
             'userObservationsValidate' => $userObservationsValidate,
             'userObservationsWaiting' => $userObservationsWaiting,
