@@ -1,7 +1,7 @@
 {% for user in users %}
     <div class="row centrer-element">
         <div class="col-xs-3">
-            <img src="http://lorempixel.com/300/300/people/" alt="people" class="img-circle img-responsive center-block">
+            <img src="{{ asset('profil/'~user.imageName) }}" alt="Pas de photo de profil" class="img-circle img-responsive center-block">
         </div>
         <div class="col-xs-9 pin-glacial">
             {{ user.lastname }} {{ user.firstname }} ( {{ user.username }} )
