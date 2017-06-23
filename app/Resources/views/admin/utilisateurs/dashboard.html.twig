@@ -29,13 +29,33 @@
                     <br>
                 </div>
                 <div class="row">
-
+                    <div class="col-xs-12" id="admin-index">
+                        {% for user in users %}
+                            <div class="row centrer-element">
+                                <div class="col-xs-3">
+                                    <img src="http://lorempixel.com/300/300/people/" alt="people" class="img-circle img-responsive center-block">
+                                </div>
+                                <div class="col-xs-9 pin-glacial">
+                                    {{ user.lastname }} {{ user.firstname }} ( {{ user.username }} )
+                                    <br><br>
+                                    {{ user.email }}
+                                    <a href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}"><i class="fa fa-edit pin-glacial" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-xs-12 bg-herbe-tropicale blanc" id="div-ajouter">
+                        <button class="btn btn-block btn-transparent text-uppercase blanc" id="ajouter">
+                            <i class="fa fa-plus fa-lg blanc" aria-hidden="true"></i>
+                            ajouter un utilisateur
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-8 col-md-9" id="creer-user">
                 <div class="row">
                     <div class="col-xs-12">
-                        {#render(controller('UserBundle:User:show')) }}#}
+                        {{ render(controller('UserBundle:User:new')) }}
                     </div>
                 </div>
             </div>
