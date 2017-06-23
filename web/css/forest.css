@@ -1,0 +1,13 @@
+@charset "utf-8";
+/**
+ * web/css/forest.css
+ * Créé par firekey le 19/06/2017.
+ */
+
+/* ========================= BALISES ========================= */
+
+body {
+    background: url("../imgs/forest.jpg") no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}

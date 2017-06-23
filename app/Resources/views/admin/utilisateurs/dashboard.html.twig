@@ -1,10 +1,50 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+{% endblock %}
+
 {% block body %}
-    <div class="row" id="div-dashboard">
-        <div>
-            {# #} render(controller('FOSUserBundle:Profile:show')) }}
+    <div class="rad margin-30" id="div-dashboard">
+        <div class="row bg-aloe-vera pin-glacial">
+            <div class="col-xs-12 col-sm-4 col-md-3 bg-herbe-tropicale" id="show">
+                <div class="row bg-herbe-tropicale" id="fos-profil-show">
+                    {{ render(controller('FOSUserBundle:Profile:show')) }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9" id="liste-users">
+                <div class="row">
+                    <br>
+                    <div class="col-xs-12">
+                        {{ render(controller('UserBundle:Default:recherche')) }}
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <br>
+                    <div class="col-xs-12">
+                        {{ render(controller('UserBundle:Default:rechercheRole')) }}
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9" id="creer-user">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {#render(controller('UserBundle:User:show')) }}#}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
+{% endblock %}

@@ -1,26 +1,32 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Observation edit</h1>
-
-    {{ form_start(validate_form) }}
-    {{ form_widget(validate_form) }}
-    <input type="submit" value="Valider" />
-    {{ form_end(validate_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('observation_index') }}">Back to the list</a>
-        </li>
-        <li>
+    <div class="container">
+        <div class="row rad  margin-30 padding-30 bg-herbe-tropicale pin-glacial">
+            <div class="col-xs-12 text-center">
+                <h1>Modifier l'observation</h1>
+            </div>
+            {{ form_start(validate_form) }}
+            {{ form_widget(validate_form) }}
+            <br>
+            <input type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc" value="Valider">
+            {{ form_end(validate_form) }}
+            <br>
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <input type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc" value="Supprimer">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/validate.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
 {% endblock %}

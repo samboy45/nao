@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/swans.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
 {% block body %}
-<div class="row bg-blanc">
+<div class="row bg-transparent">
     <div class="col-xs-12 text-center" id="home-1">
         <div class="row">
             <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
@@ -15,27 +21,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-3 jumelles">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 jumelles">
                 <a href="{{ path('recherche') }}">
-                    <img src="{{ asset('imgs/bouton-xs-1.png') }}" class="img-responsive hidden-md hidden-lg">
+                    <img src="{{ asset('imgs/bouton-xs-1.png') }}" class="img-responsive visible-xs">
                 </a>
                 <a href="{{ path('observation_new') }}">
-                    <img src="{{ asset('imgs/bouton-xs-2.png') }}" class="img-responsive hidden-md hidden-lg">
+                    <img src="{{ asset('imgs/bouton-xs-2.png') }}" class="img-responsive visible-xs">
                 </a>
                 <a href="{{ path('recherche') }}">
-                    <img src="{{ asset('imgs/bouton-md-1.png') }}" class="img-responsive hidden-xs hidden-sm">
+                    <img src="{{ asset('imgs/bouton-md-1.png') }}" class="img-responsive hidden-xs">
                 </a>
                 <a href="{{ path('observation_new') }}">
-                    <img src="{{ asset('imgs/bouton-md-2.png') }}" class="img-responsive hidden-xs hidden-sm">
+                    <img src="{{ asset('imgs/bouton-md-2.png') }}" class="img-responsive hidden-xs">
                 </a>
             </div>
         </div>
-        <div class="hidden-xs"><br><div class="hidden-sm"><br></div></div>
+        <br>
     </div>
 </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/index.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
 {% endblock %}

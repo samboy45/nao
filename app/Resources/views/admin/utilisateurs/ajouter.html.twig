@@ -1,12 +1,10 @@
-{% block body %}
-    <h1>Créer un utilisateur</h1>
-    <div class="col-xs-12">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button type="submit" class="btn btn-pin-glacial blanc">Valider</button>
-        {{ form_end(form) }}
-    </div>
-    <div class="col-xs-12">
-        <a class="btn btn-herbe-tropicale blanc" href="{{ path('admin_utilisateurs_index') }}">Retour à la liste</a>
-    </div>
-{% endblock %}
+<div class="col-xs-12 text-center text-uppercase pin-glacial">
+    <h2>créer un utilisateur</h2>
+</div>
+<div class="col-xs-12">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-pin-glacial blanc" id="valider-creation-utilisateur">Valider</button>
+    {{ form_end(form) }}
+    <br>
+</div>

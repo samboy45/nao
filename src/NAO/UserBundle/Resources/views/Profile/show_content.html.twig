@@ -3,9 +3,9 @@
     <div class="row">
         <br>
         {% if is_granted('ROLE_ADMIN') %}
-            <button class="btn btn-aloe-vera text-uppercase pin-glacial pull-left" id="btn-admin">administration</button>
+        <a href="{{ path('nao_dashboard') }}" class="btn btn-xs btn-aloe-vera text-uppercase pin-glacial pull-left">administration</a>
         {% endif %}
-        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-transparent text-uppercase pin-glacial pull-right">déconnexion</a>
+        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-xs btn-transparent text-uppercase pin-glacial pull-right">déconnexion</a>
     </div>
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2" id="image">

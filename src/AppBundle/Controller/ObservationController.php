@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -72,8 +73,7 @@ class ObservationController extends Controller
         $validateForm = $this->createForm('AppBundle\Form\ValidateType', $observation);
         $validateForm->handleRequest($request);
 
-        if ($validateForm->isSubmitted() && $validateForm->isValid()){
-
+        if ($validateForm->isSubmitted() AND $validateForm->isValid()){
             $observation->setActive(true);
             $this->getDoctrine()->getManager()->flush();
 
@@ -93,7 +93,7 @@ class ObservationController extends Controller
         $form = $this->createDeleteForm($observation);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() AND $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($observation);
             $em->flush();
@@ -133,8 +133,7 @@ class ObservationController extends Controller
     }
 
     public function  ajoutObservationAction(){
-        $em = $this->getDoctrine()->getManager();
-        $countWaitingObservations = count($em->getRepository('AppBundle:Observation')->findByActive(0));
+        $countWaitingObservations = count($this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findByActive(0));
         return $this->render('observation/pageAjoutObservation.html.twig', array(
             'observations' => $countWaitingObservations
         ));

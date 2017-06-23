@@ -1,68 +1,71 @@
 {% block nav %}
-    <div class="row bg-blanc">
-        <div class="col-xs-12">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bouton-nav" aria-expanded="false">
-                        <span class="sr-only">Bouton de navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ url('homepage') }}">
-                        <img src="{{ asset('imgs/NAO-logo-couleur.png') }}" class="img-responsive" alt="Nos Amis les Oiseaux">
-                    </a>
-                </div><!-- <div class="navbar-header"> -->
-                <div class="collapse navbar-collapse" id="bouton-nav">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="{{ url('observation_new') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">observation</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('qsn') }}" class="text-uppercase herbe-tropicale espace-nav">qui sommes-nous ?</a>
-                        </li>
-                    </ul><!-- <ul class="nav navbar-nav navbar-left"> -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="{{ url('nao_contact_homepage') }}">
-                                <span class="fa-stack fa-2x">
-                                    <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
-                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-2x">
-                                    <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-2x">
-                                    <i class="fa fa-circle fa-stack-2x herbe-tropicale"></i>
-                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <header>
+        <div class="row">
+            <div class="col-xs-12">
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bouton-nav" aria-expanded="false">
+                            <span class="sr-only">Bouton de navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ url('homepage') }}">
+                            <img src="{{ asset('imgs/NAO-logo-couleur.png') }}" class="img-responsive" alt="Nos Amis les Oiseaux">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bouton-nav">
+                        <ul class="nav navbar-nav navbar-left">
                             <li>
-                                <a href="{{ url('user_mon_compte_show') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">
-                                    mon compte
+                                {% if is_granted('ROLE_NATURALISTE') %}
+                                    <a href="{{ url('page_ajout') }}" class="btn text-uppercase espace-nav btn-nav" id="btn-nav-obs">
+                                        observation
+                                    </a>
+                                {% else %}
+                                    <a href="{{ url('observation_new') }}" class="btn text-uppercase espace-nav btn-nav" id="btn-nav-obs">
+                                        observation
+                                    </a>
+                                {% endif %}
+                            </li>
+                            <li>
+                                <a href="{{ path('qsn') }}" class="btn text-uppercase espace-nav btn-nav" id="btn-nav-qsn">
+                                    qui sommes-nous ?
                                 </a>
                             </li>
-                        {% else %}
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="{{ url('fos_user_security_login') }}" class="btn btn-herbe-tropicale blanc text-uppercase espace-nav">
-                                    connexion
+                                <a href="{{ url('nao_contact_homepage') }}" class="btn espace-nav btn-nav" id="btn-nav-cnt">
+                                    <i class="fa fa-envelope fa-lg fa-fw"></i>
                                 </a>
                             </li>
-                        {% endif %}
-                    </ul><!-- <ul class="nav navbar-nav navbar-right"> -->
-                </div><!-- <div class="collapse navbar-collapse" id="bouton-nav"> -->
-            </nav>
-        </div><!-- <div class="col-xs-12"> -->
-    </div><!-- <div class="row bg-blanc"> -->
+                            <li>
+                                <a href="https://fr-fr.facebook.com/" class="btn espace-nav btn-nav" target="_blank" id="btn-nav-fb">
+                                    <i class="fa fa-facebook-square fa-lg fa-fw"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/?hl=fr" class="btn espace-nav btn-nav" target="_blank" id="btn-nav-ig">
+                                    <i class="fa fa-instagram fa-lg fa-fw"></i>
+                                </a>
+                            </li>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <li>
+                                    <a href="{{ url('user_mon_compte_show') }}" class="btn text-uppercase espace-nav btn-nav" id="btn-nav-cpt">
+                                        mon compte
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{{ url('fos_user_security_login') }}" class="btn text-uppercase espace-nav btn-nav" id="btn-nav-cnx">
+                                        connexion
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
 {% endblock %}

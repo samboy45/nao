@@ -30,9 +30,10 @@ $(function(){
 
     /* ========================= ACTIONS POST-LOAD ========================= */
 
+    $('#wrapper').css({paddingTop: '0'});
     redimensionner($('.container-fluid, #div-carte, #carte-rechercher'));
 
-    carte = L.map('carte-rechercher').setView([46.785575, 2.355276], 6);
+    carte = L.map('carte-rechercher').setView([46.785575, 2.355276], 5);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/julobrsd/cj2x40f2z001p2rod8xkal2c9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsb2Jyc2QiLCJhIjoiY2oyeDNwMW5nMDB4ODM4cHV4ZWkwMjk0YSJ9.TworUnb_y8Jf5blBUVuRxQ',
         {attribution: '<span class="pin-glacial gras">Nos Amis les Oiseaux | Ex-Nihilo</span>', maxZoom: 18}
@@ -54,7 +55,7 @@ $(function(){
             },
             function(erreur){
                 switch(erreur.code){
-                    case erreur.PERMISSION_DENIED: alert('La configuration de votre navigateur n\'autorise pas la géolocalisation.'); break;
+                    case erreur.PERMISSION_DENIED: alert('La configuration de votre navigateur ou de votre appareil n\'autorise pas la géolocalisation.'); break;
                     case erreur.POSITION_UNAVAILABLE: alert('Une erreur est survenue lors de la géolocalisation. Votre position est indéterminée'); break;
                     case erreur.TIMEOUT: alert('Le délai de réponse de la géolocalisation est dépassé. Votre position est indéterminée'); break;
                 }
@@ -112,7 +113,7 @@ $(function(){
                 for (i = 0; i < marqueursTab.length; i++){
                     carte.removeLayer(marqueursTab[i]);
                 }
-                if (reponses.length < 3){alert('Aucun résultat');}
+                if (reponses.length < 3){alert('Aucun résultat !');}
                 $.each(JSON.parse(reponses), function(index, observation){
                     var jour = observation.date.date.substr(8, 2);
                     var mois = observation.date.date.substr(5, 2);

@@ -8,7 +8,6 @@ $(function(){
     /* ========================= VARIABLES ========================= */
 
     var carte;
-
     var marqueurs = [0];
 
     var iconPosition = L.icon({
@@ -24,31 +23,30 @@ $(function(){
     });
 
 
-    /* ========================= ACTIONS ========================= */
+    /* ========================= ACTIONS POST-LOAD========================= */
+
+    $('.btn-nav').removeClass('active');
+    $('#btn-nav-obs').addClass('active');
 
     retirer($('.control-label'));
 
-    $('#appbundle_observation_imageFile')
-        .before(
-            '<label class="text-center pin-glacial">' +
-                '<i class="fa fa-camera fa-5x" style="cursor: pointer"></i>' +
-                '<br>'+
-                'Ajouter une photo'+
-            '</label>'
-        )
-        .css('display', 'none');
+    $('#appbundle_observation_imageFile').before(
+        '<div class="text-center">' +
+            '<i class="fa fa-camera fa-5x pin-glacial" aria-hidden="true"></i>' +
+        '</div>'
+    );
 
     redimensionnerCarte();
-
     arrondirAngles();
-
     redimensionnerBoutonsGPS();
+    organiserSelects();
+    redimensionner($('html'));
 
     carte = L.map('carte-new-observation').setView([46.785575, 2.355276], 5);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/julobrsd/cj2x40f2z001p2rod8xkal2c9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsb2Jyc2QiLCJhIjoiY2oyeDNwMW5nMDB4ODM4cHV4ZWkwMjk0YSJ9.TworUnb_y8Jf5blBUVuRxQ',
         {
-            attribution: '<a href="#">Nos Amis les Oiseaux</a> | <a href="#">Ex-Nihilo.com</a> _',
+            attribution: '<a href="#">Nos Amis les Oiseaux</a> | <a href="#">Ex-Nihilo.com</a>',
             maxZoom: 18
         }
     ).addTo(carte);
@@ -56,32 +54,37 @@ $(function(){
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
 
-    window.addEventListener('resize', function(){
-        arrondirAngles();
-        redimensionnerCarte();
-        redimensionnerBoutonsGPS();
-    });
-
-    $(".fa-camera").click(function(){
-        $("#appbundle_observation_image").click();
+    $(window).on({
+        resize: function(){
+            redimensionnerCarte();
+            arrondirAngles();
+            redimensionnerBoutonsGPS();
+            redimensionner($('html'));
+        }
     });
 
     $('#indiquer').click(function(){
         for (i = 0; i < marqueurs.length; i++){
             carte.removeLayer(marqueurs[i]);
         }
-        var marqueur = L.marker([46.785575, 2.355276], {icon: iconPin});
+        var marqueur = L.marker([46.785575, 2.355276], {icon: iconPin}).addTo(carte);
         marqueurs.push(marqueur);
-        marqueur.addTo(carte);
+
+        var infoBulle = L.popup();
+        infoBulle
+            .setLatLng([47.7, 2.355276])
+            .setContent('<div class="text-center pin-glacial">Cliquez sur<br>l\'endroit de<br>l\'observation.</div>')
+            .openOn(carte);
     });
 
     carte.on('click', function(e){
         for (i = 0; i < marqueurs.length; i++){
             carte.removeLayer(marqueurs[i]);
         }
-        var marqueur = L.marker([e.latlng.lat, e.latlng.lng], {icon: iconPin});
+
+        var marqueur = L.marker([e.latlng.lat, e.latlng.lng], {icon: iconPin}).addTo(carte);
         marqueurs.push(marqueur);
-        marqueur.addTo(carte);
+
         $('#appbundle_observation_latitude').attr('value', e.latlng.lat);
         $('#appbundle_observation_longitude').attr('value', e.latlng.lng);
     });
@@ -93,15 +96,25 @@ $(function(){
                     for (i = 0; i < marqueurs.length; i++){
                         carte.removeLayer(marqueurs[i]);
                     }
+
                     $('#appbundle_observation_latitude').attr('value', position.coords.latitude);
                     $('#appbundle_observation_longitude').attr('value', position.coords.longitude);
-                    var marqueur = L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition});
+
+                    var marqueur = L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition})
+                        .bindPopup('<div class="text-center pin-glacial">Vous êtes<br>localisé(e)<br>ici.</div>')
+                        .openPopup()
+                        .addTo(carte);
                     marqueurs.push(marqueur);
-                    marqueur.addTo(carte);
+
+                    var infoBulle = L.popup();
+                    infoBulle
+                        .setLatLng([position.coords.latitude, position.coords.longitude])
+                        .setContent('<div class="text-center pin-glacial">Vous êtes<br>localisé(e)<br>ici.</div>')
+                        .openOn(carte);
                 },
                 function(erreur){
                     switch(erreur.code){
-                        case erreur.PERMISSION_DENIED: alert('Suite à votre refus la géolocalisation n\'a pas été effectuée'); break;
+                        case erreur.PERMISSION_DENIED: alert('La configuration de votre navigateur ou de votre appareil n\'autorise pas votre localisation'); break;
                         case erreur.POSITION_UNAVAILABLE: alert('Une erreur est survenue durant la géolocalisation. Votre position reste indéterminée'); break;
                         case erreur.TIMEOUT: alert('Le délai de réponse de la géolocalisation est dépassé, réitérez l\'opération'); break;
                     }
@@ -121,30 +134,46 @@ $(function(){
         })
     }
 
+    function redimensionner(elmts){
+        $(elmts).each(function(){
+            $(this).css('min-height', $('.container-fluid').height()+$('.navbar-fixed-top').height() + 30);
+        });
+    }
+
     function redimensionnerCarte(){
         $('#carte-new-observation').height($('#form-observation-2').height() + 30);
     }
 
     function arrondirAngles() {
-        var largeur = $('html').width();
-        if (largeur < 975){
-            $('#form-observation-2').css({padding: '15px', borderRadius: '30px 30px 0 0'});
+        if ($(document).width() < 975){
+            $('#form-observation-2').css({borderRadius: '30px 30px 0 0'});
             $('#carte-new-observation').css({borderRadius: '0 0 30px 30px'});
         } else {
+            $('#observation-2').css({paddingTop: '15px', paddingBottom: '15px'});
             $('#form-observation-2').css({padding: '15px 0 15px 15px', borderRadius: '30px 0 0 30px'});
             $('#carte-new-observation').css({borderRadius: '0 30px 30px 0'});
         }
+        $('#container-observation-2').css({borderRadius: '30px'});
     }
 
     function redimensionnerBoutonsGPS(){
-        var largeur = $('html').width();
-        if (largeur < 975){
-            $('#indiquer, #geolocaliser')
-                .addClass('btn-block')
+        if ($('html').width() < 975){
+            $('#indiquer, #geolocaliser').addClass('btn-block');
         } else {
-            $('#indiquer, #geolocaliser')
-                .removeClass('btn-block');
+            $('#indiquer, #geolocaliser').removeClass('btn-block');
         }
     }
 
+    function organiserSelects(){
+        if ($('#appbundle_observation_ordre').val() == ''){
+            $('#appbundle_observation_famille, #appbundle_observation_espece').attr('disabled', 'disabled');
+        } else {
+            if ($('#appbundle_observation_famille').val() == ''){
+                $('#appbundle_observation_famille').removeAttr('disabled');
+                $('#appbundle_observation_espece').attr('disabled', 'disabled');
+            } else {
+                $('#appbundle_observation_famille, #appbundle_observation_espece').removeAttr('disabled');
+            }
+        }
+    }
 });

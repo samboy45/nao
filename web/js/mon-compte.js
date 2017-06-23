@@ -10,13 +10,9 @@ $(function(){
 
     /* ========================= ACTIONS POST-LOAD ========================= */
 
-    retirer($('#show meta, #show link, #show title, #show header, #show footer, #show script'));
-    retirer($('#my-observations meta, #my-observations link, #my-observations title, #my-observations header, #my-observations footer, #my-observations script'));
-
+    $('.btn-nav').removeClass('active');
+    $('#btn-nav-cpt').addClass('active');
     $(':input').addClass('pin-glacial');
-    $('#form_recherche').parent().css({marginTop: '20px'});
-
-    $('#admin').hide();
 
     organiserContenu();
 
@@ -34,8 +30,10 @@ $(function(){
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
 
-    $(window).resize(function(){
-        organiserContenu();
+    $(document).on({
+        resize: function(){
+            organiserContenu();
+        }
     });
 
     $('#nombre').on('click', function(){
@@ -44,7 +42,7 @@ $(function(){
         cacherDiv($('#tabValidees, #tabAttente'));
         setTimeout(function(){
             montrerDiv($('#tabNombre'));
-        }, 300);
+        }, 500);
 
     });
 
@@ -54,7 +52,7 @@ $(function(){
         cacherDiv($('#tabNombre, #tabAttente'));
         setTimeout(function(){
             montrerDiv($('#tabValidees'));
-        }, 300);
+        }, 500);
     });
 
     $('#attente').on('click', function(){
@@ -63,54 +61,19 @@ $(function(){
         cacherDiv($('#tabValidees, #tabNombre'));
         setTimeout(function(){
             montrerDiv($('#tabAttente'));
-        }, 300);
-    });
-
-    $('#btn-admin').on('click', function(){
-        deselectionnerTabs();
-        desactiverElmts($('#btn-admin, #nombre, #validees, #attente'));
-        cacherDiv($('#my-observations'));
-        setTimeout(function(){
-            montrerDiv($('#admin'));
-        }, 300);
-    });
-
-    $('#croix-admin').on('click', function(){
-        activerElmts($('#btn-admin, #nombre, #validees, #attente'));
-        selectionnerTab($('#nombre'));
-        $('#tabValidees, #tabAttente').hide();
-        $('#tabNombre').show();
-        cacherDiv($('#admin'));
-        setTimeout(function(){
-            montrerDiv($('#my-observations'));
-        }, 300);
-    });
-
-    $('#relais-form-recherche').on('click', function(){
-        $('#valider-form-recherche').click();
-    });
-
-    $('#relais-form-roles').on('click', function(){
-        $('#valider-form-roles').click();
+        }, 500);
     });
 
 
     /* ========================= FONCTIONS ========================= */
 
-    function retirer(elmtTab){
-        elmtTab.each(function(){
-            $(this).remove();
-        });
-    }
-
     function organiserContenu(){
-        if ($(window).width() >= 751){
+        if ($(document).width() >= 951){
             $('#image').removeClass('col-xs-6 col-xs-offset-3').addClass('col-xs-8 col-xs-offset-2');
         } else {
             $('#image').removeClass('col-xs-8 col-xs-offset-2').addClass('col-xs-6 col-xs-offset-3');
         }
         $('#my-observations').height($('#show').height());
-        $('#admin, #admin > div').height($('#show').height());
     }
 
     function selectionnerTab(elmt){
@@ -141,11 +104,12 @@ $(function(){
 
     function cacherDiv(elmts){
         $(elmts).each(function(){
-            $(this).hide('slide', {direction: 'left'}, 200);
+            $(this).hide('slide', {direction: 'left'}, 400);
         });
     }
 
     function montrerDiv(elmt){
-        $(elmt).show('slide', {direction: 'left'}, 200);
+        $(elmt).show('slide', {direction: 'left'}, 400);
     }
+
 });
