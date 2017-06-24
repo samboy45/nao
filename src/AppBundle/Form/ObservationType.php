@@ -25,7 +25,8 @@ class ObservationType extends AbstractType
     {
         $builder
             ->add('imageFile', FileType::class, array(
-                'required' => false
+                'required' => false,
+                'attr' => ['class' => 'form-control']
             ))
             ->add('date', DateType::class)
             ->add('ordre', EntityType::class, array(
@@ -69,8 +70,6 @@ class ObservationType extends AbstractType
         );
     }
 
-
-
     private function  addFamilleField(FormInterface $form, Ordre $ordre =null){
         $builder = $form->getConfig()->getFormFactory()->createNamedBuilder(
             'famille',
@@ -78,7 +77,7 @@ class ObservationType extends AbstractType
             null,
             [
                 'class' => 'AppBundle\Entity\Famille',
-                'placeholder'     => $ordre ? 'Sélectionnez la famille' : 'Sélectionnez l\'ordre',
+                'placeholder'     => $ordre ? 'Sélectionnez l\'espèce' : '',
                 'mapped'          => false,
                 'required'        => false,
                 'auto_initialize' => false,
@@ -95,12 +94,11 @@ class ObservationType extends AbstractType
         $form->add($builder->getForm());
     }
 
-
     private function addEspeceField(FormInterface $form, Famille $famille = null)
     {
         $form->add('espece', EntityType::class, [
             'class'       => 'AppBundle\Entity\Espece',
-            'placeholder' => $famille ? 'Sélectionnez l\'oiseau' : 'Sélectionnez la famille',
+            'placeholder' => $famille ? 'Sélectionnez l\'oiseau' : '',
             'choices'     => $famille ? $famille->getEspeces() : []
         ]);
     }

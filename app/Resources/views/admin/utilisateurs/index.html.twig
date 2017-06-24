@@ -1,2 +1,16 @@
-
+{% for user in users %}
+    <br>
+    <div class="row centrer-elements">
+        <img src="{{ asset('profil/'~user.imageName) }}" alt="Pas de photo de profil" class="img-circle img-responsive diametre-max">
+        <div class="pin-glacial">
+            {{ user.lastname }} {{ user.firstname }} ( {{ user.username }} )
+            <br><br>
+            {{ user.email }}
+            <a href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}">
+                <i class="fa fa-edit pin-glacial" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <br>
+{% endfor %}
 

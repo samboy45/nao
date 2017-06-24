@@ -1,12 +1,5 @@
 {{ form_start(form, {'attr': {'class': 'form-horizontal', 'action': path('admin_utilisateurs_find_role') }}) }}
-<div class="input-group">
-    {{ form_errors(form.roles) }}
-    {{ form_widget(form.roles) }}
-    <div class="input-group-addon">
-        <a href="#" id="relais-form-roles" title="Valider">
-            <i class="fa fa-check pin-glacial" aria-hidden="true"></i>
-        </a>
-    </div>
-</div>
+{{ form_errors(form.roles) }}
+{{ form_widget(form.roles, {'attr': {'class': 'pin-glacial'}}) }}
 <button type="submit" class="hidden" id="valider-form-roles"></button>
 {{ form_end(form) }}

@@ -21,6 +21,7 @@ class EditProfileType extends AbstractType
 
             ->remove('current_password')
             ->add('imageFile', FileType::class, array(
+                'label' => 'Photo de profil',
                 'required' => false
             ))
             ->add('lastname', TextType::class, array(

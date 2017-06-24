@@ -1,10 +1,59 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
 {% block body %}
-    <div class="row" id="div-dashboard">
-        <div>
-            {# #} render(controller('FOSUserBundle:Profile:show')) }}
+    <div class="margin-30" id="div-dashboard">
+        <div class="row bg-herbe-tropicale pin-glacial">
+            <div class="col-xs-12 col-sm-4 col-md-3 bg-herbe-tropicale" id="show">
+                <div class="row bg-herbe-tropicale" id="fos-profil-show">
+                    {{ render(controller('FOSUserBundle:Profile:show')) }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 bg-aloe-vera" id="liste-users">
+                <div class="row">
+                    <br>
+                    <div class="col-xs-12">
+                        {{ render(controller('UserBundle:Default:recherche')) }}
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <br>
+                    <div class="col-xs-12">
+                        {{ render(controller('UserBundle:Default:rechercheRole')) }}
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="admin-index">
+                        {{ include(':admin/utilisateurs:index.html.twig') }}
+                    </div>
+                </div>
+                <div class="col-xs-12 bg-herbe-tropicale blanc" id="div-ajouter">
+                    <button class="btn btn-block btn-transparent text-uppercase blanc" id="ajouter">
+                        <i class="fa fa-plus fa-lg blanc" aria-hidden="true"></i>
+                        ajouter un utilisateur
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 bg-aloe-vera" id="creer-user">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ render(controller('UserBundle:User:new')) }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
+{% endblock %}

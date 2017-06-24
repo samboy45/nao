@@ -1,0 +1,13 @@
+@charset "utf-8";
+/**
+ * web/css/navbar-transparente.css
+ * Créé par firekey le 21/06/2017.
+ */
+
+
+/* ========================= CLASSES ========================= */
+
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+}

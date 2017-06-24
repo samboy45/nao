@@ -2,23 +2,19 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
-          integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
-          crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
+    <link rel="stylesheet" href="{{ asset('css/swans.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
 {% endblock %}
 
 {% block body %}
-    <div class="row" id="observation-2">
-        <div class="container">
+    <div class="container" id="observation-2">
+        <br>
+        <div class="row" id="container-observation-2">
             <div class="col-xs-12 col-md-6 bg-aloe-vera" id="form-observation-2">
-                <div class="row text-left">
-                    <a href="{{ path('observation_index') }}">
-                        <i class="fa fa-times fa-lg pin-glacial" aria-hidden="true"></i>
-                    </a>
-                </div>
                 <div class="row text-center">
                     <div class="col-xs-offset-1 col-xs-10">
-                        {{ form_start(form) }}
+                        {{ form_start(form, {'attr': {'class': 'text-center'}}) }}
                         {{ form_widget(form) }}
                         <div class="row" id="boutons-observation-2">
                             <a class="btn btn-pin-glacial text-uppercase blanc" id="indiquer">
@@ -28,23 +24,24 @@
                                 me géolocaliser
                             </a>
                         </div>
-                        <button type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc">soumettre mon observation</button>
+                        <button type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc">
+                            soumettre mon
+                            <br class="visible-xs">
+                            observation
+                        </button>
                         {{ form_end(form) }}
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-md-6 padding-null" id="carte-new-observation"></div>
         </div>
+        <br>
     </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script
-            src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
-            integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
-            crossorigin=""
-    ></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
     <script src="{{ asset('js/observation-2.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}

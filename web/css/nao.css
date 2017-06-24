@@ -23,13 +23,13 @@
 /* ========================= BALISES ========================= */
 
 html {
-    width: 100%;
     height: 100%;
+    width: 100%;
 }
 
 body {
     position: relative;
-    min-height: 100%;
+    height: 100%;
     width: 100%;
     font-family: Biko, sans-serif;
     padding-bottom: 30px;
@@ -70,6 +70,10 @@ footer {
     padding: 0 !important;
 }
 
+.badge {
+    margin-right: 10px;
+}
+
 .centrer-element {
     display: flex;
     justify-content: center;
@@ -77,9 +81,47 @@ footer {
     padding: 15px;
 }
 
+.centrer-elements {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+}
+
+.padding-30 {
+    padding: 30px;
+}
+
+.margin-30 {
+    margin: 30px;
+}
+
+.scroller {
+    overflow: auto;
+}
+
+.diametre-max {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.ui-menu-item:hover {
+    color: rgba(25, 107, 105, 1) !important;
+    background-color: rgba(203, 247, 211, 1) !important;
+    border-radius: 15px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    padding-left: 15px;
+    font-size: larger !important;
+}
+
 /* arrière-plans nao */
 .bg-blanc {
     background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.bg-rouge {
+    background-color: rgba(255, 0, 0, 1) !important;
 }
 
 .bg-pin-glacial {
@@ -98,9 +140,25 @@ footer {
     background-color: transparent !important;
 }
 
+.bg-swans {
+    background: url("../imgs/swans.jpg") no-repeat center ;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.bg-forest {
+    background: url("../imgs/forest.jpg") no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 /* couleurs nao */
 .blanc {
     color: rgba(255, 255, 255, 1) !important;
+}
+
+.rouge {
+    color: rgba(255, 0, 0, 1) !important;
 }
 
 .pin-glacial {
@@ -174,9 +232,12 @@ footer {
     padding-right: 15px;
 }
 
-.navbar-default {
-    background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, 1);
+.collapse.in {
+    background-color: rgba(203, 247, 211, 1) !important;
+}
+
+.navbar-collapse.in {
+    overflow: hidden;
 }
 
 .icon-bar {
@@ -195,6 +256,26 @@ footer {
 .navbar-toggle:focus {
     background-color: rgba(40, 204, 158, 1) !important;
 }
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: rgba(40, 204, 158, 1);
+    color: rgba(255, 255, 255, 1);
+    border-color: rgba(40, 204, 158, 1);
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    background-color: rgba(203, 247, 211, 1);
+    color: rgba(40, 204, 158, 1);
+}
+
+.navbar-default .navbar-nav > li > a.active {
+    background-color: rgba(25, 107, 105, 1) !important;
+    border-color: rgba(25, 107, 105, 1) !important;
+    color: rgba(203, 247, 211, 1) !important;
+}
+
+
 
 /* formulaires */
 .form-control,
@@ -228,6 +309,11 @@ footer {
     align-items: center;
 }
 
+.divs-form-contact {
+    margin-bottom: 0;
+    padding-bottom: 15px;
+}
+
 
 /* cartographie */
 .leaflet-container .leaflet-control-attribution {
@@ -239,137 +325,19 @@ footer {
     color: rgba(25, 107, 105, 1)!important;
 }
 
-/* datepicker jquery-ui (intégration charte graphique NAO) */
-.ui-datepicker {
-    display: none;
-    width: 245px;
-    margin-top: 5px;
-    padding: 12px;
-    border: 1px solid rgba(40, 204, 158, 1);
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 8px rgba(203, 247, 211, .5);
-}
-
-.ui-datepicker a, .ui-datepicker a:hover {
-    text-decoration: none;
-}
-
-.ui-datepicker a:hover, .ui-datepicker td:hover a {
-    -webkit-transition: color 0.1s ease-in-out;
-    -moz-transition: color 0.1s ease-in-out;
-    -o-transition: color 0.1s ease-in-out;
-    transition: color 0.1s ease-in-out;
-    color: rgba(40, 204, 158, 1);
-}
-
-.ui-datepicker .ui-datepicker-header {
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-.ui-datepicker .ui-datepicker-title {
-    font-weight: 700;
-}
-
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
-    width: 30px;
-    height: 20px;
-    margin-top: 2px;
-    cursor: default;
-    font-family: Biko, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-}
-
-.ui-datepicker .ui-datepicker-prev {
-    float: left;
-    text-align: left;
-}
-
-.ui-datepicker .ui-datepicker-next {
-    float: right;
-    text-align: right;
-}
-
-.ui-datepicker .ui-datepicker-prev:before {
-    content: "\e079";
-}
-
-.ui-datepicker .ui-datepicker-next:before {
-    content: "\e080";
-}
-
-.ui-datepicker .ui-icon {
-    display: none;
-}
-
-.ui-datepicker .ui-datepicker-calendar {
-    width: 100%;
-    table-layout: fixed;
-}
-
-.ui-datepicker .ui-datepicker-calendar th, .ui-datepicker .ui-datepicker-calendar td {
-    padding: 5px 0;
-    text-align: center;
-}
-
-.ui-datepicker .ui-datepicker-calendar td {
-    -webkit-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    -moz-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    -o-transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    border-radius: 5px;
-}
-
-.ui-datepicker .ui-datepicker-calendar td:hover {
-    cursor: pointer;
-    background-color: rgba(203, 247, 211, .5);
-}
-
-.ui-datepicker .ui-datepicker-calendar td a {
-    text-decoration: none;
-}
-
-.ui-datepicker .ui-datepicker-current-day {
-    background-color: rgba(255, 255, 255, 1);
-}
-
-.ui-datepicker .ui-datepicker-current-day a {
-    color: rgba(25, 107, 105, 1)
-}
-
-.ui-datepicker .ui-datepicker-calendar .ui-datepicker-unselectable:hover {
-    cursor: default;
-    background-color: rgba(255, 255, 255, 1);
-}
-
 
 /* ========================= IDENTIFIANTS ========================= */
 
+#obs-naturalistes,
 #bouton-nav > ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-#home-1,
-#observation-2,
-#confirmation {
-    background: url("../imgs/Three-Swans.jpg") no-repeat center ;
-}
-
-#observation-2 {
-    min-height: 800px;
-    width: auto;
-}
-
-#login-1,
-#contact,
-#div-mon-compte {
-    background: url("../imgs/16911.jpg") no-repeat bottom;
+#div-carte {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #carte-rechercher {
@@ -377,18 +345,26 @@ footer {
     height: 100%;
 }
 
-#div-login-form,
-#contact-form,
-#observation-2 .container {
-    padding-top: 50px;
-}
-
 #contact-form form {
     padding-top:30px;
+    border-radius: 30px 30px 0 0;
+}
+
+#token-contact {
+    display: none;
+}
+
+#submit-form-contact {
+    border-radius: 0 0 30px 30px;
 }
 
 #panel-login {
     border-radius: 30px;
+}
+
+#appbundle_observation_imageFile {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 #boutons-observation-2,
@@ -418,12 +394,13 @@ footer {
 
 #div-nombre,
 #div-validees {
-    borderB-bottom: 1px solid rgba(203, 247, 211, 1);
+    border-bottom: 1px solid rgba(203, 247, 211, 1);
 }
 
 #div-ajouter {
     position: absolute;
     bottom: 0;
+    height: 50px;
 }
 
 #tabNombre,
@@ -437,8 +414,8 @@ footer {
 }
 
 #tabNombre a,
-#tabValidees a,
-#tabAttente a {
+#tabValidees div,
+#tabAttente div {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -447,23 +424,22 @@ footer {
     overflow: auto;
 }
 
-#admin {
-    padding-left: 0;
-}
-
-#admin-div-1 {
+#my-observations {
+    overflow: auto;
     padding-left: 0;
     padding-right: 0;
 }
 
-#admin-div-2 {
-    padding-left: 0;
+#liste-users,
+#creer-user {
     overflow: auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-#admin-index,
-#my-observations {
-    overflow: auto;
+#admin-index {
+    padding: 15px 0 50px 0;
+    overflow-y: auto;
 }
 
 #show {
@@ -473,14 +449,8 @@ footer {
 
 #nombre,
 #validees,
-#attente,
-#ajouter {
+#attente {
     height: 50px;
-}
-
-#ajouter i,
-.badge {
-    margin-right: 10px;
 }
 
 #fos-profil-show main > div {
@@ -488,17 +458,44 @@ footer {
     min-height: 0;
 }
 
+#conteneur-badge {
+    position: relative;
+}
+
+#badge-obs {
+    padding: 10px;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+#ui-id-1 {
+    position: absolute;
+    z-index: 1500;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    font-size: large;
+    font-style: italic;
+    background-color: rgba(40, 204, 158, 1) !important;
+    padding: 30px;
+    border-radius: 30px;
+}
+
 
 /* ========================= MEDIA QUERIES ========================= */
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 767px) {
     body {
         padding-top: 50px;
     }
 
-    .nav > li > a {
-        padding-left: 0;
+    .navbar {
         padding-right: 0;
+    }
+
+    .nav > li > a {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .navbar-brand {
@@ -516,14 +513,27 @@ footer {
     }
 
     .espace-nav {
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: 2px;
+        margin-right: 2px;
     }
 
     #carte-rechercher {
-        height: 730px;
+        height: 300px;
     }
 
+    #carte-new-observation {
+        margin-bottom: 15px;
+    }
+
+    #observation-2 {
+        margin: 15px;
+    }
+
+    #form-observation-2 {
+        padding-top: 15px;
+    }
+
+    #obs-naturalistes,
     #boutons-observation-2 {
         flex-direction: column;
     }
@@ -531,21 +541,16 @@ footer {
     #div-mon-compte {
         padding: 0;
     }
-
-    #admin > div:first-child {
-        border-right: none;
-        border-bottom: 1px solid rgba(25, 107, 105, 1);
-    }
 }
 
-@media all and (min-width: 751px) {
+@media all and (min-width: 768px) {
     body {
         padding-top: 80px;
     }
 
     .nav > li > a {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .navbar-brand {
@@ -563,32 +568,22 @@ footer {
     }
 
     .espace-nav {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
-    #carte-rechercher {
-        height: 700px;
+    .jumelles {
+        flex-direction: row;
     }
 
     #div-mon-compte {
         padding: 50px;
-    }
-
-    #admin > div:first-child {
-        border-right: 1px solid rgba(25, 107, 105, 1);
-        border-bottom: none;
     }
 }
 
 @media all and (min-width: 992px) {
     body {
         padding-top: 105px;
-    }
-
-    .nav > li > a {
-        padding-left: 10px;
-        padding-right: 10px;
     }
 
     .navbar-brand,
@@ -605,18 +600,6 @@ footer {
         margin-left: 15px;
         margin-right: 15px;
     }
-
-    .jumelles {
-         flex-direction: row;
-     }
-
-    #carte-rechercher {
-        height: 675px;
-    }
-}
-
-@media all and (min-width: 992px) {
-
 }
 
 @media all and (min-width: 1200px) {
@@ -637,9 +620,5 @@ footer {
     .navbar-brand > img {
         height: 100px;
         width: auto;
-    }
-
-    #carte-rechercher {
-        height: 650px;
     }
 }

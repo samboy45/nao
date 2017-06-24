@@ -3,7 +3,7 @@
         <div class="col-xs-12 alert alert-danger center">Aucune observation</div>
     {% endif %}
     {% for observation in userObservations %}
-        <a href="{{ path('observation_validate', { 'id': observation.id }) }}" class="bg-blanc pin-glacial">
+        <a href="{% if is_granted('ROLE_NATURALISTE') %}{{ path('observation_validate', { 'id': observation.id }) }}{% endif %}" class="bg-blanc pin-glacial">
             <img src="{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}" alt="photo d'oiseau">
             <ul class="fa-ul">
                 <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
@@ -25,7 +25,7 @@
             <div class="alert alert-danger center">Aucune observation validée</div>
         {% endif %}
         {% for observation in userObservationsValidate %}
-            <a href="{{ path('observation_validate', { 'id': observation.id }) }}" class="bg-blanc pin-glacial">
+            <div class="bg-blanc pin-glacial">
                 <img src="{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}" alt="photo d'oiseau">
                 <ul class="fa-ul">
                     <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
@@ -37,7 +37,7 @@
                         <li><i class="fa-li fa fa-square"></i>Longitude : {{ observation.longitude }}</li>
                     </ul>
                 </ul>
-            </a>
+            </div>
         {% endfor %}
     {% endif %}
     <input type="hidden" id="nb-val" value="{{ countUserObservationsValidate }}" disabled>
@@ -48,7 +48,7 @@
             <div class="alert alert-danger center">Aucune observation</div>
         {% endif %}
         {% for observation in userObservationsWaiting %}
-            <a href="{{ path('observation_validate', { 'id': observation.id }) }}" class="bg-blanc pin-glacial">
+            <div class="bg-blanc pin-glacial">
                 <img src="{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}" alt="photo d'oiseau">
                 <ul class="fa-ul">
                     <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
@@ -60,7 +60,7 @@
                         <li><i class="fa-li fa fa-square"></i>Longitude : {{ observation.longitude }}</li>
                     </ul>
                 </ul>
-            </a>
+            </div>
         {% endfor %}
     {% endif %}
     <input type="hidden" id="nb-att" value="{{ countUserObservationsWaiting }}" disabled>
