@@ -100,6 +100,21 @@ footer {
     overflow: auto;
 }
 
+.diametre-max {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.ui-menu-item:hover {
+    color: rgba(25, 107, 105, 1) !important;
+    background-color: rgba(203, 247, 211, 1) !important;
+    border-radius: 15px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    padding-left: 15px;
+    font-size: larger !important;
+}
+
 /* arrière-plans nao */
 .bg-blanc {
     background-color: rgba(255, 255, 255, 1) !important;
@@ -385,6 +400,7 @@ footer {
 #div-ajouter {
     position: absolute;
     bottom: 0;
+    height: 50px;
 }
 
 #tabNombre,
@@ -408,11 +424,22 @@ footer {
     overflow: auto;
 }
 
-#liste-users,
 #my-observations {
     overflow: auto;
     padding-left: 0;
     padding-right: 0;
+}
+
+#liste-users,
+#creer-user {
+    overflow: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#admin-index {
+    padding: 15px 0 50px 0;
+    overflow-y: auto;
 }
 
 #show {
@@ -440,6 +467,18 @@ footer {
     position: absolute;
     top: 10%;
     right: 10%;
+}
+
+#ui-id-1 {
+    position: absolute;
+    z-index: 1500;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    font-size: large;
+    font-style: italic;
+    background-color: rgba(40, 204, 158, 1) !important;
+    padding: 30px;
+    border-radius: 30px;
 }
 
 

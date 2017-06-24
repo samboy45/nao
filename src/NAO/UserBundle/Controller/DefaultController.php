@@ -58,7 +58,9 @@ class DefaultController extends Controller
             $recherche = $form->getData() ;
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerUtilisateurs($recherche['recherche']);
 
-            return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
+            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users));
+
+            //return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
         }
 
         return $this->render(':admin/utilisateurs:filtrer.html.twig', array('form' => $form->createView()));
@@ -69,6 +71,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder(null)
             ->add('roles', ChoiceType::class, array(
                 'choices' => array(
+                    'Filtrer par rôles' => null,
                     'Tous' => null,
                     'Particulier' => 'i:0',
                     'Naturaliste' => 'ROLE_NATURALISTE',
@@ -81,7 +84,9 @@ class DefaultController extends Controller
             $role = $form->getData();
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerParRole($role['roles']);
 
-            return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
+            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users));
+
+            //return $this->render('admin/utilisateurs/index.html.twig', array('users' => $users));
         }
 
         return $this->render(':admin/utilisateurs:role.html.twig', array('form' => $form->createView()));

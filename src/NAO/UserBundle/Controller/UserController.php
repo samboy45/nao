@@ -28,7 +28,9 @@ class UserController extends Controller
         if ($form->isSubmitted() AND $form->isValid()) {
             $this->getDoctrine()->getManager()->persist($user)->flush();
 
-            return $this->redirectToRoute('admin_utilisateurs_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('nao_dashboard');
+
+            //return $this->redirectToRoute('admin_utilisateurs_show', array('id' => $user->getId()));
         }
 
         return $this->render('admin/utilisateurs/ajouter.html.twig', array(

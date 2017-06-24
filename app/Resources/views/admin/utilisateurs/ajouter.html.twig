@@ -1,10 +1,15 @@
 <div class="col-xs-12 text-center text-uppercase pin-glacial">
-    <h2>créer un utilisateur</h2>
+    <h2>
+        <button class="btn btn-transparent pin-glacial pull-left" id="retrait">
+            <i class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
+        </button>
+        créer un profil utilisateur
+    </h2>
 </div>
 <div class="col-xs-12">
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button type="submit" class="btn btn-pin-glacial blanc" id="valider-creation-utilisateur">Valider</button>
+    <button type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc">Valider</button>
     {{ form_end(form) }}
     <br>
 </div>

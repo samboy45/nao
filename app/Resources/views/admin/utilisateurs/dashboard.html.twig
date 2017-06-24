@@ -3,17 +3,18 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
 {% endblock %}
 
 {% block body %}
-    <div class="rad margin-30" id="div-dashboard">
-        <div class="row bg-aloe-vera pin-glacial">
+    <div class="margin-30" id="div-dashboard">
+        <div class="row bg-herbe-tropicale pin-glacial">
             <div class="col-xs-12 col-sm-4 col-md-3 bg-herbe-tropicale" id="show">
                 <div class="row bg-herbe-tropicale" id="fos-profil-show">
                     {{ render(controller('FOSUserBundle:Profile:show')) }}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-8 col-md-9" id="liste-users">
+            <div class="col-xs-12 col-sm-8 col-md-9 bg-aloe-vera" id="liste-users">
                 <div class="row">
                     <br>
                     <div class="col-xs-12">
@@ -30,29 +31,17 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12" id="admin-index">
-                        {% for user in users %}
-                            <div class="row centrer-element">
-                                <div class="col-xs-3">
-                                    <img src="http://lorempixel.com/300/300/people/" alt="people" class="img-circle img-responsive center-block">
-                                </div>
-                                <div class="col-xs-9 pin-glacial">
-                                    {{ user.lastname }} {{ user.firstname }} ( {{ user.username }} )
-                                    <br><br>
-                                    {{ user.email }}
-                                    <a href="{{ path('admin_utilisateurs_edit', { 'id': user.id }) }}"><i class="fa fa-edit pin-glacial" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="col-xs-12 bg-herbe-tropicale blanc" id="div-ajouter">
-                        <button class="btn btn-block btn-transparent text-uppercase blanc" id="ajouter">
-                            <i class="fa fa-plus fa-lg blanc" aria-hidden="true"></i>
-                            ajouter un utilisateur
-                        </button>
+                        {{ include(':admin/utilisateurs:index.html.twig') }}
                     </div>
                 </div>
+                <div class="col-xs-12 bg-herbe-tropicale blanc" id="div-ajouter">
+                    <button class="btn btn-block btn-transparent text-uppercase blanc" id="ajouter">
+                        <i class="fa fa-plus fa-lg blanc" aria-hidden="true"></i>
+                        ajouter un utilisateur
+                    </button>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-8 col-md-9" id="creer-user">
+            <div class="col-xs-12 col-sm-8 col-md-9 bg-aloe-vera" id="creer-user">
                 <div class="row">
                     <div class="col-xs-12">
                         {{ render(controller('UserBundle:User:new')) }}
