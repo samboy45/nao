@@ -3,7 +3,7 @@
     <div class="row">
         <br>
         {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('nao_dashboard') }}" class="btn btn-xs btn-aloe-vera text-uppercase pin-glacial pull-left" id="btn-admin">administration</a>
+            <a href="{{ path('nao_dashboard') }}" class="btn btn-xs btn-aloe-vera text-uppercase pin-glacial pull-left" id="btn-admin">administration</a>
         {% endif %}
         <a href="{{ path('fos_user_security_logout') }}" class="btn btn-xs btn-transparent text-uppercase pin-glacial pull-right" id="btn-deco">déconnexion</a>
     </div>
@@ -30,22 +30,19 @@
         <div class="col-xs-12">
             <div class="form-group">{{ 'Mot de passe'|trans }}: <a href="{{path('fos_user_change_password') }}"><i class="fa fa-edit aloe-vera" aria-hidden="true"></i></a></div>
         </div>
-        {% if is_granted('ROLE_ADMIN') %}
-            <div class="col-xs-12">
-                <div class="form-group">
-                    {{ 'Position' }}: <a href="{{path('fos_user_profile_edit') }}"><i class="fa fa-edit aloe-vera" aria-hidden="true"></i></a>
-                    <ul class="fa-ul">
-                        {% for role in user.roles %}
-                            <li>
-                                <i class="fa-li fa fa-check-square"></i>
-                                {{ role }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-
-                </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                {{ 'Position' }}: <a href="{{path('fos_user_profile_edit') }}"><i class="fa fa-edit aloe-vera" aria-hidden="true"></i></a>
+                <ul class="fa-ul">
+                    {% for role in user.roles %}
+                        <li>
+                            <i class="fa-li fa fa-check-square"></i>
+                            {{ role }}
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
-        {% endif %}
+        </div>
     </div>
 </div>
 
