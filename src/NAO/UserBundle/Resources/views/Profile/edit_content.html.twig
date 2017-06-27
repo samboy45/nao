@@ -6,7 +6,7 @@
             <h3>mettre à jour votre profil</h3>
             <br>
         </div>
-        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        {{ form_start(form, { 'action': path('user_mon_compte_show'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
         <div class="col-xs-12">
             {{ form_label(form.imageFile) }}
             {{ form_errors(form.imageFile) }}
