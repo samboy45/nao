@@ -18,6 +18,8 @@
             <input type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc" value="Valider">
             {{ form_end(validate_form) }}
             <br>
+            <a href="{{ path('observation_index') }}" class="btn btn-block btn-pin-glacial text-uppercase blanc">retour</a>
+            <br>
             {{ form_start(delete_form) }}
             <input type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc" value="Supprimer">
             {{ form_end(delete_form) }}
