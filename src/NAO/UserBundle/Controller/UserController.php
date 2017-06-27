@@ -26,7 +26,9 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() AND $form->isValid()) {
-            $this->getDoctrine()->getManager()->persist($user)->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             return $this->redirectToRoute('nao_dashboard');
 
@@ -74,7 +76,9 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() AND $form->isValid()) {
-            $this->getDoctrine()->getManager()->remove($user)->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($user);
+            $em->flush();
         }
 
         return $this->redirectToRoute('admin_utilisateurs_index');
