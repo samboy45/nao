@@ -21,6 +21,7 @@
                             {% endfor %}
                         </select>
                         <input type="hidden" id="adresseCarto" value="{{ url('cartoRechercheEspece') }}" disabled>
+                        <input type="hidden" id="protection-especes" value="{% if is_granted('ROLE_NATURALISTE') %}0{% else %}1{% endif %}" disabled>
                     </div>
                 </div>
             </div>

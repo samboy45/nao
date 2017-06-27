@@ -1,9 +1,9 @@
 /**
- * web/js/.js
+ * web/js/ajout-obs.js
  * Créé par firekey le 23/06/2017.
  */
 
-$(function () {
+$(function(){
 
     /* ========================= ACTIONS POST-LOAD ========================= */
 

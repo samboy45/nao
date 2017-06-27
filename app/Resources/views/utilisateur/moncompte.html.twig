@@ -10,7 +10,7 @@
         <div class="row bg-aloe-vera pin-glacial">
             <div class="col-xs-12 col-sm-4 col-md-3 bg-herbe-tropicale" id="show">
                 <div class="row bg-herbe-tropicale" id="fos-profil-show">
-                    {{ render(controller('FOSUserBundle:Profile:show')) }}
+                    {{ include('@User/Profile/show.html.twig') }}
                 </div>
                 <div class="col-xs-12 bg-pin-glacial aloe-vera" id="div-nombre">
                     <button class="btn btn-transparent text-uppercase aloe-vera" id="nombre">

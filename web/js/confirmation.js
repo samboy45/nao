@@ -3,22 +3,22 @@
  * Créé par firekey le 11/06/2017.
  */
 
-$(function () {
+$(function(){
 
     /* ========================= ACTIONS ========================= */
 
     redimensionnerDiv($('#confirmation'));
-
     $('#confirmation').css({paddingTop: '50px'});
-
     gererIconesFa();
 
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
 
-    $(window).resize(function(){
-        redimensionnerDiv($('#confirmation'));
-        gererIconesFa();
+    $(document).on({
+        resize: function(){
+            redimensionnerDiv($('#confirmation'));
+            gererIconesFa();
+        }
     });
 
 

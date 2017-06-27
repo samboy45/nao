@@ -3,7 +3,7 @@
 <div class="container padding-30">
     <div class="row rad padding-30 bg-herbe-tropicale pin-glacial">
         <div class="col-xs-12 text-center text-uppercase">
-            <h3>mettre à jour votre profile</h3>
+            <h3>mettre à jour votre profil</h3>
             <br>
         </div>
         {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
@@ -45,7 +45,11 @@
         {{ form_end(form) }}
         <div class="col-xs-12">
             <br>
-            <a class="btn btn-block btn-pin-glacial text-uppercase blanc" href="{{ path('user_mon_compte_show') }}">retour à mon compte</a>
+            <a class="btn btn-block btn-pin-glacial text-uppercase blanc" href="{{ path('user_mon_compte_show') }}">
+                retour à
+                <br class="visible-xs">
+                mon compte
+            </a>
         </div>
     </div>
 </div>

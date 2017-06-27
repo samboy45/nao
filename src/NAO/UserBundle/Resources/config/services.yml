@@ -8,3 +8,15 @@ services:
             class: NAO\UserBundle\Form\EditProfileType
             tags:
                 - {name: form.type, alias: nao_user_show_profil}
+
+    naouser.password_resetting:
+            class: NAO\UserBundle\EventListener\PasswordResettingListener
+            arguments: ['@router']
+            tags:
+                - { name: kernel.event_subscriber }
+
+    naouser.profile.change:
+                class: NAO\UserBundle\EventListener\ProfilChangeListener
+                arguments: ['@router']
+                tags:
+                    - { name: kernel.event_subscriber }
