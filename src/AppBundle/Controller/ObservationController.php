@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -13,11 +12,11 @@ class ObservationController extends Controller
 
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $waitingObservations = $em->getRepository('AppBundle:Observation')->findByActive(0);
+        $waitingObservations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findByActive(0);
 
         return $this->render('observation/index.html.twig', array(
             'observations' => $waitingObservations,
+            'nb' => count($waitingObservations)
         ));
     }
 
@@ -28,13 +27,13 @@ class ObservationController extends Controller
         $form = $this->createForm('AppBundle\Form\ObservationType', $observation);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() AND $form->isValid()) {
             $user = $this->getUser();
             $observation->setUser($user);
-            if ($user->getRoles()== 'particulier'){
-                $observation->setActive(false);
-            }else{
+            if ($user->getRoles() == 'naturaliste'){
                 $observation->setActive(true);
+            } else {
+                $observation->setActive(false);
             }
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
