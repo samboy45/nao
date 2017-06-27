@@ -39,6 +39,7 @@ class DefaultController extends Controller
         $countUserObservationsWaiting = count($userObservationsWaiting);
 
         return $this->render("utilisateur/moncompte.html.twig", array(
+            'user' => $user,
             'userObservations' => $userObservations,
             'userObservationsValidate' => $userObservationsValidate,
             'userObservationsWaiting' => $userObservationsWaiting,
