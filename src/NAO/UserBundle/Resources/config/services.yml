@@ -14,3 +14,9 @@ services:
             arguments: ['@router']
             tags:
                 - { name: kernel.event_subscriber }
+
+    naouser.profile.change:
+                class: NAO\UserBundle\EventListener\ProfilChangeListener
+                arguments: ['@router']
+                tags:
+                    - { name: kernel.event_subscriber }
