@@ -23,6 +23,7 @@ class DefaultController extends Controller
         if ($requete->isMethod('POST')){
             $donnees['especeSelectionnee'] = $requete->request->get('espece');
         }
+
         return $this->render('default/recherche.html.twig', array('donnees' => $donnees));
     }
 
@@ -40,9 +41,7 @@ class DefaultController extends Controller
     {
         $users = $this->get('fos_user.user_manager')->findUsers();
 
-        return $this->render("admin/utilisateurs/dashboard.html.twig", array(
-            'users' => $users
-        ));
+        return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users));
     }
 
     public function qsnAction()
