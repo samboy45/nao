@@ -296,6 +296,7 @@ footer {
 }
 
 .g-recaptcha {
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -345,8 +346,10 @@ footer {
     height: 100%;
 }
 
-#contact-form form {
-    padding-top:30px;
+#contact-nom-prenom {
+    padding-top: 15px;
+    padding-left: 0;
+    padding-right: 0;
     border-radius: 30px 30px 0 0;
 }
 
@@ -479,6 +482,11 @@ footer {
     background-color: rgba(40, 204, 158, 1) !important;
     padding: 30px;
     border-radius: 30px;
+}
+
+#obs-att {
+    height: 600px;
+    overflow: auto;
 }
 
 
