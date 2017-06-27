@@ -3,7 +3,7 @@
  * Créé par firekey le 21/06/2017.
  */
 
-$(function () {
+$(function(){
 
     /* ========================= ACTIONS POST-LOAD ========================= */
 

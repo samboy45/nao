@@ -4,7 +4,6 @@
  */
 
 $(function(){
-
     /* ========================= VARIABLES ========================= */
 
     var carte;
@@ -42,8 +41,8 @@ $(function(){
     if (navigator.geolocation){
         navigator.geolocation.watchPosition(
             function(position){
-                if (marqueurPosition.length > 10){
-                    for (i = 0; i < 10; i++){
+                if (marqueurPosition.length > 2){
+                    for (i = 0; i < 2; i++){
                         carte.removeLayer(marqueurPosition[i]);
                     }
                 }
@@ -61,7 +60,7 @@ $(function(){
                 }
             }
         ), {
-            enableHighAccuracy: true,
+            enableHighAccuracy: false,
             timeout: 10000,
             maximumAge: 60000
         };
@@ -123,9 +122,10 @@ $(function(){
                     } else {
                         icone = iconProtegee;
                     }
-                    var marqueur = L.marker([observation.latitude, observation.longitude], {icon: icone});
-                    marqueursTab.push(marqueur);
-                    marqueur.bindPopup(
+                    if (observation.typeEspece.substr(0, 3) == 'non' || $('#protection-especes').val() == '0'){
+                        var marqueur = L.marker([observation.latitude, observation.longitude], {icon: icone});
+                        marqueursTab.push(marqueur);
+                        marqueur.bindPopup(
                             '<div class="text-center pin-glacial">'+
                             '<img src="../../web/img_upload/'+observation.image+'"><br>'+
                             observation.espece.nomVern+'<br>'+
@@ -133,8 +133,9 @@ $(function(){
                             'vu le '+jour+'-'+mois+'-'+annee+'<br>'+
                             '</div>'
                         )
-                        .openPopup()
-                        .addTo(carte);
+                            .openPopup()
+                            .addTo(carte);
+                    }
                 });
             }
         });
