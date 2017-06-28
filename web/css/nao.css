@@ -396,6 +396,12 @@ footer {
 }
 
 #div-nombre,
+#div-validees,
+#div-attente {
+    overflow: auto;
+}
+
+#div-nombre,
 #div-validees {
     border-bottom: 1px solid rgba(203, 247, 211, 1);
 }
@@ -442,7 +448,8 @@ footer {
 
 #admin-index {
     padding: 15px 0 50px 0;
-    overflow-y: auto;
+    height: 600px;
+    overflow: auto;
 }
 
 #show {
