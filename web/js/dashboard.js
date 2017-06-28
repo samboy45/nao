@@ -3,7 +3,7 @@
  * Créé par firekey le 23/06/2017.
  */
 
-$(function () {
+$(function(){
 
     /* ========================= VARIABLES ========================= */
 
@@ -76,7 +76,5 @@ $(function () {
             $(this).css('min-height', $('.container-fluid').height()+$('.navbar-fixed-top').height() + 30);
         });
     }
-
-
 
 });
