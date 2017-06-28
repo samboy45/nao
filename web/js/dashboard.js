@@ -7,8 +7,13 @@ $(function () {
 
     /* ========================= VARIABLES ========================= */
 
-    var sources = $('#admin-index div div').text().split(' ');
-
+    var liste = $('#users-list').text().split(' ');
+    var sources = [];
+    for (i = 0; i < liste.length; i ++){
+        if (liste[i].length > 1){
+            sources.push(liste[i]);
+        }
+    }
 
     /* ========================= ACTIONS POST-LOAD ========================= */
 
@@ -71,5 +76,7 @@ $(function () {
             $(this).css('min-height', $('.container-fluid').height()+$('.navbar-fixed-top').height() + 30);
         });
     }
+
+
 
 });
