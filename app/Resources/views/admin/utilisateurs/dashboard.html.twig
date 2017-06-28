@@ -19,6 +19,14 @@
                     <br>
                     <div class="col-xs-12">
                         {{ include(':admin/utilisateurs:filtrer.html.twig') }}
+                        <input type="hidden" value="{{ url('nao_dashboard') }}" id="adresse-controller-dashboard" disabled>
+                        <div hidden id="users-list">
+                            {% for liste in listeUsers %}
+                                {{ liste.lastname }}
+                                {{ liste.firstname }}
+                                {{ liste.email }}
+                            {% endfor %}
+                        </div>
                     </div>
                     <br>
                 </div>

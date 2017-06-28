@@ -7,6 +7,7 @@ use NAO\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -47,9 +48,11 @@ class DefaultController extends Controller
         $users = $this->get('fos_user.user_manager')->findUsers();
         $user = $this->getUser();
         $newUser = new User();
+
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
+
         $form = $this->createFormBuilder(null)->add('recherche', TextType::class, array('attr' => array('placeholder' => 'Recherche')))->getForm();
         $form->handleRequest($request);
 
@@ -74,7 +77,7 @@ class DefaultController extends Controller
             $recherche = $form->getData() ;
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerUtilisateurs($recherche['recherche']);
 
-            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView() ));
+            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'listeUsers' => $this->get('fos_user.user_manager')->findUsers(), 'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView() ));
 
         }
 
@@ -82,9 +85,10 @@ class DefaultController extends Controller
             $role = $form2->getData();
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerParRole($role['roles']);
 
-            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView() ));
+            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'listeUsers' => $this->get('fos_user.user_manager')->findUsers(), 'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView() ));
 
         }
+
         if ($form3->isSubmitted() AND $form3->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($newUser);
@@ -93,7 +97,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('nao_dashboard');
 
         }
-        return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users,'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView()));
+        return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'listeUsers' => $this->get('fos_user.user_manager')->findUsers(), 'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView()));
     }
 
     public function qsnAction()
