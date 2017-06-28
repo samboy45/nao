@@ -19,8 +19,8 @@ $(function(){
 
     $('.btn-nav').removeClass('active');
     $('#btn-nav-cpt').addClass('active');
-
-    $('#creer-user, #btn-admin').hide();
+    $('#btn-admin').remove();
+    $('#creer-user').hide();
 
     $('#form_recherche').autocomplete({
         source : sources,
@@ -28,14 +28,6 @@ $(function(){
             $('#valider-form-recherche').trigger('click');
         }
     });
-
-    $('#form_roles').on({
-        change: function(){
-            $('#valider-form-roles').trigger('click');
-        }
-    });
-
-
 
     /* ========================= GESTION EVENEMENTIELLE ========================= */
 
@@ -54,6 +46,12 @@ $(function(){
             setTimeout(function(){
                 montrerDiv($('#liste-users'));
             }, 500);
+        }
+    });
+
+    $('#form_roles').on({
+        change: function(){
+            $('#valider-form-roles').trigger('click');
         }
     });
 

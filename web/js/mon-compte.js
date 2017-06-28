@@ -12,6 +12,7 @@ $(function(){
 
     $('.btn-nav').removeClass('active');
     $('#btn-nav-cpt').addClass('active');
+    $('#btn-retour-mon-compte').remove();
     $(':input').addClass('pin-glacial');
 
     organiserContenu();
