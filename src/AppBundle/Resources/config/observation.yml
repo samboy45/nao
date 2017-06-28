@@ -1,0 +1,39 @@
+observation_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Observation:index" }
+    methods:  GET
+
+observation_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Observation:show" }
+    methods:  GET
+
+observation_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Observation:new" }
+    methods:  [GET, POST]
+
+observation_validate:
+    path:     /{id}/validate
+    defaults: { _controller: "AppBundle:Observation:validate" }
+    methods:  [GET, POST]
+
+observation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Observation:delete" }
+    methods:  DELETE
+
+observation_confirmation:
+    path:    /confirmation
+    defaults: {_controller: "AppBundle:Observation:confirmation"}
+    methods:  GET
+
+observarion_mes_observations:
+    path:    /mes_observations
+    defaults: {_controller: "AppBundle:Observation:myObservations"}
+    methods:  GET
+
+page_ajout:
+    path:    /page_ajout
+    defaults: {_controller: "AppBundle:Observation:ajoutObservation"}
+    methods:  GET

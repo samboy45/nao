@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/swans.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="rad bg-aloe-vera margin-30 padding-30" id="obs-naturalistes">
+                <a href="{{ url('observation_new') }}">
+                    <img  class="img-responsive" src="{{ asset('imgs/bouton-ajout-observation.png') }}">
+                </a>
+                <a href="{{ url('observation_index') }}" id="conteneur-badge">
+                    <div class="rad bg-rouge gras blanc" id="badge-obs">{{ observations }}</div>
+                    <img class="img-responsive" src="{{ asset('imgs/bouton-ajout-observation – 1.png') }}">
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/ajout-obs.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
+{% endblock %}

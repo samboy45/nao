@@ -1,0 +1,55 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container padding-30">
+    <div class="row rad padding-30 bg-herbe-tropicale pin-glacial">
+        <div class="col-xs-12 text-center text-uppercase">
+            <h3>mettre à jour votre profil</h3>
+            <br>
+        </div>
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        <div class="col-xs-12">
+            {{ form_label(form.imageFile) }}
+            {{ form_errors(form.imageFile) }}
+            {{ form_widget(form.imageFile) }}
+            <br>
+        </div>
+        <div class="col-xs-12">
+            {{ form_label(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+            {{ form_widget(form.firstname) }}
+            <br>
+        </div>
+        <div class="col-xs-12">
+            {{ form_label(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+            {{ form_widget(form.lastname) }}
+            <br>
+        </div>
+        <div class="col-xs-12">
+            {{ form_label(form.username) }}
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username) }}
+            <br>
+        </div>
+        <div class="col-xs-12">
+            {{ form_label(form.email) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email) }}
+            <br>
+        </div>
+        <div class="col-xs-12">
+            <br>
+            <button type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc">valider</button>
+            <br>
+        </div>
+        {{ form_end(form) }}
+        <div class="col-xs-12">
+            <br>
+            <a class="btn btn-block btn-pin-glacial text-uppercase blanc" href="{{ path('user_mon_compte_show') }}">
+                retour à
+                <br class="visible-xs">
+                mon compte
+            </a>
+        </div>
+    </div>
+</div>

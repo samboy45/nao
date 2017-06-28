@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center pin-glacial">
+                <h1>{{ nb }} Observation(s) en attente de validation</h1>
+            </div>
+            <div class="col-xs-12" id="obs-att">
+                {% for observation in observations %}
+                    <div class="row centrer-elements">
+                        <div class="well rad obs-image centrer-element">
+                            <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
+                        </div>
+                        <div class="well rad obs-description">
+                            <a href="{{ path('observation_validate', { 'id': observation.id }) }}" class="pin-glacial">
+                                <h3>Nom : {{ observation.espece }}</h3>
+                                <h3>Espèce : {{ observation.espece.famille }}</h3>
+                                <p>{% if observation.date %}Date : {{ observation.date|date('d m Y') }}{% endif %}</p>
+                                <p>Latitude : {{ observation.latitude }}</p>
+                                <p>Longitude : {{ observation.longitude }}</p>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/observation.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
+{% endblock %}

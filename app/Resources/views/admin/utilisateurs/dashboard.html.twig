@@ -1,0 +1,67 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="margin-30" id="div-dashboard">
+        <div class="row bg-herbe-tropicale pin-glacial">
+            <div class="col-xs-12 col-sm-4 col-md-3 bg-herbe-tropicale" id="show">
+                <div class="row bg-herbe-tropicale" id="fos-profil-show">
+                    {{ include('UserBundle:Profile:show.html.twig') }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 bg-aloe-vera" id="liste-users">
+                <div class="row">
+                    <br>
+                    <div class="col-xs-12">
+                        {{ include(':admin/utilisateurs:filtrer.html.twig') }}
+                        <input type="hidden" value="{{ url('nao_dashboard') }}" id="adresse-controller-dashboard" disabled>
+                        <div hidden id="users-list">
+                            {% for liste in listeUsers %}
+                                {{ liste.lastname }}
+                                {{ liste.firstname }}
+                                {{ liste.email }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <br>
+                    <div class="col-xs-12">
+                        {{ include(':admin/utilisateurs:role.html.twig') }}
+                    </div>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="admin-index">
+                        {{ include(':admin/utilisateurs:index.html.twig') }}
+                    </div>
+                </div>
+                <div class="col-xs-12 bg-herbe-tropicale blanc" id="div-ajouter">
+                    <button class="btn btn-block btn-transparent text-uppercase blanc" id="ajouter">
+                        <i class="fa fa-plus fa-lg blanc" aria-hidden="true"></i>
+                        ajouter un utilisateur
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 bg-aloe-vera" id="creer-user">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ include(':admin/utilisateurs:ajouter.html.twig')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
+{% endblock %}

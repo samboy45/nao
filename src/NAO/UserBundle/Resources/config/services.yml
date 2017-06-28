@@ -1,0 +1,22 @@
+services:
+    naouser.form.registration:
+        class: NAO\UserBundle\Form\RegistrationType
+        tags:
+            - {name: form.type, alias: nao_user_registration }
+
+    naouser.form.edit.profil:
+            class: NAO\UserBundle\Form\EditProfileType
+            tags:
+                - {name: form.type, alias: nao_user_show_profil}
+
+    naouser.password_resetting:
+            class: NAO\UserBundle\EventListener\PasswordResettingListener
+            arguments: ['@router']
+            tags:
+                - { name: kernel.event_subscriber }
+
+    naouser.profile.change:
+                class: NAO\UserBundle\EventListener\ProfilChangeListener
+                arguments: ['@router']
+                tags:
+                    - { name: kernel.event_subscriber }

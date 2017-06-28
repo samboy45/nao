@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row rad  margin-30 padding-30 bg-herbe-tropicale pin-glacial">
+            <div class="col-xs-12 text-center">
+                <h1>Modifier l'observation</h1>
+            </div>
+            {{ form_start(validate_form) }}
+            {{ form_widget(validate_form) }}
+            <br>
+            <input type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc" value="Valider">
+            {{ form_end(validate_form) }}
+            <br>
+            <a href="{{ path('observation_index') }}" class="btn btn-block btn-pin-glacial text-uppercase blanc">retour</a>
+            <br>
+            {{ form_start(delete_form) }}
+            <input type="submit" class="btn btn-block btn-pin-glacial text-uppercase blanc" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/validate.js') }}"></script>
+    <script src="{{ asset('js/documentSize.js') }}"></script>
+{% endblock %}

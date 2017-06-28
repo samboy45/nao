@@ -1,0 +1,31 @@
+homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+recherche:
+    path:     /Recherche
+    defaults: { _controller: AppBundle:Default:recherche }
+
+cartoRechercheEspece:
+    path: /Recherche/Espece
+    defaults:
+        _controller: AppBundle:Carto:importerOiseaux
+    requirements:
+        methods: 'POST'
+
+qsn:
+    path: /qui_sommes_nous
+    defaults:
+            _controller: AppBundle:Default:qsn
+
+mentionsLegales:
+    path:     /mentions_legales
+    defaults: { _controller: AppBundle:Default:mentionsLegales }
+
+conditionsGeneralesUtlisation:
+    path:     /cgu
+    defaults: { _controller: AppBundle:Default:conditionsGeneralesUtlisation }
+
+nao_dashboard:
+    path:     /dashboard
+    defaults: { _controller: AppBundle:Default:dashboard }

@@ -1,0 +1,82 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/forest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-transparente.css') }}">
+{% endblock %}
+
+{% block fos_user_content %}
+<div id="login">
+    <div class="container">
+        <div class="row" id="div-login-form">
+            <br>
+            <div class="col-sm-12 col-md-6 col-md-offset-3">
+                <div class="panel with-nav-tabs panel-default bg-transparent bdc-transparent">
+                    <div class="panel-heading bg-transparent bdc-transparent" id="head-panel-login">
+                        <ul class="nav nav-tabs bg-transparent bdc-transparent">
+                            <li class="active">
+                                <a href="#Connexion" data-toggle="tab" class="btn btn-transparent text-uppercase gras pin-glacial">
+                                    Connexion
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#Inscription" data-toggle="tab" class="btn btn-transparent text-uppercase gras pin-glacial">
+                                    Inscription
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-body bg-herbe-tropicale pin-glacial" id="panel-login">
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="Connexion">
+                                <div class="form-group">
+                                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                                        <h2>Se connecter </h2>
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                        <br><br>
+                                        <div class="form-group">
+                                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                                            <input class="form-control"  type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Login ou Email"  />
+                                        </div>
+                                        <br><br>
+                                        <div class="form-group">
+                                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                                            <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="Mot de passe" />
+                                        </div>
+                                        <br><br>
+                                        <div class="form-group">
+                                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                                        </div>
+                                        <br><br>
+                                        <button class="btn btn-block btn-pin-glacial text-uppercase blanc" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}">Connexion</button>
+                                    </form>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <a href="{{ path('fos_user_resetting_request') }}" class="btn btn-block btn-pin-glacial text-uppercase blanc">Mot de passe perdu ?</a>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Inscription">
+                                <div class="form-group">
+                                    <h2>Pas encore inscrit ?</h2>
+                                    {{ render(controller('FOSUserBundle:Registration:register')) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock fos_user_content %}
+
+{%  block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/login.js') }}"></script>
+{% endblock %}
+
