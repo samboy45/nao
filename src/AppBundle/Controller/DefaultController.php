@@ -90,7 +90,7 @@ class DefaultController extends Controller
             $em->persist($newUser);
             $em->flush();
 
-            return $this->redirectToRoute('nao_dashboard',  array('users' => $users,'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView()));
+            return $this->redirectToRoute('nao_dashboard');
 
         }
         return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users,'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView()));
