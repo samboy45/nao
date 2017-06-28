@@ -1,0 +1,235 @@
+@charset "utf-8";
+
+/* assets/css/nao.css - 23/05/2017 */
+
+@font-face {
+    font-family: 'Biko';
+    src: url('../fonts/Biko.eot');
+    src: url('../fonts/Biko.eot?#iefix') format('embedded-opentype'), url('../fonts/Biko.woff2') format('woff2'), url('../fonts/Biko.woff') format('woff'), url('../fonts/Biko.ttf') format('truetype'), url('../fonts/Biko.svg#Biko') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ========================= BALISES ========================= */
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    background-image: url('../img/64425.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+img {
+    width: 100%;
+}
+
+span.fa-stack>i.fa-circle {
+    color: rgba(25, 107, 105, 1) !important;
+}
+
+footer {
+    padding: 30px 0;
+    vertical-align: middle !important;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 1) !important;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+
+/* ========================= CLASSES ========================= */
+
+.bg-blanc {
+    background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.bg-pin-glacial {
+    background-color: rgba(25, 107, 105, 1) !important;
+}
+
+.bg-herbe-tropicale {
+    background-color: rgba(40, 204, 158, 1) !important;
+}
+
+.bg-aloe-vera {
+    background-color: rgba(203, 247, 211, 0.7) !important;
+}
+
+.blanc {
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.pin-glacial {
+    color: rgba(25, 107, 105, 1) !important;
+}
+
+.herbe-tropicale {
+    color: rgba(40, 204, 158, 1) !important;
+}
+
+.aloe-vera {
+    color: rgba(203, 247, 211, 1) !important;
+}
+
+.gris {
+    color: #333;
+}
+
+.gras {
+    font-weight: bold !important;
+}
+
+.italique {
+    font-style: italic !important;
+}
+
+.btn {
+    border-radius: 30px !important;
+}
+
+.transparent {
+    background: transparent !important;
+}
+
+.navbar {
+    border: 0;
+    border-radius: 0;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: rgba(25, 107, 105, 1) !important;
+}
+
+.navbar-toggle {
+    margin-right: 15px;
+    background-color: rgba(40, 204, 158, 1) !important;
+    border-radius: 4px;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: rgba(25, 107, 105, 1) !important;
+}
+
+.navbar-default .navbar-toggle:focus {
+    background-color: rgba(203, 247, 211, 1) !important;
+}
+
+.icone {
+    max-width: 100px !important;
+}
+
+.nav>li>a {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+
+/* ========================= IDENTIFIANTS ========================= */
+
+#comment-ca-marche, #qui-sommes-nous, #temoignages {
+    padding: 50px 0;
+}
+
+#fleche-droite {
+    position: absolute;
+    bottom: 50%;
+    right: 5%;
+}
+
+#fleche-gauche {
+    position: absolute;
+    bottom: 50%;
+    left: 5%;
+}
+
+#droite, #gauche {
+    height: 50px !important;
+    width: auto !important;
+}
+
+#oiseau {
+    max-width: 100px;
+}
+
+
+/* ========================= MEDIA QUERIES ========================= */
+
+@media all and (max-width: 900px) {
+    .nav>li>a {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .navbar-right {
+        margin-right: 5px !important;
+    }
+    .navbar-collapse {
+        padding-right: 0px;
+    }
+}
+
+@media all and (max-width: 1150px) {
+    .navbar-brand {
+        height: 50px !important;
+    }
+    #logo {
+        height: 50px;
+        width: auto;
+    }
+    .nav>li>a {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .navbar-right {
+        margin-right: 15px;
+    }
+    .ancre-header {
+        padding-top: 25px !important;
+    }
+}
+
+@media all and (min-width: 1150px) {
+    .navbar-right>li>a {
+        padding-top: 45px;
+    }
+    .ancre-header {
+        padding-top: 55px !important;
+    }
+}
+
+@media all and (max-width: 760px) {
+    .ancre-header {
+        padding-top: 15px !important;
+    }
+}
+
+@media all and (min-width: 760px) {
+    .footer-align {
+        padding-top: 10px !important;
+    }
+}
