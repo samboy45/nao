@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use FOS\UserBundle\Model\UserInterface;
+use NAO\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -45,19 +46,12 @@ class DefaultController extends Controller
     {
         $users = $this->get('fos_user.user_manager')->findUsers();
         $user = $this->getUser();
+        $newUser = new User();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $form = $this->createFormBuilder(null)->add('recherche', TextType::class, array('attr' => array('placeholder' => 'Recherche')))->getForm();
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() AND $form->isValid()) {
-            $recherche = $form->getData() ;
-            $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerUtilisateurs($recherche['recherche']);
-
-            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users));
-
-        }
 
         $form2 = $this->createFormBuilder(null)
             ->add('roles', ChoiceType::class, array(
@@ -71,15 +65,35 @@ class DefaultController extends Controller
             ))->getForm();
         $form2->handleRequest($request);
 
+
+        $form3 = $this->createForm('NAO\UserBundle\Form\UserType', $newUser);
+        $form3->handleRequest($request);
+
+
+        if ($form->isSubmitted() AND $form->isValid()) {
+            $recherche = $form->getData() ;
+            $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerUtilisateurs($recherche['recherche']);
+
+            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView() ));
+
+        }
+
         if ($form2->isSubmitted() AND $form2->isValid()){
             $role = $form2->getData();
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerParRole($role['roles']);
 
-            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users));
+            return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView() ));
 
         }
+        if ($form3->isSubmitted() AND $form3->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newUser);
+            $em->flush();
 
-        return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users, 'user' => $user, 'form' => $form->createView() , 'form2' => $form2->createView()));
+            return $this->redirectToRoute('nao_dashboard',  array('users' => $users,'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView()));
+
+        }
+        return $this->render("admin/utilisateurs/dashboard.html.twig", array('users' => $users,'user' => $user,'form' => $form->createView() , 'form2' => $form2->createView(), 'form3' => $form3->createView()));
     }
 
     public function qsnAction()
