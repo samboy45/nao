@@ -4,7 +4,7 @@
     {% endif %}
     {% for observation in userObservations %}
         <a href="{% if is_granted('ROLE_NATURALISTE') %}{{ path('observation_validate', { 'id': observation.id }) }}{% endif %}" class="bg-blanc pin-glacial">
-            <img src="{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}" alt="photo d'oiseau">
+            <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
             <ul class="fa-ul">
                 <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
                 <li><i class="fa-li fa fa-square"></i>Espèce : {{ observation.espece.famille }}</li>
@@ -26,7 +26,7 @@
         {% endif %}
         {% for observation in userObservationsValidate %}
             <div class="bg-blanc pin-glacial">
-                <img src="{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}" alt="photo d'oiseau">
+                <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
                 <ul class="fa-ul">
                     <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
                     <li><i class="fa-li fa fa-square"></i>Espèce : {{ observation.espece.famille }}</li>
@@ -49,7 +49,7 @@
         {% endif %}
         {% for observation in userObservationsWaiting %}
             <div class="bg-blanc pin-glacial">
-                <img src="{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}" alt="photo d'oiseau">
+                <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
                 <ul class="fa-ul">
                     <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
                     <li><i class="fa-li fa fa-square"></i>Espèce : {{ observation.espece.famille }}</li>

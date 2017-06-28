@@ -16,7 +16,7 @@
                 {% for observation in observations %}
                     <div class="row centrer-elements">
                         <div class="well rad obs-image centrer-element">
-                            <img src="{{ asset('img_upload/'~ observation.image) | imagine_filter('default_thumb')}}" alt="Pas de photo">
+                            <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
                         </div>
                         <div class="well rad obs-description">
                             <a href="{{ path('observation_validate', { 'id': observation.id }) }}" class="pin-glacial">
