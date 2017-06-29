@@ -120,7 +120,7 @@ $(function(){
                     } else {
                         icone = iconProtegee;
                     }
-                    if (observation.typeEspece.substr(0, 3) == 'non' || $('#protection-especes').val() == '0'){
+                    if ((observation.typeEspece != null && observation.typeEspece.substr(0, 3) == 'non') || $('#protection-especes').val() == '0'){
                         var marqueur = L.marker([observation.latitude, observation.longitude], {icon: icone});
                         marqueursTab.push(marqueur);
                         marqueur
