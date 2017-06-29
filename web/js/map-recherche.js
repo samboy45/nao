@@ -126,7 +126,7 @@ $(function(){
                         marqueur
                             .bindPopup(
                                 '<div class="text-center pin-glacial">'+
-                                    '<img src="'+document.location.href+'/../../web/img_upload/'+observation.image+'" width="100px" height="100px"><br>'+
+                                    '<img src="'+document.location.href+'/../../img_upload/'+observation.image+'" width="100px" height="100px"><br>'+
                                     observation.espece.nomVern+'<br>'+
                                     '('+observation.espece.lbNom+')<br>'+
                                     'vu le '+jour+'-'+mois+'-'+annee+'<br>'+
