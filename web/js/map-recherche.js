@@ -4,6 +4,7 @@
  */
 
 $(function(){
+
     /* ========================= VARIABLES ========================= */
 
     var carte;
@@ -34,9 +35,7 @@ $(function(){
 
     carte = L.map('carte-rechercher').setView([46.785575, 2.355276], 5);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/julobrsd/cj2x40f2z001p2rod8xkal2c9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsb2Jyc2QiLCJhIjoiY2oyeDNwMW5nMDB4ODM4cHV4ZWkwMjk0YSJ9.TworUnb_y8Jf5blBUVuRxQ',
-        {attribution: '<span class="pin-glacial gras">Nos Amis les Oiseaux | Ex-Nihilo</span>', maxZoom: 18}
-    ).addTo(carte);
+    L.tileLayer('https://api.mapbox.com/styles/v1/julobrsd/cj2x40f2z001p2rod8xkal2c9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsb2Jyc2QiLCJhIjoiY2oyeDNwMW5nMDB4ODM4cHV4ZWkwMjk0YSJ9.TworUnb_y8Jf5blBUVuRxQ', {attribution: '<span class="pin-glacial gras">Nos Amis les Oiseaux | Ex-Nihilo</span>', maxZoom: 18}).addTo(carte);
 
     if (navigator.geolocation){
         navigator.geolocation.watchPosition(
@@ -46,10 +45,7 @@ $(function(){
                         carte.removeLayer(marqueurPosition[i]);
                     }
                 }
-                var geoPosition = L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition})
-                    .bindPopup('<div class="text-center pin-glacial">Vous êtes<br>localisé(e)<br>ici.</div>')
-                    .openPopup()
-                    .addTo(carte);
+                var geoPosition = L.marker([position.coords.latitude, position.coords.longitude], {icon: iconPosition}).bindPopup('<div class="text-center pin-glacial">Vous êtes<br>localisé(e)<br>ici.</div>').openPopup().addTo(carte);
                 marqueurPosition.push(geoPosition);
             },
             function(erreur){
@@ -89,8 +85,10 @@ $(function(){
         redimensionner($('.container-fluid, #div-carte, #carte-rechercher'));
     });
 
-    $('#select-recherche-home-2').on('change', function(){
-        afficherOiseaux($(this).val());
+    $('#select-recherche-home-2').on({
+        change: function(){
+            afficherOiseaux($(this).val());
+        }
     });
 
 
@@ -125,14 +123,15 @@ $(function(){
                     if (observation.typeEspece.substr(0, 3) == 'non' || $('#protection-especes').val() == '0'){
                         var marqueur = L.marker([observation.latitude, observation.longitude], {icon: icone});
                         marqueursTab.push(marqueur);
-                        marqueur.bindPopup(
-                            '<div class="text-center pin-glacial">'+
-                            '<img src="../../web/img_upload/'+observation.image+'" width="100px" height="100px"><br>'+
-                            observation.espece.nomVern+'<br>'+
-                            '('+observation.espece.lbNom+')<br>'+
-                            'vu le '+jour+'-'+mois+'-'+annee+'<br>'+
-                            '</div>'
-                        )
+                        marqueur
+                            .bindPopup(
+                                '<div class="text-center pin-glacial">'+
+                                    '<img src="../../web/img_upload/'+observation.image+'" width="100px" height="100px"><br>'+
+                                    observation.espece.nomVern+'<br>'+
+                                    '('+observation.espece.lbNom+')<br>'+
+                                    'vu le '+jour+'-'+mois+'-'+annee+'<br>'+
+                                '</div>'
+                            )
                             .openPopup()
                             .addTo(carte);
                     }

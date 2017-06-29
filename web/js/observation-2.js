@@ -3,7 +3,7 @@
  * Créé par firekey le 09/06/2017.
  */
 
-$(function(){console.log(document.location.href);
+$(function(){
 
     /* ========================= VARIABLES ========================= */
 
