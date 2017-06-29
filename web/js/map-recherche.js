@@ -11,17 +11,17 @@ $(function(){
     var marqueursTab = [];
     var marqueurPosition = [0];
     var iconPosition = L.icon({
-        iconUrl: '../../web/imgs/icon-position@4x.png',
+        iconUrl: document.location.href + '/../../imgs/icon-position@4x.png',
         iconSize: [32, 32],
         iconAnchor: [16, 16]
     });
     var iconProtegee = L.icon({
-        iconUrl: '../../web/imgs/icon-espece-protegee.png',
+        iconUrl: document.location.href + '/../../imgs/icon-espece-protegee.png',
         iconSize: [22.5, 32],
         iconAnchor: [11.25, 16]
     });
     var iconNonProtegee = L.icon({
-        iconUrl: '../../web/imgs/icon-espece-non-protegee.png',
+        iconUrl: document.location.href + '/../../imgs/icon-espece-non-protegee.png',
         iconSize: [22.5, 32],
         iconAnchor: [11.25, 16]
     });

@@ -3,7 +3,7 @@
  * Créé par firekey le 09/06/2017.
  */
 
-$(function(){
+$(function(){console.log(document.location.href);
 
     /* ========================= VARIABLES ========================= */
 
@@ -11,13 +11,13 @@ $(function(){
     var marqueurs = [0];
 
     var iconPosition = L.icon({
-        iconUrl: '../../../web/imgs/icon-position@4x.png',
+        iconUrl: document.location.href + '/../../../imgs/icon-position@4x.png',
         iconSize: [32, 32],
         iconAnchor: [16, 16]
     });
 
     var iconPin = L.icon({
-        iconUrl: '../../../web/imgs/icon-pin@4x.png',
+        iconUrl: document.location.href + '/../../../imgs/icon-pin@4x.png',
         iconSize: [16.5, 32],
         iconAnchor: [8.25, 32]
     });
