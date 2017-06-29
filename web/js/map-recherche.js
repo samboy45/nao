@@ -117,7 +117,7 @@ $(function(){
                     var jour = observation.date.date.substr(8, 2);
                     var mois = observation.date.date.substr(5, 2);
                     var annee = observation.date.date.substr(0, 4);
-                    if (observation.typeEspece.substr(0, 3) == 'non'){
+                    if (observation.typeEspece != null && observation.typeEspece.substr(0, 3) == 'non'){
                         icone = iconNonProtegee;
                     } else {
                         icone = iconProtegee;
