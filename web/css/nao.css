@@ -446,8 +446,12 @@ footer {
     padding-right: 0;
 }
 
+#liste-users {
+    padding-bottom: 50px;
+}
+
 #admin-index {
-    padding: 15px 0 50px 0;
+    padding: 15px 0 0 0;
     height: 600px;
     overflow: auto;
 }
@@ -494,6 +498,14 @@ footer {
 #obs-att {
     height: 600px;
     overflow: auto;
+}
+
+#div-obs-att {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
 }
 
 
@@ -593,6 +605,16 @@ footer {
 
     #div-mon-compte {
         padding: 50px;
+    }
+
+    #tabNombre a,
+    #tabValidees div,
+    #tabAttente div {
+        flex-direction: row;
+    }
+
+    #div-obs-att {
+        flex-direction: row;
     }
 }
 
