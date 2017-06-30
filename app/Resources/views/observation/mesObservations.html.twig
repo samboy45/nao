@@ -4,7 +4,7 @@
     {% endif %}
     {% for observation in userObservations %}
         <a href="{% if is_granted('ROLE_NATURALISTE') %}{{ path('observation_validate', { 'id': observation.id }) }}{% endif %}" class="bg-blanc pin-glacial">
-            <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
+            <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" width="100px" height="100px" alt="photo d'oiseau">
             <ul class="fa-ul">
                 <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
                 <li><i class="fa-li fa fa-square"></i>Espèce : {{ observation.espece.famille }}</li>
@@ -20,13 +20,13 @@
     <input type="hidden" id="nb-obs" value="{{ countUserObservations }}" disabled>
 </div>
 <div id="tabValidees">
-    {% if is_granted('ROLE_USER') %} {# and not is_granted('ROLE_NATURALISTE')#}
+    {% if is_granted('ROLE_USER') and not is_granted('ROLE_NATURALISTE') %}
         {% if userObservationsValidate is empty %}
             <div class="alert alert-danger center">Aucune observation validée</div>
         {% endif %}
         {% for observation in userObservationsValidate %}
             <div class="bg-blanc pin-glacial">
-                <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
+                <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" width="100px" height="100px" alt="photo d'oiseau">
                 <ul class="fa-ul">
                     <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
                     <li><i class="fa-li fa fa-square"></i>Espèce : {{ observation.espece.famille }}</li>
@@ -43,13 +43,13 @@
     <input type="hidden" id="nb-val" value="{{ countUserObservationsValidate }}" disabled>
 </div>
 <div id="tabAttente">
-    {% if is_granted('ROLE_USER') %} {# and not is_granted('ROLE_NATURALISTE')#}
+    {% if is_granted('ROLE_USER') and not is_granted('ROLE_NATURALISTE') %}
         {% if userObservationsWaiting is empty %}
             <div class="alert alert-danger center">Aucune observation</div>
         {% endif %}
         {% for observation in userObservationsWaiting %}
             <div class="bg-blanc pin-glacial">
-                <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
+                <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" width="100px" height="100px" alt="photo d'oiseau">
                 <ul class="fa-ul">
                     <li><i class="fa-li fa fa-square"></i>Oiseau : {{ observation.espece }}</li>
                     <li><i class="fa-li fa fa-square"></i>Espèce : {{ observation.espece.famille }}</li>

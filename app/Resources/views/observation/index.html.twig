@@ -14,7 +14,7 @@
             </div>
             <div class="col-xs-12" id="obs-att">
                 {% for observation in observations %}
-                    <div class="row centrer-elements">
+                    <div class="row" id="div-obs-att">
                         <div class="well rad obs-image centrer-element">
                             <img src="{% if not observation.image %}{{ asset('/img_upload/bird.png')|imagine_filter('default_thumb') }}{% else %}{{ asset('/img_upload/'~ observation.image)|imagine_filter('default_thumb')}}{% endif %}" alt="photo d'oiseau">
                         </div>

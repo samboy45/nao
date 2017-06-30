@@ -496,6 +496,14 @@ footer {
     overflow: auto;
 }
 
+#div-obs-att {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+}
+
 
 /* ========================= MEDIA QUERIES ========================= */
 
@@ -593,6 +601,16 @@ footer {
 
     #div-mon-compte {
         padding: 50px;
+    }
+
+    #tabNombre a,
+    #tabValidees div,
+    #tabAttente div {
+        flex-direction: row;
+    }
+
+    #div-obs-att {
+        flex-direction: row;
     }
 }
 
