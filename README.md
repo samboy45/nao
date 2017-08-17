@@ -1,7 +1,7 @@
 
 
 
-# NOA - Nos amis les oiseaux
+# NOA - Nos amis les oiseaux [![SensioLabsInsight](https://insight.sensiolabs.com/projects/94482459-0c36-4959-a3b4-b813277a5a4a/big.png)](https://insight.sensiolabs.com/projects/94482459-0c36-4959-a3b4-b813277a5a4a)
 ## OpenClassRooms Parcours Chef de Projet Multimedia :
 ### Projet N°5 - Création d'une application participative permettant l'observation des espèces d'oiseaux.  
 
@@ -38,6 +38,12 @@ Michel Dujardin est le fondateur de l’association NAO (Nos Amis les Oiseaux), 
     3. le login de la connexion à la base (root par defaut)
     4. le mot de passe de la base (null par défaut)
     5. puis les autres valeurs correspondantes à swiftmailer
+
+---
+
+## DEMO:
+
+[Nos amis les oiseaux](https://yc-design.fr/nao/web/)
 
 ---
 
