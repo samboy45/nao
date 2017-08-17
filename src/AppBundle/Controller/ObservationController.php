@@ -27,7 +27,7 @@ class ObservationController extends Controller
         $form = $this->createForm('AppBundle\Form\ObservationType', $observation);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() AND $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
             $observation->setUser($user);
             if ($user->getRoles() == 'naturaliste'){
@@ -72,7 +72,7 @@ class ObservationController extends Controller
         $validateForm = $this->createForm('AppBundle\Form\ValidateType', $observation);
         $validateForm->handleRequest($request);
 
-        if ($validateForm->isSubmitted() AND $validateForm->isValid()){
+        if ($validateForm->isSubmitted() && $validateForm->isValid()){
             $observation->setActive(true);
             $this->getDoctrine()->getManager()->flush();
 
@@ -93,7 +93,7 @@ class ObservationController extends Controller
         $form->handleRequest($request);
         $mailer = $this->get('observation.mailservice');
 
-        if ($form->isSubmitted() AND $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $mailer->sendMail($observation);
             $em->remove($observation);

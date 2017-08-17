@@ -25,7 +25,7 @@ class UserController extends Controller
         $form = $this->createForm('NAO\UserBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() AND $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -57,7 +57,7 @@ class UserController extends Controller
         $editForm = $this->createForm('NAO\UserBundle\Form\UserEditType', $user);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() AND $editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('admin_utilisateurs_edit', array('id' => $user->getId()));
@@ -75,7 +75,7 @@ class UserController extends Controller
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() AND $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush();

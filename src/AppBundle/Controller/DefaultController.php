@@ -73,7 +73,7 @@ class DefaultController extends Controller
         $form3->handleRequest($request);
 
 
-        if ($form->isSubmitted() AND $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $recherche = $form->getData() ;
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerUtilisateurs($recherche['recherche']);
 
@@ -81,7 +81,7 @@ class DefaultController extends Controller
 
         }
 
-        if ($form2->isSubmitted() AND $form2->isValid()){
+        if ($form2->isSubmitted() && $form2->isValid()){
             $role = $form2->getData();
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerParRole($role['roles']);
 
@@ -89,7 +89,7 @@ class DefaultController extends Controller
 
         }
 
-        if ($form3->isSubmitted() AND $form3->isValid()) {
+        if ($form3->isSubmitted() && $form3->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($newUser);
             $em->flush();

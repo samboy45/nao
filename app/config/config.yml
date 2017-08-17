@@ -66,12 +66,13 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
   spool:     { type: memory }
-  transport: smtp
-  host:      smtp.mailtrap.io
-  username:  417fe9175959c1
-  password:  b14f786d0dd17e
-  auth_mode: cram-md5
-  port: 2525
+  transport: %mailer_transport%
+  host:      %mailer_host%
+  username:  %mailer_user%
+  password:  %mailer_password%
+  auth_mode: %mailer_auth%
+  encryption: %mailer_security%
+  port: %mailer_port%
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'

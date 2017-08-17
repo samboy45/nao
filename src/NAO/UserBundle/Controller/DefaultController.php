@@ -55,7 +55,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder(null)->add('recherche', TextType::class, array('attr' => array('placeholder' => 'Recherche')))->getForm();
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() AND $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $recherche = $form->getData() ;
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerUtilisateurs($recherche['recherche']);
 
@@ -81,7 +81,7 @@ class DefaultController extends Controller
             ))->getForm();
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() AND $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()){
             $role = $form->getData();
             $users = $this->getDoctrine()->getRepository('UserBundle:User')->filtrerParRole($role['roles']);
 
