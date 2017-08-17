@@ -13,7 +13,7 @@ parameters:
     mailer_password: 1f0383154a0fd5
     mailer_security: tls
     mailer_port: 2525
-    mailer_auth: CRAM-MD5
+    mailer_auth_mode: cram-md5
     mailer_name: Nos Amis les Oiseaux
     secret: ThisTokenIsNotSoSecretChangeIt
     recaptcha_key: 6LdOQiIUAAAAAOtP34Z-Od0A3r4FXMqj_TpoqqWZ
