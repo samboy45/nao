@@ -30,7 +30,7 @@ class AppEspecesCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
 
         // yolo
-        ini_set("memory_limit", "-1");
+        //ini_set("memory_limit", "-1");
 
         // On vide les 3 tables
         $connection = $em->getConnection();
